@@ -55,13 +55,45 @@
 			isa = PBXGroup;
 			children = (
 				83B5B7291CA9015B00C4D63B /* AppDelegate.swift */,
-				83B5B72B1CA9015B00C4D63B /* ViewController.swift */,
+				83B5B73B1CA9022000C4D63B /* Model */,
+				83B5B73C1CA9022800C4D63B /* View */,
+				83B5B73D1CA9022F00C4D63B /* Controller */,
+				83B5B73E1CA9024900C4D63B /* Supporting Files */,
 				83B5B72D1CA9015B00C4D63B /* Main.storyboard */,
-				83B5B7301CA9015B00C4D63B /* Assets.xcassets */,
 				83B5B7321CA9015B00C4D63B /* LaunchScreen.storyboard */,
-				83B5B7351CA9015B00C4D63B /* Info.plist */,
 			);
 			path = "Apartments Croatia";
+			sourceTree = "<group>";
+		};
+		83B5B73B1CA9022000C4D63B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		83B5B73C1CA9022800C4D63B /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		83B5B73D1CA9022F00C4D63B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				83B5B72B1CA9015B00C4D63B /* ViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		83B5B73E1CA9024900C4D63B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				83B5B7351CA9015B00C4D63B /* Info.plist */,
+				83B5B7301CA9015B00C4D63B /* Assets.xcassets */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,7 +281,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Apartments Croatia/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.2plus2.apartment.Apartments-Croatia";
+				PRODUCT_BUNDLE_IDENTIFIER = com.2plus2.apartment;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -260,7 +292,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Apartments Croatia/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.2plus2.apartment.Apartments-Croatia";
+				PRODUCT_BUNDLE_IDENTIFIER = com.2plus2.apartment;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -284,6 +316,7 @@
 				83B5B73A1CA9015B00C4D63B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

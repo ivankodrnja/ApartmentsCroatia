@@ -1,25 +1,107 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1713" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="CTa-Ru-cnE">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Wishlist-->
+        <scene sceneID="LMy-Xw-4tp">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="dV3-nn-YA6" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                        <viewControllerLayoutGuide type="top" id="g7m-pf-ukF"/>
+                        <viewControllerLayoutGuide type="bottom" id="Zgc-uB-2vK"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="EfI-5H-xqW">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="0.1112271109" blue="0.21282062069999999" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Wishlist" image="Wishlist Icon" selectedImage="Wishlist Icon" id="PMi-Z4-W9Q"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BtE-gV-9Hn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="211" y="614"/>
+        </scene>
+        <!--Map-->
+        <scene sceneID="W0d-aY-DSN">
+            <objects>
+                <viewController id="R7D-we-xT8" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cIP-so-b0g"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ipt-pw-7xy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BWa-Ab-L6G">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.0" green="1" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Map" image="Map Icon" id="Yhl-0A-1la"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kpn-1i-njb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="211" y="1362"/>
+        </scene>
+        <!--Destinations-->
+        <scene sceneID="vJY-qX-fYJ">
+            <objects>
+                <viewController id="NFv-6a-oFx" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZWx-ow-0iJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="KAf-to-IUg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="R5I-EW-w94">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.35070900710000003" green="0.79530321839999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Destinations" image="Destinations Icon" selectedImage="Destinations Icon" id="VYd-7Z-Yxs"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6xF-1L-5YD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="211" y="-47"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="TvO-91-Pjm">
+            <objects>
+                <tabBarController id="vTA-mi-HNs" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="x2d-6a-5aK"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="dW0-qu-FNu">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="NFv-6a-oFx" kind="relationship" relationship="viewControllers" id="UkL-Pn-Hsv"/>
+                        <segue destination="dV3-nn-YA6" kind="relationship" relationship="viewControllers" id="KFW-wR-AOu"/>
+                        <segue destination="R7D-we-xT8" kind="relationship" relationship="viewControllers" id="aoL-lv-1fq"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="91e-Xb-ieX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-517" y="284"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="mk1-LG-bJ6">
+            <objects>
+                <navigationController id="CTa-Ru-cnE" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Dgv-Dg-sus">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="vTA-mi-HNs" kind="relationship" relationship="rootViewController" id="Fyg-ZI-l4L"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lzr-AM-HRX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1238" y="284"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Destinations Icon" width="8" height="8"/>
+        <image name="Map Icon" width="8" height="8"/>
+        <image name="Wishlist Icon" width="8" height="8"/>
+    </resources>
 </document>
