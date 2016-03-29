@@ -13,6 +13,7 @@
 		83B5B7311CA9015B00C4D63B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83B5B7301CA9015B00C4D63B /* Assets.xcassets */; };
 		83B5B7341CA9015B00C4D63B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83B5B7321CA9015B00C4D63B /* LaunchScreen.storyboard */; };
 		83E21A101CAA9E3000BA5EA0 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 83E21A0E1CAA9E3000BA5EA0 /* Model.xcdatamodeld */; };
+		83E21A121CAAED0700BA5EA0 /* CoreDataStackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E21A111CAAED0700BA5EA0 /* CoreDataStackManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		83B5B7331CA9015B00C4D63B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		83B5B7351CA9015B00C4D63B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		83E21A0F1CAA9E3000BA5EA0 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		83E21A111CAAED0700BA5EA0 /* CoreDataStackManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				83E21A0E1CAA9E3000BA5EA0 /* Model.xcdatamodeld */,
+				83E21A111CAAED0700BA5EA0 /* CoreDataStackManager.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -171,6 +174,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				83B5B72C1CA9015B00C4D63B /* ViewController.swift in Sources */,
+				83E21A121CAAED0700BA5EA0 /* CoreDataStackManager.swift in Sources */,
 				83B5B72A1CA9015B00C4D63B /* AppDelegate.swift in Sources */,
 				83E21A101CAA9E3000BA5EA0 /* Model.xcdatamodeld in Sources */,
 			);
