@@ -12,6 +12,7 @@
 		83B5B72F1CA9015B00C4D63B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83B5B72D1CA9015B00C4D63B /* Main.storyboard */; };
 		83B5B7311CA9015B00C4D63B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83B5B7301CA9015B00C4D63B /* Assets.xcassets */; };
 		83B5B7341CA9015B00C4D63B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83B5B7321CA9015B00C4D63B /* LaunchScreen.storyboard */; };
+		83E21A101CAA9E3000BA5EA0 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 83E21A0E1CAA9E3000BA5EA0 /* Model.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		83B5B7301CA9015B00C4D63B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		83B5B7331CA9015B00C4D63B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		83B5B7351CA9015B00C4D63B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		83E21A0F1CAA9E3000BA5EA0 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 		83B5B73B1CA9022000C4D63B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				83E21A0E1CAA9E3000BA5EA0 /* Model.xcdatamodeld */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -169,6 +172,7 @@
 			files = (
 				83B5B72C1CA9015B00C4D63B /* ViewController.swift in Sources */,
 				83B5B72A1CA9015B00C4D63B /* AppDelegate.swift in Sources */,
+				83E21A101CAA9E3000BA5EA0 /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,6 +323,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		83E21A0E1CAA9E3000BA5EA0 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				83E21A0F1CAA9E3000BA5EA0 /* Model.xcdatamodel */,
+			);
+			currentVersion = 83E21A0F1CAA9E3000BA5EA0 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 83B5B71E1CA9015B00C4D63B /* Project object */;
 }
