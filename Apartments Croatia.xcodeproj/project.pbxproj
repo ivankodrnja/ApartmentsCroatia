@@ -8,7 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		83046BFE1CABD87F00693F83 /* SWXMLHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83046BFD1CABD87F00693F83 /* SWXMLHash.swift */; };
-		83046C011CABDB5400693F83 /* SWXMLHash+TypeConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83046C001CABDB5400693F83 /* SWXMLHash+TypeConversion.swift */; };
+		8312598B1CB290F8003870EE /* Apartment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8312598A1CB290F8003870EE /* Apartment.swift */; };
+		831259951CB29150003870EE /* House.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8312598D1CB29150003870EE /* House.swift */; };
+		831259971CB29150003870EE /* Region.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8312598F1CB29150003870EE /* Region.swift */; };
+		831259991CB29150003870EE /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831259911CB29150003870EE /* Photo.swift */; };
+		8312599B1CB29150003870EE /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831259931CB29150003870EE /* Destination.swift */; };
 		83B5B72A1CA9015B00C4D63B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B5B7291CA9015B00C4D63B /* AppDelegate.swift */; };
 		83B5B72C1CA9015B00C4D63B /* DestinationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B5B72B1CA9015B00C4D63B /* DestinationsViewController.swift */; };
 		83B5B72F1CA9015B00C4D63B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83B5B72D1CA9015B00C4D63B /* Main.storyboard */; };
@@ -18,11 +22,16 @@
 		83E21A121CAAED0700BA5EA0 /* CoreDataStackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E21A111CAAED0700BA5EA0 /* CoreDataStackManager.swift */; };
 		83E21A151CAAEF0900BA5EA0 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E21A141CAAEF0900BA5EA0 /* NetworkClient.swift */; };
 		83E21A171CAAEF8000BA5EA0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E21A161CAAEF8000BA5EA0 /* Constants.swift */; };
+		83F9E1FC1CED7A8D00C85296 /* DestinationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F9E1FB1CED7A8D00C85296 /* DestinationTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		83046BFD1CABD87F00693F83 /* SWXMLHash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWXMLHash.swift; sourceTree = "<group>"; };
-		83046C001CABDB5400693F83 /* SWXMLHash+TypeConversion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SWXMLHash+TypeConversion.swift"; sourceTree = "<group>"; };
+		8312598A1CB290F8003870EE /* Apartment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Apartment.swift; sourceTree = "<group>"; };
+		8312598D1CB29150003870EE /* House.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = House.swift; sourceTree = "<group>"; };
+		8312598F1CB29150003870EE /* Region.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Region.swift; sourceTree = "<group>"; };
+		831259911CB29150003870EE /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		831259931CB29150003870EE /* Destination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
 		83B5B7261CA9015B00C4D63B /* Apartments Croatia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Apartments Croatia.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		83B5B7291CA9015B00C4D63B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		83B5B72B1CA9015B00C4D63B /* DestinationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationsViewController.swift; sourceTree = "<group>"; };
@@ -34,6 +43,7 @@
 		83E21A111CAAED0700BA5EA0 /* CoreDataStackManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackManager.swift; sourceTree = "<group>"; };
 		83E21A141CAAEF0900BA5EA0 /* NetworkClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		83E21A161CAAEF8000BA5EA0 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		83F9E1FB1CED7A8D00C85296 /* DestinationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DestinationTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,9 +100,13 @@
 			children = (
 				83E21A131CAAEEE100BA5EA0 /* NetworkClient */,
 				83E21A0E1CAA9E3000BA5EA0 /* Model.xcdatamodeld */,
+				8312598F1CB29150003870EE /* Region.swift */,
+				831259931CB29150003870EE /* Destination.swift */,
+				8312598D1CB29150003870EE /* House.swift */,
+				831259911CB29150003870EE /* Photo.swift */,
+				8312598A1CB290F8003870EE /* Apartment.swift */,
 				83E21A111CAAED0700BA5EA0 /* CoreDataStackManager.swift */,
 				83046BFD1CABD87F00693F83 /* SWXMLHash.swift */,
-				83046C001CABDB5400693F83 /* SWXMLHash+TypeConversion.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -100,6 +114,7 @@
 		83B5B73C1CA9022800C4D63B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				83F9E1FB1CED7A8D00C85296 /* DestinationTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -201,13 +216,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				831259991CB29150003870EE /* Photo.swift in Sources */,
 				83B5B72C1CA9015B00C4D63B /* DestinationsViewController.swift in Sources */,
 				83E21A151CAAEF0900BA5EA0 /* NetworkClient.swift in Sources */,
+				831259971CB29150003870EE /* Region.swift in Sources */,
 				83046BFE1CABD87F00693F83 /* SWXMLHash.swift in Sources */,
-				83046C011CABDB5400693F83 /* SWXMLHash+TypeConversion.swift in Sources */,
 				83E21A121CAAED0700BA5EA0 /* CoreDataStackManager.swift in Sources */,
 				83B5B72A1CA9015B00C4D63B /* AppDelegate.swift in Sources */,
 				83E21A101CAA9E3000BA5EA0 /* Model.xcdatamodeld in Sources */,
+				8312598B1CB290F8003870EE /* Apartment.swift in Sources */,
+				831259951CB29150003870EE /* House.swift in Sources */,
+				8312599B1CB29150003870EE /* Destination.swift in Sources */,
+				83F9E1FC1CED7A8D00C85296 /* DestinationTableViewCell.swift in Sources */,
 				83E21A171CAAEF8000BA5EA0 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -43,9 +43,9 @@
 			<key>2plus2.hr</key>
 			<dict>
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>
-				<string></string>
+				<true/>
 				<key>NSIncludesSubdomains</key>
-				<string></string>
+				<true/>
 			</dict>
 		</dict>
 	</dict>

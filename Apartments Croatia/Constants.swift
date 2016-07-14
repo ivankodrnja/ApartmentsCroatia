@@ -11,10 +11,13 @@ extension NetworkClient {
     struct Constants {
         static let baseUrl: String = "http://www.2plus2.hr/Apartment/"
         static let reloadMethod: String = "xmlV3ios.php?lastmodified="
+        static let imageFolder: String = "house"
+        
+        static let toInt = ["rating", "statusid", "sea_distance", "price_from", "houseid", "center_distance", "surface"]
     }
     
-    
     struct XMLResponseKeys {
+        static let HouseID = "houseid"
         static let RegionName = "region"
         static let DestinationName = "destination"
         static let HouseName = "name"
@@ -31,6 +34,7 @@ extension NetworkClient {
         static let HousePriceFrom = "price_from"
         static let HouseStatusID = "statusid"
         static let HouseActive = "active"
+        static let HouseFavorite = "favorite"
         static let Photos = "photos"
         static let PhotoName = "photoname"
         static let Apartments = "apartments"
