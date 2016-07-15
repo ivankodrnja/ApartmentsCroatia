@@ -284,11 +284,13 @@ class NetworkClient: NSObject {
                     aHouse?.destination = destination
                     
                     // add photos of the house
-                    for photo in house[NetworkClient.XMLResponseKeys.Photos] as! [Any]{
-                        let photoDict = [NetworkClient.Constants.Path : photo]
-                        let newPhoto = Photo(dictionary: photoDict, context: self.sharedContext)
-                        // photo belongs to a certain house
-                        newPhoto.house = aHouse
+                    if let photos = house[NetworkClient.XMLResponseKeys.Photos] as? [Any]{
+                        for photo in photos{
+                            let photoDict = [NetworkClient.Constants.Path : photo]
+                            let newPhoto = Photo(dictionary: photoDict, context: self.sharedContext)
+                            // photo belongs to a certain house
+                            newPhoto.house = aHouse
+                        }
                     }
                     
                     if let apartments = house[NetworkClient.XMLResponseKeys.Apartments] as? [Any]{
@@ -307,8 +309,8 @@ class NetworkClient: NSObject {
                     
                 }
 
-                print(">>>>>>>>>>>>\(house[NetworkClient.XMLResponseKeys.HouseName]!)<<<<<<<<<<<<")
-                print(house)
+               // print(">>>>>>>>>>>>\(house[NetworkClient.XMLResponseKeys.HouseName]!)<<<<<<<<<<<<")
+               // print(house)
                 CoreDataStackManager.sharedInstance().saveContext()
             }
             /*

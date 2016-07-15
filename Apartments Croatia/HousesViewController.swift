@@ -1,41 +1,40 @@
 //
-//  DestinationsViewController.swift
+//  HousesViewController.swift
 //  Apartments Croatia
 //
-//  Created by Ivan Kodrnja on 28/03/16.
+//  Created by Ivan Kodrnja on 15/07/16.
 //  Copyright © 2016 Ivan Kodrnja. All rights reserved.
 //
 
 import UIKit
 import CoreData
 
-
-class DestinationsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
-
+class HousesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
+    
     @IBOutlet weak var tableView: UITableView!
     // variable will be initialized from previous VC
-    var region : Region?
+    var destination : Destination?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-
+        
         // fetch results
         do {
             try fetchedResultsController.performFetch()
-            
         } catch {
             print(error)
         }
         fetchedResultsController.delegate = self
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Core Data Convenience
     
     var sharedContext: NSManagedObjectContext {
@@ -44,9 +43,9 @@ class DestinationsViewController: UIViewController, UITableViewDelegate, UITable
     
     lazy var fetchedResultsController: NSFetchedResultsController = {
         
-        let fetchRequest = NSFetchRequest(entityName: "Destination")
+        let fetchRequest = NSFetchRequest(entityName: "House")
+        
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
-        fetchRequest.predicate = NSPredicate(format: "region.name == %@", self.region!.name)
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
                                                                   managedObjectContext: self.sharedContext,
                                                                   sectionNameKeyPath: nil,
@@ -59,8 +58,8 @@ class DestinationsViewController: UIViewController, UITableViewDelegate, UITable
     // MARK: - Table View
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-
-        return 80
+        
+        return 350
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -77,13 +76,13 @@ class DestinationsViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         /* Get cell type */
         
-        let destination = fetchedResultsController.objectAtIndexPath(indexPath) as! Destination
+        let house = fetchedResultsController.objectAtIndexPath(indexPath) as! House
         
         let cellReuseIdentifier = "DestinationsCell"
         
         let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier)! as! DestinationTableViewCell
         
-        configureCell(cell, withDestination: destination, atIndexPath: indexPath)
+        configureCell(cell, withHouse: house, atIndexPath: indexPath)
         
         
         return cell
@@ -91,19 +90,34 @@ class DestinationsViewController: UIViewController, UITableViewDelegate, UITable
     
     // MARK: - Configure Cell
     
-    func configureCell(cell: DestinationTableViewCell, withDestination destination: Destination, atIndexPath indexPath: NSIndexPath) {
+    func configureCell(cell: DestinationTableViewCell, withHouse house: House, atIndexPath indexPath: NSIndexPath) {
         // make table cell separators stretch throught the screen width, in Storyboard separator insets of the table view and the cell have also set to 0
         cell.preservesSuperviewLayoutMargins = false
         cell.layoutMargins = UIEdgeInsetsZero
         
         
-        //***** set the apartment name or heading *****//
-        cell.nameLabel.text = destination.name
-
         
-
+        //***** set the apartment name or heading *****//
+        cell.nameLabel.text = house.name
+        cell.active.text = house.active
+        cell.address.text = house.address
+        cell.centerDistance.text = String(house.centerDistance)
+        cell.email.text = house.email
+        cell.favorite.text = house.favorite
+        cell.houseid.text = String(house.houseid)
+        cell.latitude.text = String(house.latitude)
+        cell.longitude.text = String(house.longitude)
+        cell.parking.text = house.parking
+        cell.pets.text = house.pets
+        cell.phone.text = house.phone
+        cell.priceFrom.text = String(house.priceFrom)
+        cell.seaDistance.text = String(house.seaDistance)
+        cell.statusID.text = String(house.statusID)
+        cell.website.text = house.website
+        
+        
     }
-
+    
     
     // MARK: - Fetched Results Controller Delegate
     
@@ -145,8 +159,8 @@ class DestinationsViewController: UIViewController, UITableViewDelegate, UITable
             
         case .Update:
             let cell = tableView.cellForRowAtIndexPath(indexPath!) as! DestinationTableViewCell
-            let destination = controller.objectAtIndexPath(indexPath!) as! Destination
-            self.configureCell(cell, withDestination: destination, atIndexPath: indexPath!)
+            let house = controller.objectAtIndexPath(indexPath!) as! House
+            self.configureCell(cell, withHouse: house, atIndexPath: indexPath!)
             
         case .Move:
             tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
@@ -158,4 +172,3 @@ class DestinationsViewController: UIViewController, UITableViewDelegate, UITable
         self.tableView.endUpdates()
     }
 }
-
