@@ -47,7 +47,7 @@ class House: NSManagedObject {
     }
     
     
-    init(dictionary: [String : AnyObject], context: NSManagedObjectContext) {
+    init(dictionary: [String : Any], context: NSManagedObjectContext) {
         
         let entity =  NSEntityDescription.entityForName("House", inManagedObjectContext: context)!
         
@@ -59,7 +59,7 @@ class House: NSManagedObject {
         address = dictionary[NetworkClient.XMLResponseKeys.HouseAddress] as! String
         centerDistance = dictionary[NetworkClient.XMLResponseKeys.HouseCenterDistance] as! Int
         email = dictionary[NetworkClient.XMLResponseKeys.HouseEmail] as! String
-        //favorite = dictionary[NetworkClient.XMLResponseKeys.HouseFavorite] as! String
+        favorite = dictionary[NetworkClient.XMLResponseKeys.HouseFavorite] as! String
         houseid = dictionary[NetworkClient.XMLResponseKeys.HouseID] as! Int
         latitude = dictionary[NetworkClient.XMLResponseKeys.HouseLatitude] as! Double
         longitude = dictionary[NetworkClient.XMLResponseKeys.HouseLongitude] as! Double

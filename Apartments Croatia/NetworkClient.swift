@@ -43,7 +43,6 @@ class NetworkClient: NSObject {
     func getRegionByName(name: String) -> [Region] {
         
         let regionByNameFetchRequest = NSFetchRequest(entityName: "Region")
-        //regionByNameFetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
         regionByNameFetchRequest.predicate = NSPredicate(format: "name == %@", name)
         
         
@@ -56,7 +55,6 @@ class NetworkClient: NSObject {
     func getDestinationByName(name: String) -> [Destination] {
         
         let destinationByNameFetchRequest = NSFetchRequest(entityName: "Destination")
-        //destinationByNameFetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
         destinationByNameFetchRequest.predicate = NSPredicate(format: "name == %@", name)
         
         
@@ -69,8 +67,7 @@ class NetworkClient: NSObject {
     func getHouseById(houseid: Int) -> [House] {
         
         let houseByIdFetchRequest = NSFetchRequest(entityName: "House")
-        //houseByIdFetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
-        houseByIdFetchRequest.predicate = NSPredicate(format: "houseid == %@", houseid)
+        houseByIdFetchRequest.predicate = NSPredicate(format: "houseid == \(houseid)")
         
         
         let houseById = (try! sharedContext.executeFetchRequest(houseByIdFetchRequest)) as! [House]
@@ -124,14 +121,10 @@ class NetworkClient: NSObject {
             /* 5. Parse the data */
             let xml = SWXMLHash.parse(data)
             
-            var regions = [String]()
-            var destinations = [String]()
-            
-            
             // will store an array of house dictionaries i.e. house objects
-            var housesArray = [[String:AnyObject]]()
+            var housesArray = [[String:Any]]()
             // will store house object in each iteration of the loop
-            var houseDict = [String:AnyObject]()
+            var houseDict = [String:Any]()
             
             do {
                 // get the <root><house> elements from the xml file
@@ -141,29 +134,32 @@ class NetworkClient: NSObject {
                 for elem in houseElement.children {
                     
                     // here will be stored photos and apartments data in each iteration of the loop
-                    var tempDict = [String : AnyObject]()
+                    var tempDict = [String : Any]()
+                    // here will be stored photos and apartments data in each iteration of the loop
+                    var tempArray = [Any]()
                     // store apartment objects
-                    var tempApartmentDict = [String:AnyObject]()
+                    var tempApartmentArray = [Any]()
+                    // store apartment objects
+                    var tempApartmentDict = [String:Any]()
                     
                     switch (elem.element!.name){
-                    /*
-                    case "region":
-                        // we filter region names to append only unique ones
-                        if !regions.contains(elem.element!.text!){
-                            regions.append(elem.element!.text!)
-                        }
-                        
-                    case "destination":
-                        // we filter destination names to append only unique ones
-                        if !destinations.contains(elem.element!.text!){
-                            destinations.append(elem.element!.text!)
-                        }
-                    */
                     case "photos":
                         let countOfPhotoElements = elem["photo"].children.count
                         var numberOfPhotoElements = 1
                         
                         for photoelem in elem["photo"].children {
+                            // each xml entry goes to temporary array which eventually goes to house object
+                            tempArray.append(photoelem.element!.text!)
+                            
+                            // tempArray of photo objects will be added to house object after all photo elements have been added to tempDict
+                            if(numberOfPhotoElements == countOfPhotoElements){
+                                houseDict["photos"] = tempArray 
+                            }
+                            
+                            numberOfPhotoElements += 1
+
+                            
+                            /*
                            // each xml entry goes to temporary dictionary which eventually goes to house object
                             tempDict["\(numberOfPhotoElements)"] = photoelem.element!.text!
                             
@@ -173,6 +169,7 @@ class NetworkClient: NSObject {
                             }
                             
                             numberOfPhotoElements += 1
+                             */
                         }
                         
                     case "apartments":
@@ -181,6 +178,25 @@ class NetworkClient: NSObject {
                         var numberOfApartmentObjects = 1
                         
                         for apartelem in elem["apartment"].children {
+                            tempDict["\(apartelem.element!.name)"] = apartelem.element!.text!
+                            
+                            // each new apartmeent object finishes with <internet> xml element, when it occurs, add tempDict to tempApartmentArray and clear tempDict content
+                            if(apartelem.element!.name == NetworkClient.XMLResponseKeys.ApartmentInternet){
+                                // before clearing the houseDict, add it to the tempApartmentDict which eventually goes to house object
+                                tempApartmentArray.append(tempDict)
+                                tempDict.removeAll()
+                                
+                                numberOfApartmentObjects += 1
+                            }
+                            
+                            // tempApartmentDict of apartment objects will be added to house object after all apartment objects have been added to tempApartmentDict
+                            if(numberOfApartmentElements == countOfApartmentElements){
+                                houseDict["apartments"] = tempApartmentArray
+                            }
+                            
+                            numberOfApartmentElements += 1
+                            
+                            /*
                             tempDict["\(apartelem.element!.name)"] = apartelem.element!.text!
                             
                             // each new apartmeent object finishes with <internet> xml element, when it occurs, add tempDict to tempApartmentDict and clear tempDict content
@@ -198,6 +214,7 @@ class NetworkClient: NSObject {
                             }
                             
                             numberOfApartmentElements += 1
+                            */
                         }
                   
                     case "deleted":
@@ -221,6 +238,8 @@ class NetworkClient: NSObject {
                     // each new house object finishes with <active> xml element, when it occurs, add houseDict to houseArray and clear houseDict content
                     if(elem.element!.name == NetworkClient.XMLResponseKeys.HouseActive){
                         
+                        // we add default entry for favorite attribute to "N", it will be used later when data is inserted into Core Data a
+                        houseDict[NetworkClient.XMLResponseKeys.HouseFavorite] = "N"
                         // before clearing the houseDict, append it to the houseArray
                         housesArray.append(houseDict)
                         
@@ -229,51 +248,67 @@ class NetworkClient: NSObject {
                     
                 }
 
-                /*
-                housesArray.map(){ (dictionary: [String : AnyObject]) -> House in
-                    let house = House(dictionary: dictionary, context: self.sharedContext)
-                    
-                    
-                    
-                    house.destination = self.destination
-                    
-                    print(house)
-                    CoreDataStackManager.sharedInstance().saveContext()
-                    return house
-                }
-                 */
             } catch {
                 print("Could not parse the data as XML: '\(XMLIndexer.Error.self)'")
                 return
             }
             
             /* 6. Use the data! */
-            //print(housesArray)
-            
+            // parse the newly created array and insert records into Core Data
             for house in housesArray{
-                
-                // check the current database if region or destination exists, array's first function is used to return the corresponding object
-                var region = self.getRegionByName(house["region"] as! String).first
-                var destination = self.getDestinationByName(house["destination"] as! String).first
+                //print(house)
+                // check the current database if region, destination or house exists, array's first function is used to return the corresponding object
+                var region = self.getRegionByName(house[NetworkClient.XMLResponseKeys.RegionName] as! String).first
+                var destination = self.getDestinationByName(house[NetworkClient.XMLResponseKeys.DestinationName] as! String).first
+                var aHouse = self.getHouseById(house[NetworkClient.XMLResponseKeys.HouseID] as! Int).first
                 
                 // if region doesn't already exist, add it to the database
                 if region == nil {
                    // create dictionary which will be used for Core Data entry
-                   let regionDict = [NetworkClient.XMLResponseKeys.RegionName : house["region"]!]
+                   let regionDict = [NetworkClient.XMLResponseKeys.RegionName : house[NetworkClient.XMLResponseKeys.RegionName]!]
                    region = Region(dictionary: regionDict, context: self.sharedContext)
                     
                 }
                 // if destination doesn't already exist, add it to the database
                 if  destination == nil {
                     // create dictionary which will be used for Core Data entry
-                    let destinationDict = [NetworkClient.XMLResponseKeys.DestinationName : house["destination"]!]
+                    let destinationDict = [NetworkClient.XMLResponseKeys.DestinationName : house[NetworkClient.XMLResponseKeys.DestinationName]!]
                     destination = Destination(dictionary: destinationDict, context: self.sharedContext)
                     // destination belongs to a certain region
                     destination?.region = region
                 }
-                
-                
-                
+                // if house doesn't already exist, add it to the database
+                if aHouse == nil {
+                    aHouse = House(dictionary: house, context: self.sharedContext)
+                    // house belongs to certain destination
+                    aHouse?.destination = destination
+                    
+                    // add photos of the house
+                    for photo in house[NetworkClient.XMLResponseKeys.Photos] as! [Any]{
+                        let photoDict = [NetworkClient.Constants.Path : photo]
+                        let newPhoto = Photo(dictionary: photoDict, context: self.sharedContext)
+                        // photo belongs to a certain house
+                        newPhoto.house = aHouse
+                    }
+                    
+                    if let apartments = house[NetworkClient.XMLResponseKeys.Apartments] as? [Any]{
+                        for apartment in apartments{
+                            let newApartment = Apartment(dictionary: apartment as! [String:Any], context: self.sharedContext)
+                            newApartment.house = aHouse
+                        }
+                    }
+                    // add apartments to the house
+                    //for apartment in house[NetworkClient.XMLResponseKeys.Apartments] as? Any{
+                    //    print(apartment)
+                      // var newApartment = Apartment(dictionary: apartment, context: self.sharedContext)
+                        
+                    //}
+                    
+                    
+                }
+
+                print(">>>>>>>>>>>>\(house[NetworkClient.XMLResponseKeys.HouseName]!)<<<<<<<<<<<<")
+                print(house)
                 CoreDataStackManager.sharedInstance().saveContext()
             }
             /*

@@ -22,7 +22,6 @@ class DestinationsViewController: UIViewController, UITableViewDelegate, UITable
         // fetch results
         do {
             try fetchedResultsController.performFetch()
-            
         } catch {
             print(error)
         }

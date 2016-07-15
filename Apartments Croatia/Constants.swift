@@ -12,7 +12,7 @@ extension NetworkClient {
         static let baseUrl: String = "http://www.2plus2.hr/Apartment/"
         static let reloadMethod: String = "xmlV3ios.php?lastmodified="
         static let imageFolder: String = "house"
-        
+        static let Path = "path"
         static let toInt = ["rating", "statusid", "sea_distance", "price_from", "houseid", "center_distance", "surface"]
     }
     

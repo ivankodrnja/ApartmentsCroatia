@@ -29,7 +29,7 @@ class Region: NSManagedObject {
     }
     
     
-    init(dictionary: [String : AnyObject], context: NSManagedObjectContext) {
+    init(dictionary: [String : Any], context: NSManagedObjectContext) {
 
         let entity =  NSEntityDescription.entityForName("Region", inManagedObjectContext: context)!
 

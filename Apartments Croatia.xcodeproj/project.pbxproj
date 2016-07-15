@@ -22,6 +22,7 @@
 		83E21A121CAAED0700BA5EA0 /* CoreDataStackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E21A111CAAED0700BA5EA0 /* CoreDataStackManager.swift */; };
 		83E21A151CAAEF0900BA5EA0 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E21A141CAAEF0900BA5EA0 /* NetworkClient.swift */; };
 		83E21A171CAAEF8000BA5EA0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E21A161CAAEF8000BA5EA0 /* Constants.swift */; };
+		83EAD55A1D391C7700A58F39 /* RegionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EAD5591D391C7700A58F39 /* RegionsViewController.swift */; };
 		83F9E1FC1CED7A8D00C85296 /* DestinationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F9E1FB1CED7A8D00C85296 /* DestinationTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		83E21A111CAAED0700BA5EA0 /* CoreDataStackManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackManager.swift; sourceTree = "<group>"; };
 		83E21A141CAAEF0900BA5EA0 /* NetworkClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		83E21A161CAAEF8000BA5EA0 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		83EAD5591D391C7700A58F39 /* RegionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionsViewController.swift; sourceTree = "<group>"; };
 		83F9E1FB1CED7A8D00C85296 /* DestinationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DestinationTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,7 +124,9 @@
 		83B5B73D1CA9022F00C4D63B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				83EAD5571D391A2100A58F39 /* Regions */,
 				83046BFF1CABDA4900693F83 /* Destinations */,
+				83EAD5581D391C2F00A58F39 /* Houses */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -143,6 +147,21 @@
 				83E21A161CAAEF8000BA5EA0 /* Constants.swift */,
 			);
 			name = NetworkClient;
+			sourceTree = "<group>";
+		};
+		83EAD5571D391A2100A58F39 /* Regions */ = {
+			isa = PBXGroup;
+			children = (
+				83EAD5591D391C7700A58F39 /* RegionsViewController.swift */,
+			);
+			name = Regions;
+			sourceTree = "<group>";
+		};
+		83EAD5581D391C2F00A58F39 /* Houses */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Houses;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -216,6 +235,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83EAD55A1D391C7700A58F39 /* RegionsViewController.swift in Sources */,
 				831259991CB29150003870EE /* Photo.swift in Sources */,
 				83B5B72C1CA9015B00C4D63B /* DestinationsViewController.swift in Sources */,
 				83E21A151CAAEF0900BA5EA0 /* NetworkClient.swift in Sources */,
