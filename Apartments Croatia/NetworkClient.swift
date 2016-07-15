@@ -40,23 +40,42 @@ class NetworkClient: NSObject {
         return CoreDataStackManager.sharedInstance().managedObjectContext
     }
     
-    
-    //TODO: get all regions and destinations
     func getRegionByName(name: String) -> [Region] {
         
         let regionByNameFetchRequest = NSFetchRequest(entityName: "Region")
-        regionByNameFetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        //regionByNameFetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
         regionByNameFetchRequest.predicate = NSPredicate(format: "name == %@", name)
         
         
         let regionByName = (try! sharedContext.executeFetchRequest(regionByNameFetchRequest)) as! [Region]
         
         return regionByName
+        
     }
     
-    func getDestinations(){
+    func getDestinationByName(name: String) -> [Destination] {
         
-       // return Destiations
+        let destinationByNameFetchRequest = NSFetchRequest(entityName: "Destination")
+        //destinationByNameFetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        destinationByNameFetchRequest.predicate = NSPredicate(format: "name == %@", name)
+        
+        
+        let destinationByName = (try! sharedContext.executeFetchRequest(destinationByNameFetchRequest)) as! [Destination]
+        
+        return destinationByName
+    }
+    
+    
+    func getHouseById(houseid: Int) -> [House] {
+        
+        let houseByIdFetchRequest = NSFetchRequest(entityName: "House")
+        //houseByIdFetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        houseByIdFetchRequest.predicate = NSPredicate(format: "houseid == %@", houseid)
+        
+        
+        let houseById = (try! sharedContext.executeFetchRequest(houseByIdFetchRequest)) as! [House]
+        
+        return houseById
     }
     
     func getRentals(modifiedDate: NSDate, completionHandler: (result: [String:AnyObject]?, error: NSError?) -> Void) {
@@ -108,14 +127,16 @@ class NetworkClient: NSObject {
             var regions = [String]()
             var destinations = [String]()
             
+            
+            // will store an array of house dictionaries i.e. house objects
+            var housesArray = [[String:AnyObject]]()
+            // will store house object in each iteration of the loop
+            var houseDict = [String:AnyObject]()
+            
             do {
                 // get the <root><house> elements from the xml file
                 let houseElement = try xml.byKey("root").byKey("house")
-                
-                // will store an array of house dictionaries i.e. house objects
-                var housesArray = [[String:AnyObject]]()
-                // will store house object in each iteration of the loop
-                var houseDict = [String:AnyObject]()
+
                 
                 for elem in houseElement.children {
                     
@@ -125,6 +146,7 @@ class NetworkClient: NSObject {
                     var tempApartmentDict = [String:AnyObject]()
                     
                     switch (elem.element!.name){
+                    /*
                     case "region":
                         // we filter region names to append only unique ones
                         if !regions.contains(elem.element!.text!){
@@ -136,7 +158,7 @@ class NetworkClient: NSObject {
                         if !destinations.contains(elem.element!.text!){
                             destinations.append(elem.element!.text!)
                         }
-                        
+                    */
                     case "photos":
                         let countOfPhotoElements = elem["photo"].children.count
                         var numberOfPhotoElements = 1
@@ -206,11 +228,8 @@ class NetworkClient: NSObject {
                     }
                     
                 }
-                //print(regions)
-                //print(destinations)
-                
-               // print(housesArray)
-                
+
+                /*
                 housesArray.map(){ (dictionary: [String : AnyObject]) -> House in
                     let house = House(dictionary: dictionary, context: self.sharedContext)
                     
@@ -222,12 +241,41 @@ class NetworkClient: NSObject {
                     CoreDataStackManager.sharedInstance().saveContext()
                     return house
                 }
+                 */
             } catch {
                 print("Could not parse the data as XML: '\(XMLIndexer.Error.self)'")
                 return
             }
             
             /* 6. Use the data! */
+            //print(housesArray)
+            
+            for house in housesArray{
+                
+                // check the current database if region or destination exists, array's first function is used to return the corresponding object
+                var region = self.getRegionByName(house["region"] as! String).first
+                var destination = self.getDestinationByName(house["destination"] as! String).first
+                
+                // if region doesn't already exist, add it to the database
+                if region == nil {
+                   // create dictionary which will be used for Core Data entry
+                   let regionDict = [NetworkClient.XMLResponseKeys.RegionName : house["region"]!]
+                   region = Region(dictionary: regionDict, context: self.sharedContext)
+                    
+                }
+                // if destination doesn't already exist, add it to the database
+                if  destination == nil {
+                    // create dictionary which will be used for Core Data entry
+                    let destinationDict = [NetworkClient.XMLResponseKeys.DestinationName : house["destination"]!]
+                    destination = Destination(dictionary: destinationDict, context: self.sharedContext)
+                    // destination belongs to a certain region
+                    destination?.region = region
+                }
+                
+                
+                
+                CoreDataStackManager.sharedInstance().saveContext()
+            }
             /*
             if let apartmentDictionary = parsedResult.valueForKey(ZilyoClient.JSONResponseKeys.Result) as? [[String:AnyObject]] {
                 
