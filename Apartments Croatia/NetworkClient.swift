@@ -256,6 +256,17 @@ class NetworkClient: NSObject {
             /* 6. Use the data! */
             // parse the newly created array and insert records into Core Data
             for house in housesArray{
+                
+                if(house[NetworkClient.XMLResponseKeys.HouseID] as! Int == 483){
+                    
+                    if(1<2){
+                        print("house trapula")
+                    }
+                    
+                    
+                }
+                
+                
                 //print(house)
                 // check the current database if region, destination or house exists, array's first function is used to return the corresponding object
                 var region = self.getRegionByName(house[NetworkClient.XMLResponseKeys.RegionName] as! String).first
@@ -277,8 +288,18 @@ class NetworkClient: NSObject {
                     // destination belongs to a certain region
                     destination?.region = region
                 }
-                // if house doesn't already exist, add it to the database
-                if aHouse == nil {
+                
+                if(house[NetworkClient.XMLResponseKeys.HouseID] as! Int == 470){
+                    
+                    if(1<2){
+                        print("juhu")
+                    }
+                    
+                    
+                }
+                
+                // if house doesn't already exist in CD and it has Payment Successful status (id = 3), add it to the database
+                if (aHouse == nil && house[NetworkClient.XMLResponseKeys.HouseStatusID] as! Int == 3) {
                     aHouse = House(dictionary: house, context: self.sharedContext)
                     // house belongs to certain destination
                     aHouse?.destination = destination
@@ -299,13 +320,9 @@ class NetworkClient: NSObject {
                             newApartment.house = aHouse
                         }
                     }
-                    // add apartments to the house
-                    //for apartment in house[NetworkClient.XMLResponseKeys.Apartments] as? Any{
-                    //    print(apartment)
-                      // var newApartment = Apartment(dictionary: apartment, context: self.sharedContext)
-                        
-                    //}
-                    
+                  // check if house needs to be deleted, i.e. house is already in CD and has status id !3 in the paresed xml file
+                } else if (aHouse != nil && house[NetworkClient.XMLResponseKeys.HouseStatusID] as! Int != 3) {
+                        self.sharedContext.deleteObject(aHouse!)
                     
                 }
 

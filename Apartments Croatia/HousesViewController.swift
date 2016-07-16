@@ -46,6 +46,7 @@ class HousesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let fetchRequest = NSFetchRequest(entityName: "House")
         
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        fetchRequest.predicate = NSPredicate(format: "destination.name == %@", self.destination!.name)
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
                                                                   managedObjectContext: self.sharedContext,
                                                                   sectionNameKeyPath: nil,
@@ -78,9 +79,9 @@ class HousesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         let house = fetchedResultsController.objectAtIndexPath(indexPath) as! House
         
-        let cellReuseIdentifier = "DestinationsCell"
+        let cellReuseIdentifier = "HousesCell"
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier)! as! DestinationTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier)! as! HouseTableViewCell
         
         configureCell(cell, withHouse: house, atIndexPath: indexPath)
         
@@ -90,7 +91,7 @@ class HousesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     // MARK: - Configure Cell
     
-    func configureCell(cell: DestinationTableViewCell, withHouse house: House, atIndexPath indexPath: NSIndexPath) {
+    func configureCell(cell: HouseTableViewCell, withHouse house: House, atIndexPath indexPath: NSIndexPath) {
         // make table cell separators stretch throught the screen width, in Storyboard separator insets of the table view and the cell have also set to 0
         cell.preservesSuperviewLayoutMargins = false
         cell.layoutMargins = UIEdgeInsetsZero
@@ -158,7 +159,7 @@ class HousesViewController: UIViewController, UITableViewDelegate, UITableViewDa
             tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
             
         case .Update:
-            let cell = tableView.cellForRowAtIndexPath(indexPath!) as! DestinationTableViewCell
+            let cell = tableView.cellForRowAtIndexPath(indexPath!) as! HouseTableViewCell
             let house = controller.objectAtIndexPath(indexPath!) as! House
             self.configureCell(cell, withHouse: house, atIndexPath: indexPath!)
             

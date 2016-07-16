@@ -42,6 +42,8 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
         let fetchRequest = NSFetchRequest(entityName: "Region")
         
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        // return only regions that contain destinations 
+        fetchRequest.predicate = NSPredicate(format: "destinations.@count > 0")
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
                                                                   managedObjectContext: self.sharedContext,
                                                                   sectionNameKeyPath: nil,

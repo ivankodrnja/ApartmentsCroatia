@@ -46,7 +46,8 @@ class DestinationsViewController: UIViewController, UITableViewDelegate, UITable
         
         let fetchRequest = NSFetchRequest(entityName: "Destination")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
-        fetchRequest.predicate = NSPredicate(format: "region.name == %@", self.region!.name)
+        // return only destiations that contain houses
+        fetchRequest.predicate = NSPredicate(format: "region.name == %@ AND houses.@count > 0", self.region!.name)
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
                                                                   managedObjectContext: self.sharedContext,
                                                                   sectionNameKeyPath: nil,
@@ -87,6 +88,25 @@ class DestinationsViewController: UIViewController, UITableViewDelegate, UITable
         
         
         return cell
+    }
+    
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let controller = storyboard!.instantiateViewControllerWithIdentifier("HousesViewController") as! HousesViewController
+        let destination = fetchedResultsController.objectAtIndexPath(indexPath) as! Destination
+        
+        // set destination object in the detail VC
+        controller.destination = destination
+        // set the first image to show in the detail VC
+        /*
+         if(self.cache.objectForKey(indexPath.row) != nil){
+         controller.firstImage = (self.cache.objectForKey(indexPath.row) as? UIImage)!
+         }
+         */
+        
+        self.navigationController!.pushViewController(controller, animated: true)
+        
     }
     
     // MARK: - Configure Cell
