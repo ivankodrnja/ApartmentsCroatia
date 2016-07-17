@@ -41,7 +41,7 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         let fetchRequest = NSFetchRequest(entityName: "Region")
         
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true, selector: #selector(NSString.localizedStandardCompare(_:)))]
         // return only regions that contain destinations 
         fetchRequest.predicate = NSPredicate(format: "destinations.@count > 0")
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
@@ -57,7 +57,7 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
-        return 50
+        return 100
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -70,6 +70,22 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
         
     }
     
+    // create separation between cells
+    private let kSeparatorId = 123
+    private let kSeparatorHeight: CGFloat = 1
+    
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath)
+    {
+        if cell.viewWithTag(kSeparatorId) == nil //add separator only once
+        {
+            let separatorView = UIView(frame: CGRectMake(0, cell.frame.height - kSeparatorHeight, cell.frame.width, kSeparatorHeight))
+            separatorView.tag = kSeparatorId
+            separatorView.backgroundColor = UIColor.whiteColor()
+            separatorView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+            
+            cell.addSubview(separatorView)
+        }
+    }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         /* Get cell type */
@@ -97,6 +113,7 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         //***** set the region name or heading *****//
         cell.nameLabel.text = region.name
+        cell.imgView.image = UIImage(named: region.name)
         
         
     }

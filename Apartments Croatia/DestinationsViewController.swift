@@ -29,6 +29,8 @@ class DestinationsViewController: UIViewController, UITableViewDelegate, UITable
             print(error)
         }
         fetchedResultsController.delegate = self
+        
+        self.navigationItem.title = region?.name
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,7 +47,8 @@ class DestinationsViewController: UIViewController, UITableViewDelegate, UITable
     lazy var fetchedResultsController: NSFetchedResultsController = {
         
         let fetchRequest = NSFetchRequest(entityName: "Destination")
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true, selector: #selector(NSString.localizedStandardCompare(_:)))]
+
         // return only destiations that contain houses
         fetchRequest.predicate = NSPredicate(format: "region.name == %@ AND houses.@count > 0", self.region!.name)
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,

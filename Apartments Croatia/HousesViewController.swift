@@ -27,7 +27,7 @@ class HousesViewController: UIViewController, UITableViewDelegate, UITableViewDa
             print(error)
         }
         fetchedResultsController.delegate = self
-        
+        self.navigationItem.title = destination?.name
     }
     
     override func didReceiveMemoryWarning() {
