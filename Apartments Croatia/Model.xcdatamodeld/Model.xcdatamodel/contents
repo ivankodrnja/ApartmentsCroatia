@@ -12,6 +12,7 @@
     </entity>
     <entity name="Destination" representedClassName=".Destination" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="photoPath" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="houses" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="House" inverseName="destination" inverseEntity="House" syncable="YES"/>
         <relationship name="region" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Region" inverseName="destinations" inverseEntity="Region" syncable="YES"/>
     </entity>
@@ -42,13 +43,14 @@
     </entity>
     <entity name="Region" representedClassName=".Region" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sortOrder" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <relationship name="destinations" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Destination" inverseName="region" inverseEntity="Destination" syncable="YES"/>
     </entity>
     <elements>
         <element name="Apartment" positionX="664" positionY="-243" width="128" height="165"/>
-        <element name="Destination" positionX="142" positionY="-342" width="128" height="90"/>
+        <element name="Destination" positionX="142" positionY="-342" width="128" height="103"/>
         <element name="House" positionX="367" positionY="-252" width="128" height="330"/>
         <element name="Photo" positionX="664" positionY="45" width="128" height="75"/>
-        <element name="Region" positionX="-99" positionY="-378" width="128" height="75"/>
+        <element name="Region" positionX="-99" positionY="-378" width="128" height="88"/>
     </elements>
 </model>

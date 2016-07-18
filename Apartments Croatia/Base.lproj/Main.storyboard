@@ -56,47 +56,55 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Iee-xN-MCa">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Iee-xN-MCa">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" reuseIdentifier="RegionsCell" id="gFg-vU-Rny" customClass="RegionTableViewCell" customModule="Apartments_Croatia" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="80"/>
+                                        <rect key="frame" x="0.0" y="92" width="600" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gFg-vU-Rny" id="7dN-mF-rZU">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="79"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="99"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aOl-bC-rr3">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="79"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="99"/>
                                                 </imageView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OQt-fz-lv2">
+                                                    <rect key="frame" x="0.0" y="98" width="600" height="5"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
                                                 <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uWP-ZE-I2K">
-                                                    <rect key="frame" x="0.0" y="61" width="600" height="26"/>
+                                                    <rect key="frame" x="0.0" y="74" width="600" height="24"/>
                                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="wgt-xx-oMZ">
-                                                    <rect key="frame" x="38" y="55" width="523" height="32"/>
+                                                    <rect key="frame" x="0.0" y="68" width="600" height="32"/>
                                                     <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="29"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="wgt-xx-oMZ" firstAttribute="top" secondItem="7dN-mF-rZU" secondAttribute="topMargin" constant="47" id="5ZM-8V-49I"/>
-                                                <constraint firstItem="aOl-bC-rr3" firstAttribute="leading" secondItem="7dN-mF-rZU" secondAttribute="leadingMargin" constant="-8" id="9GN-eA-ZCp"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="wgt-xx-oMZ" secondAttribute="bottom" constant="-16" id="9d8-9L-gqW"/>
-                                                <constraint firstItem="aOl-bC-rr3" firstAttribute="top" secondItem="7dN-mF-rZU" secondAttribute="topMargin" constant="-8" id="Mq3-c8-H91"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="aOl-bC-rr3" secondAttribute="bottom" constant="-8" id="Rkx-gq-gfQ"/>
-                                                <constraint firstItem="uWP-ZE-I2K" firstAttribute="bottom" secondItem="7dN-mF-rZU" secondAttribute="bottomMargin" constant="16" id="VOy-Jz-5az"/>
-                                                <constraint firstItem="uWP-ZE-I2K" firstAttribute="leading" secondItem="7dN-mF-rZU" secondAttribute="leadingMargin" constant="-8" id="boa-oQ-MFH"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="aOl-bC-rr3" secondAttribute="trailing" constant="-8" id="fHD-Gd-6Dx"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="uWP-ZE-I2K" secondAttribute="trailing" constant="-8" id="gXV-Nm-xuq"/>
-                                                <constraint firstItem="wgt-xx-oMZ" firstAttribute="leading" secondItem="7dN-mF-rZU" secondAttribute="leadingMargin" constant="30" id="nNn-AU-ik4"/>
-                                                <constraint firstItem="uWP-ZE-I2K" firstAttribute="top" secondItem="7dN-mF-rZU" secondAttribute="topMargin" constant="53" id="pZK-Zb-cRi"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="wgt-xx-oMZ" secondAttribute="trailing" constant="31" id="vlJ-6k-i6J"/>
+                                                <constraint firstItem="uWP-ZE-I2K" firstAttribute="top" secondItem="7dN-mF-rZU" secondAttribute="topMargin" constant="66" id="2mj-xU-KUU"/>
+                                                <constraint firstItem="OQt-fz-lv2" firstAttribute="top" secondItem="uWP-ZE-I2K" secondAttribute="bottom" id="C8O-xt-acI"/>
+                                                <constraint firstAttribute="bottom" secondItem="aOl-bC-rr3" secondAttribute="bottom" id="EoE-qM-v69"/>
+                                                <constraint firstItem="OQt-fz-lv2" firstAttribute="leading" secondItem="7dN-mF-rZU" secondAttribute="leadingMargin" constant="-8" id="GRS-bX-eaf"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="OQt-fz-lv2" secondAttribute="trailing" constant="-8" id="Hos-DQ-tQN"/>
+                                                <constraint firstAttribute="bottom" secondItem="uWP-ZE-I2K" secondAttribute="bottom" constant="1" id="LsA-g4-9Aj"/>
+                                                <constraint firstAttribute="trailing" secondItem="aOl-bC-rr3" secondAttribute="trailing" id="NRD-aJ-KLA"/>
+                                                <constraint firstItem="wgt-xx-oMZ" firstAttribute="leading" secondItem="7dN-mF-rZU" secondAttribute="leadingMargin" constant="-8" id="O0C-0z-8hP"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="uWP-ZE-I2K" secondAttribute="trailing" constant="-8" id="OVq-XW-y44"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="wgt-xx-oMZ" secondAttribute="bottom" constant="-9" id="Vsq-Es-46B"/>
+                                                <constraint firstItem="aOl-bC-rr3" firstAttribute="top" secondItem="7dN-mF-rZU" secondAttribute="top" id="b44-yR-GI3"/>
+                                                <constraint firstItem="wgt-xx-oMZ" firstAttribute="top" secondItem="7dN-mF-rZU" secondAttribute="topMargin" constant="60" id="fgC-fT-MxJ"/>
+                                                <constraint firstItem="aOl-bC-rr3" firstAttribute="leading" secondItem="7dN-mF-rZU" secondAttribute="leading" id="n0x-Ol-K4p"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="wgt-xx-oMZ" secondAttribute="trailing" constant="-8" id="o0k-BE-e9j"/>
+                                                <constraint firstItem="uWP-ZE-I2K" firstAttribute="leading" secondItem="7dN-mF-rZU" secondAttribute="leadingMargin" constant="-8" id="vpr-qx-Cpf"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="OQt-fz-lv2" secondAttribute="bottom" constant="-12" id="yHg-8a-tPA"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
                                             <outlet property="imgView" destination="aOl-bC-rr3" id="h1G-Zk-EYy"/>
                                             <outlet property="nameLabel" destination="wgt-xx-oMZ" id="AW3-Ti-K7b"/>

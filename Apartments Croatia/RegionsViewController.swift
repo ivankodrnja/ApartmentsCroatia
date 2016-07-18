@@ -41,7 +41,7 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         let fetchRequest = NSFetchRequest(entityName: "Region")
         
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true, selector: #selector(NSString.localizedStandardCompare(_:)))]
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "sortOrder", ascending: true)]
         // return only regions that contain destinations 
         fetchRequest.predicate = NSPredicate(format: "destinations.@count > 0")
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
@@ -69,7 +69,7 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
         return sectionInfo.numberOfObjects
         
     }
-    
+    /*
     // create separation between cells
     private let kSeparatorId = 123
     private let kSeparatorHeight: CGFloat = 1
@@ -86,7 +86,7 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
             cell.addSubview(separatorView)
         }
     }
-    
+    */
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         /* Get cell type */
         

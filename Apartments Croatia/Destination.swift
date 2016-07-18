@@ -20,6 +20,7 @@ import CoreData
 class Destination: NSManagedObject {
 
     @NSManaged var name: String
+     @NSManaged var photoPath: String
     @NSManaged var houses: [House]
     @NSManaged var region: Region?
     
@@ -38,6 +39,7 @@ class Destination: NSManagedObject {
         // After the Core Data work has been taken care of we can init the properties from the
         // dictionary. This works in the same way that it did before we started on Core Data
         name = dictionary[NetworkClient.XMLResponseKeys.DestinationName] as! String
+        photoPath = dictionary[NetworkClient.XMLResponseKeys.DestinationPhotoPath] as! String
     }
     
 }

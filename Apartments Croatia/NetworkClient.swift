@@ -189,32 +189,14 @@ class NetworkClient: NSObject {
                                 numberOfApartmentObjects += 1
                             }
                             
-                            // tempApartmentDict of apartment objects will be added to house object after all apartment objects have been added to tempApartmentDict
+                            // tempApartmentArray of apartment objects will be added to house object after all apartment objects have been added to tempApartmentDict
                             if(numberOfApartmentElements == countOfApartmentElements){
                                 houseDict["apartments"] = tempApartmentArray
                             }
                             
                             numberOfApartmentElements += 1
                             
-                            /*
-                            tempDict["\(apartelem.element!.name)"] = apartelem.element!.text!
-                            
-                            // each new apartmeent object finishes with <internet> xml element, when it occurs, add tempDict to tempApartmentDict and clear tempDict content
-                            if(apartelem.element!.name == NetworkClient.XMLResponseKeys.ApartmentInternet){
-                                // before clearing the houseDict, add it to the tempApartmentDict which eventually goes to house object
-                                tempApartmentDict["\(numberOfApartmentObjects)"] = tempDict
-                                tempDict.removeAll()
-                                
-                                numberOfApartmentObjects += 1
-                            }
-                            
-                            // tempApartmentDict of apartment objects will be added to house object after all apartment objects have been added to tempApartmentDict
-                            if(numberOfApartmentElements == countOfApartmentElements){
-                               houseDict["apartments"] = tempApartmentDict
-                            }
-                            
-                            numberOfApartmentElements += 1
-                            */
+
                         }
                   
                     case "deleted":
@@ -265,14 +247,14 @@ class NetworkClient: NSObject {
                 // if region doesn't already exist, add it to the database
                 if region == nil {
                    // create dictionary which will be used for Core Data entry
-                   let regionDict = [NetworkClient.XMLResponseKeys.RegionName : house[NetworkClient.XMLResponseKeys.RegionName]!]
+                    let regionDict = [NetworkClient.XMLResponseKeys.RegionName : house[NetworkClient.XMLResponseKeys.RegionName]!, NetworkClient.XMLResponseKeys.SortOrder : house[NetworkClient.XMLResponseKeys.RegionSortOrder] as! Int]
                    region = Region(dictionary: regionDict, context: self.sharedContext)
                     
                 }
                 // if destination doesn't already exist, add it to the database
                 if  destination == nil {
                     // create dictionary which will be used for Core Data entry
-                    let destinationDict = [NetworkClient.XMLResponseKeys.DestinationName : house[NetworkClient.XMLResponseKeys.DestinationName]!]
+                    let destinationDict = [NetworkClient.XMLResponseKeys.DestinationName : house[NetworkClient.XMLResponseKeys.DestinationName]!, NetworkClient.XMLResponseKeys.DestinationPhotoPath : house[NetworkClient.XMLResponseKeys.DestinationImage]]
                     destination = Destination(dictionary: destinationDict, context: self.sharedContext)
                     // destination belongs to a certain region
                     destination?.region = region
@@ -307,10 +289,12 @@ class NetworkClient: NSObject {
                     
                 }
 
-               // print(">>>>>>>>>>>>\(house[NetworkClient.XMLResponseKeys.HouseName]!)<<<<<<<<<<<<")
-               // print(house)
+               // save data
                 CoreDataStackManager.sharedInstance().saveContext()
             }
+            let lastUpdate = ["lastUpadte" : NSDate()]
+            completionHandler(result: lastUpdate, error: nil)
+            
             /*
             if let apartmentDictionary = parsedResult.valueForKey(ZilyoClient.JSONResponseKeys.Result) as? [[String:AnyObject]] {
                 
