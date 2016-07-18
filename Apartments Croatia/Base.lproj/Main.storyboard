@@ -410,6 +410,59 @@
             </objects>
             <point key="canvasLocation" x="1366" y="-55"/>
         </scene>
+        <!--Updating View Controller-->
+        <scene sceneID="YVq-pq-4nb">
+            <objects>
+                <viewController storyboardIdentifier="UpdatingViewController" id="MXq-ue-qEu" customClass="UpdatingViewController" customModule="Apartments_Croatia" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HWa-NA-mME"/>
+                        <viewControllerLayoutGuide type="bottom" id="XTw-NG-zDP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GJE-SU-cNz">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FFa-Ml-tgU">
+                                <rect key="frame" x="225" y="225" width="150" height="150"/>
+                                <color key="backgroundColor" red="0.35070900710000003" green="0.79530321839999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="JjC-qJ-fPh"/>
+                                    <constraint firstAttribute="height" constant="150" id="r5n-VH-9qh"/>
+                                </constraints>
+                            </view>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="1Wr-Xb-ecG">
+                                <rect key="frame" x="283" y="280" width="37" height="37"/>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="KRM-Vp-wx9">
+                                <rect key="frame" x="0.0" y="127" width="600" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="41" id="d5t-gz-7zq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="1Wr-Xb-ecG" firstAttribute="centerY" secondItem="GJE-SU-cNz" secondAttribute="centerY" constant="-1.5" id="Dno-1M-YD7"/>
+                            <constraint firstItem="KRM-Vp-wx9" firstAttribute="top" secondItem="HWa-NA-mME" secondAttribute="bottom" constant="107" id="SHB-db-nAm"/>
+                            <constraint firstItem="1Wr-Xb-ecG" firstAttribute="centerX" secondItem="GJE-SU-cNz" secondAttribute="centerX" constant="1.5" id="h10-M6-iBS"/>
+                            <constraint firstItem="KRM-Vp-wx9" firstAttribute="leading" secondItem="GJE-SU-cNz" secondAttribute="leadingMargin" constant="-20" id="pSG-CR-kxr"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="KRM-Vp-wx9" secondAttribute="trailing" constant="-20" id="qvg-l5-Q9X"/>
+                            <constraint firstItem="FFa-Ml-tgU" firstAttribute="centerY" secondItem="GJE-SU-cNz" secondAttribute="centerY" id="r8h-Li-xcE"/>
+                            <constraint firstItem="FFa-Ml-tgU" firstAttribute="centerX" secondItem="GJE-SU-cNz" secondAttribute="centerX" id="s4q-hF-coi"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="1Wr-Xb-ecG" id="jPm-Kt-1s8"/>
+                        <outlet property="syncingLabel" destination="KRM-Vp-wx9" id="djO-Ll-yhF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d8m-8t-CCg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1736" y="-420"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="TvO-91-Pjm">
             <objects>

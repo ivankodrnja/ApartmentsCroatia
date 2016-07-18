@@ -17,18 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-        let dateString = "2015-06-22"
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let dateFromString = dateFormatter.dateFromString(dateString)
-        
-       
-        NetworkClient.sharedInstance().getRentals(dateFromString!){(result, error) in
-         
-            if error == nil {
-                
-            }
-        }
+
         return true
     }
 

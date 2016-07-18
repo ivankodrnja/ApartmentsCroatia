@@ -26,6 +26,7 @@
 		83EAD55E1D391FA300A58F39 /* RegionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EAD55D1D391FA300A58F39 /* RegionTableViewCell.swift */; };
 		83EAD5601D39241B00A58F39 /* HousesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EAD55F1D39241B00A58F39 /* HousesViewController.swift */; };
 		83EAD5621D39245B00A58F39 /* HouseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EAD5611D39245B00A58F39 /* HouseTableViewCell.swift */; };
+		83F04E5B1D3CF2E40075C23F /* UpdatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F04E5A1D3CF2E40075C23F /* UpdatingViewController.swift */; };
 		83F9E1FC1CED7A8D00C85296 /* DestinationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F9E1FB1CED7A8D00C85296 /* DestinationTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +52,7 @@
 		83EAD55D1D391FA300A58F39 /* RegionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionTableViewCell.swift; sourceTree = "<group>"; };
 		83EAD55F1D39241B00A58F39 /* HousesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HousesViewController.swift; sourceTree = "<group>"; };
 		83EAD5611D39245B00A58F39 /* HouseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseTableViewCell.swift; sourceTree = "<group>"; };
+		83F04E5A1D3CF2E40075C23F /* UpdatingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdatingViewController.swift; sourceTree = "<group>"; };
 		83F9E1FB1CED7A8D00C85296 /* DestinationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DestinationTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -132,6 +134,7 @@
 		83B5B73D1CA9022F00C4D63B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				83F04E5A1D3CF2E40075C23F /* UpdatingViewController.swift */,
 				83EAD5571D391A2100A58F39 /* Regions */,
 				83046BFF1CABDA4900693F83 /* Destinations */,
 				83EAD5581D391C2F00A58F39 /* Houses */,
@@ -261,6 +264,7 @@
 				8312599B1CB29150003870EE /* Destination.swift in Sources */,
 				83F9E1FC1CED7A8D00C85296 /* DestinationTableViewCell.swift in Sources */,
 				83EAD5621D39245B00A58F39 /* HouseTableViewCell.swift in Sources */,
+				83F04E5B1D3CF2E40075C23F /* UpdatingViewController.swift in Sources */,
 				83E21A171CAAEF8000BA5EA0 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

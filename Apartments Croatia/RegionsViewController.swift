@@ -31,6 +31,39 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Dispose of any resources that can be recreated.
     }
     
+    // TODO:delete
+    var loop = 1
+    
+    override func viewDidAppear(animated: Bool) {
+
+        // TODO:delete
+        if (loop == 1){
+        let dateString = "2015-06-22"
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let dateFromString = dateFormatter.dateFromString(dateString)
+        
+        NetworkClient.sharedInstance().defaults.setObject(dateFromString, forKey: "lastSyncDate")
+            
+        loop += 1
+        }
+        
+        // present UpdatingViewController if syncing of databse occured 7 or more days ago
+        let lastSyncDate = NetworkClient.sharedInstance().defaults.objectForKey("lastSyncDate") as? NSDate ?? NSDate()
+        print("lastSyncDate from NSUserDefaults: \(lastSyncDate)")
+        let today = NSDate()
+        
+        let diffDateComponents = NSCalendar.currentCalendar().components([NSCalendarUnit.Day], fromDate: lastSyncDate, toDate: today, options: NSCalendarOptions.init(rawValue: 0))
+
+            
+           if (diffDateComponents.day > 7){
+            let updatingVC = self.storyboard?.instantiateViewControllerWithIdentifier("UpdatingViewController") as! UpdatingViewController
+            presentViewController(updatingVC, animated: true, completion: nil)
+        }
+        
+
+    }
+    
     // MARK: - Core Data Convenience
     
     var sharedContext: NSManagedObjectContext {

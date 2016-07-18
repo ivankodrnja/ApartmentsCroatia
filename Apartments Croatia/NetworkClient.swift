@@ -10,8 +10,7 @@ import UIKit
 import CoreData
 
 class NetworkClient: NSObject {
-    //TODO:
-    var destination: Destination!
+
     
     typealias CompletionHander = (result: AnyObject!, error: NSError?) -> Void
     
@@ -22,7 +21,8 @@ class NetworkClient: NSObject {
         session = NSURLSession.sharedSession()
         super.init()
     }
-    
+    // will serve to store last db sync date
+    let defaults = NSUserDefaults.standardUserDefaults()
     
     // MARK: - Shared Instance
     class func sharedInstance() -> NetworkClient {
@@ -292,7 +292,7 @@ class NetworkClient: NSObject {
                // save data
                 CoreDataStackManager.sharedInstance().saveContext()
             }
-            let lastUpdate = ["lastUpadte" : NSDate()]
+            let lastUpdate = ["lastUpdate" : NSDate()]
             completionHandler(result: lastUpdate, error: nil)
             
             /*
@@ -310,6 +310,6 @@ class NetworkClient: NSObject {
         task.resume()
     }
  
-
+    
     
 }
