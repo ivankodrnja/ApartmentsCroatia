@@ -10,23 +10,16 @@ import UIKit
 
 class HouseTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var houseMainImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
-
-    @IBOutlet weak var active: UILabel!
-    @IBOutlet weak var address: UILabel!
-    @IBOutlet weak var centerDistance: UILabel!
-    @IBOutlet weak var email: UILabel!
-    @IBOutlet weak var favorite: UILabel!
-    @IBOutlet weak var houseid: UILabel!
-    @IBOutlet weak var latitude: UILabel!
-    @IBOutlet weak var longitude: UILabel!
-    @IBOutlet weak var parking: UILabel!
-    @IBOutlet weak var pets: UILabel!
-    @IBOutlet weak var phone: UILabel!
-    @IBOutlet weak var priceFrom: UILabel!
-    @IBOutlet weak var seaDistance: UILabel!
-    @IBOutlet weak var statusID: UILabel!
-    @IBOutlet weak var website: UILabel!
+    @IBOutlet weak var toTheSeaLabel: UILabel!
+    @IBOutlet weak var toTheSeaDistance: UILabel!
+    @IBOutlet weak var toTheCenterLabel: UILabel!
+    @IBOutlet weak var toTheCenterDistance: UILabel!
+    @IBOutlet weak var dailyFromLabel: UILabel!
+    @IBOutlet weak var dailyFromPrice: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

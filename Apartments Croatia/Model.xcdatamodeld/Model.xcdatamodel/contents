@@ -25,6 +25,7 @@
         <attribute name="houseid" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="mainImagePath" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="parking" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="pets" optional="YES" attributeType="String" syncable="YES"/>
@@ -49,7 +50,7 @@
     <elements>
         <element name="Apartment" positionX="664" positionY="-243" width="128" height="165"/>
         <element name="Destination" positionX="142" positionY="-342" width="128" height="103"/>
-        <element name="House" positionX="367" positionY="-252" width="128" height="330"/>
+        <element name="House" positionX="367" positionY="-252" width="128" height="343"/>
         <element name="Photo" positionX="664" positionY="45" width="128" height="75"/>
         <element name="Region" positionX="-99" positionY="-378" width="128" height="88"/>
     </elements>

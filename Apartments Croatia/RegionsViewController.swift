@@ -36,7 +36,7 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidAppear(animated: Bool) {
 
-        // TODO:delete
+        // TODO:delete and handle error in UpdatingVC
         if (loop == 1){
         let dateString = "2015-06-22"
         let dateFormatter = NSDateFormatter()
@@ -50,7 +50,7 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         // present UpdatingViewController if syncing of databse occured 7 or more days ago
         let lastSyncDate = NetworkClient.sharedInstance().defaults.objectForKey("lastSyncDate") as? NSDate ?? NSDate()
-        print("lastSyncDate from NSUserDefaults: \(lastSyncDate)")
+        print("RegionsViewController lastSyncDate from NSUserDefaults: \(lastSyncDate)")
         let today = NSDate()
         
         let diffDateComponents = NSCalendar.currentCalendar().components([NSCalendarUnit.Day], fromDate: lastSyncDate, toDate: today, options: NSCalendarOptions.init(rawValue: 0))
@@ -102,24 +102,7 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
         return sectionInfo.numberOfObjects
         
     }
-    /*
-    // create separation between cells
-    private let kSeparatorId = 123
-    private let kSeparatorHeight: CGFloat = 1
-    
-    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath)
-    {
-        if cell.viewWithTag(kSeparatorId) == nil //add separator only once
-        {
-            let separatorView = UIView(frame: CGRectMake(0, cell.frame.height - kSeparatorHeight, cell.frame.width, kSeparatorHeight))
-            separatorView.tag = kSeparatorId
-            separatorView.backgroundColor = UIColor.whiteColor()
-            separatorView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
-            
-            cell.addSubview(separatorView)
-        }
-    }
-    */
+
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         /* Get cell type */
         
@@ -130,10 +113,12 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
         let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier)! as! RegionTableViewCell
         
         configureCell(cell, withRegion: region, atIndexPath: indexPath)
-        
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
         
         return cell
     }
+    
+
     
     // MARK: - Configure Cell
     

@@ -237,60 +237,62 @@ class NetworkClient: NSObject {
             
             /* 6. Use the data! */
             // parse the newly created array and insert records into Core Data
-            for house in housesArray{
-                
-                // check the current database if region, destination or house exists, array's first function is used to return the corresponding object
-                var region = self.getRegionByName(house[NetworkClient.XMLResponseKeys.RegionName] as! String).first
-                var destination = self.getDestinationByName(house[NetworkClient.XMLResponseKeys.DestinationName] as! String).first
-                var aHouse = self.getHouseById(house[NetworkClient.XMLResponseKeys.HouseID] as! Int).first
-                
-                // if region doesn't already exist, add it to the database
-                if region == nil {
-                   // create dictionary which will be used for Core Data entry
-                    let regionDict = [NetworkClient.XMLResponseKeys.RegionName : house[NetworkClient.XMLResponseKeys.RegionName]!, NetworkClient.XMLResponseKeys.SortOrder : house[NetworkClient.XMLResponseKeys.RegionSortOrder] as! Int]
-                   region = Region(dictionary: regionDict, context: self.sharedContext)
+            dispatch_async(dispatch_get_main_queue()) {
+                for house in housesArray{
                     
-                }
-                // if destination doesn't already exist, add it to the database
-                if  destination == nil {
-                    // create dictionary which will be used for Core Data entry
-                    let destinationDict = [NetworkClient.XMLResponseKeys.DestinationName : house[NetworkClient.XMLResponseKeys.DestinationName]!, NetworkClient.XMLResponseKeys.DestinationPhotoPath : house[NetworkClient.XMLResponseKeys.DestinationImage]]
-                    destination = Destination(dictionary: destinationDict, context: self.sharedContext)
-                    // destination belongs to a certain region
-                    destination?.region = region
-                }
-
-                
-                // if house doesn't already exist in CD and it has Payment Successful status (id = 3), add it to the database
-                if (aHouse == nil && house[NetworkClient.XMLResponseKeys.HouseStatusID] as! Int == 3) {
-                    aHouse = House(dictionary: house, context: self.sharedContext)
-                    // house belongs to certain destination
-                    aHouse?.destination = destination
+                    // check the current database if region, destination or house exists, array's first function is used to return the corresponding object
+                    var region = self.getRegionByName(house[NetworkClient.XMLResponseKeys.RegionName] as! String).first
+                    var destination = self.getDestinationByName(house[NetworkClient.XMLResponseKeys.DestinationName] as! String).first
+                    var aHouse = self.getHouseById(house[NetworkClient.XMLResponseKeys.HouseID] as! Int).first
                     
-                    // add photos of the house
-                    if let photos = house[NetworkClient.XMLResponseKeys.Photos] as? [Any]{
-                        for photo in photos{
-                            let photoDict = [NetworkClient.Constants.Path : photo]
-                            let newPhoto = Photo(dictionary: photoDict, context: self.sharedContext)
-                            // photo belongs to a certain house
-                            newPhoto.house = aHouse
-                        }
+                    // if region doesn't already exist, add it to the database
+                    if region == nil {
+                       // create dictionary which will be used for Core Data entry
+                        let regionDict = [NetworkClient.XMLResponseKeys.RegionName : house[NetworkClient.XMLResponseKeys.RegionName]!, NetworkClient.XMLResponseKeys.SortOrder : house[NetworkClient.XMLResponseKeys.RegionSortOrder] as! Int]
+                       region = Region(dictionary: regionDict, context: self.sharedContext)
+                        
                     }
-                    
-                    if let apartments = house[NetworkClient.XMLResponseKeys.Apartments] as? [Any]{
-                        for apartment in apartments{
-                            let newApartment = Apartment(dictionary: apartment as! [String:Any], context: self.sharedContext)
-                            newApartment.house = aHouse
-                        }
+                    // if destination doesn't already exist, add it to the database
+                    if  destination == nil {
+                        // create dictionary which will be used for Core Data entry
+                        let destinationDict = [NetworkClient.XMLResponseKeys.DestinationName : house[NetworkClient.XMLResponseKeys.DestinationName]!, NetworkClient.XMLResponseKeys.DestinationPhotoPath : house[NetworkClient.XMLResponseKeys.DestinationImage]]
+                        destination = Destination(dictionary: destinationDict, context: self.sharedContext)
+                        // destination belongs to a certain region
+                        destination?.region = region
                     }
-                  // check if house needs to be deleted, i.e. house is already in CD and has status id !3 in the paresed xml file
-                } else if (aHouse != nil && house[NetworkClient.XMLResponseKeys.HouseStatusID] as! Int != 3) {
-                        self.sharedContext.deleteObject(aHouse!)
-                    
-                }
 
-               // save data
-                CoreDataStackManager.sharedInstance().saveContext()
+                    
+                    // if house doesn't already exist in CD and it has Payment Successful status (id = 3), add it to the database
+                    if (aHouse == nil && house[NetworkClient.XMLResponseKeys.HouseStatusID] as! Int == 3) {
+                        aHouse = House(dictionary: house, context: self.sharedContext)
+                        // house belongs to certain destination
+                        aHouse?.destination = destination
+                        
+                        // add photos of the house
+                        if let photos = house[NetworkClient.XMLResponseKeys.Photos] as? [Any]{
+                            for photo in photos{
+                                let photoDict = [NetworkClient.Constants.Path : photo]
+                                let newPhoto = Photo(dictionary: photoDict, context: self.sharedContext)
+                                // photo belongs to a certain house
+                                newPhoto.house = aHouse
+                            }
+                        }
+                        
+                        if let apartments = house[NetworkClient.XMLResponseKeys.Apartments] as? [Any]{
+                            for apartment in apartments{
+                                let newApartment = Apartment(dictionary: apartment as! [String:Any], context: self.sharedContext)
+                                newApartment.house = aHouse
+                            }
+                        }
+                      // check if house needs to be deleted, i.e. house is already in CD and has status id !3 in the paresed xml file
+                    } else if (aHouse != nil && house[NetworkClient.XMLResponseKeys.HouseStatusID] as! Int != 3) {
+                            self.sharedContext.deleteObject(aHouse!)
+                        
+                    }
+
+                   // save data
+                    CoreDataStackManager.sharedInstance().saveContext()
+                }
             }
             let lastUpdate = ["lastUpdate" : NSDate()]
             completionHandler(result: lastUpdate, error: nil)

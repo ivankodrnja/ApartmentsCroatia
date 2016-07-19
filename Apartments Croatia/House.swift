@@ -29,6 +29,7 @@ class House: NSManagedObject {
     @NSManaged var houseid: Int
     @NSManaged var latitude: Double
     @NSManaged var longitude: Double
+    @NSManaged var mainImagePath: String
     @NSManaged var name: String
     @NSManaged var parking: String
     @NSManaged var pets: String
@@ -63,6 +64,7 @@ class House: NSManagedObject {
         houseid = dictionary[NetworkClient.XMLResponseKeys.HouseID] as! Int
         latitude = dictionary[NetworkClient.XMLResponseKeys.HouseLatitude] as! Double
         longitude = dictionary[NetworkClient.XMLResponseKeys.HouseLongitude] as! Double
+        mainImagePath = dictionary[NetworkClient.XMLResponseKeys.HouseMainImage] as! String
         name = dictionary[NetworkClient.XMLResponseKeys.HouseName] as! String
         parking = dictionary[NetworkClient.XMLResponseKeys.HouseParking] as! String
         pets = dictionary[NetworkClient.XMLResponseKeys.HousePets] as! String

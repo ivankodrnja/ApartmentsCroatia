@@ -31,6 +31,8 @@ extension NetworkClient {
         static let HouseWebsite = "website"
         static let HouseLatitude = "lat"
         static let HouseLongitude = "lng"
+        static let HouseMainImagePath = "mainImagePath"
+        static let HouseMainImage = "main_image"
         static let HouseSeaDistance = "sea_distance"
         static let HouseCenterDistance = "center_distance"
         static let HouseParking = "parking"

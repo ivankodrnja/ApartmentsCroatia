@@ -84,7 +84,7 @@ class HousesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier)! as! HouseTableViewCell
         
         configureCell(cell, withHouse: house, atIndexPath: indexPath)
-        
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
         
         return cell
     }
@@ -96,25 +96,17 @@ class HousesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.preservesSuperviewLayoutMargins = false
         cell.layoutMargins = UIEdgeInsetsZero
         
-        
-        
         //***** set the apartment name or heading *****//
+        // TODO: image caching
+        
         cell.nameLabel.text = house.name
-        cell.active.text = house.active
-        cell.address.text = house.address
-        cell.centerDistance.text = String(house.centerDistance)
-        cell.email.text = house.email
-        cell.favorite.text = house.favorite
-        cell.houseid.text = String(house.houseid)
-        cell.latitude.text = String(house.latitude)
-        cell.longitude.text = String(house.longitude)
-        cell.parking.text = house.parking
-        cell.pets.text = house.pets
-        cell.phone.text = house.phone
-        cell.priceFrom.text = String(house.priceFrom)
-        cell.seaDistance.text = String(house.seaDistance)
-        cell.statusID.text = String(house.statusID)
-        cell.website.text = house.website
+        // TODO: localization cell.toTheSeaLabel.text
+        cell.toTheSeaDistance.text = "\(house.seaDistance) m"
+        // TODO: localization cell.toTheCenterLabel.text
+        cell.toTheCenterDistance.text = "\(house.centerDistance) m"
+        // TODO: localization cell.dailyFromLabel.text
+        cell.dailyFromPrice.text = "\(house.priceFrom) EUR"
+        cell.locationLabel.text = "\(house.destination!.name), \(house.destination!.region!.name)"
         
         
     }

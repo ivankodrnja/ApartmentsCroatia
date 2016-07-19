@@ -24,7 +24,7 @@ class UpdatingViewController: UIViewController {
         self.syncingLabel.text = "Syncing database with the server. Please wait."
         print(NetworkClient.sharedInstance().defaults.objectForKey("lastSyncDate") as? NSDate)
         let lastSyncDate = NetworkClient.sharedInstance().defaults.objectForKey("lastSyncDate") as? NSDate ?? NSDate()
-        print("lastSyncDate from NSUserDefaults: \(lastSyncDate)")
+        print("UpdatingViewController lastSyncDate from NSUserDefaults: \(lastSyncDate)")
         
         NetworkClient.sharedInstance().getRentals(lastSyncDate){(result, error) in
             
@@ -35,12 +35,11 @@ class UpdatingViewController: UIViewController {
 
                 //store date of today's sync
                let lastSyncDate = result!["lastUpdate"]!
-                print(lastSyncDate)
                 NetworkClient.sharedInstance().defaults.setObject(lastSyncDate, forKey: "lastSyncDate")
-                print("lastSyncDate from NSUserDefaults after sync: \(lastSyncDate)")
+                print("UpdatingViewController lastSyncDate from NSUserDefaults after sync: \(lastSyncDate)")
                 
                 self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
-                
+                //TODO: handle error
             } else {
                 self.activityIndicator.hidesWhenStopped = true
                 self.activityIndicator.stopAnimating()
