@@ -112,7 +112,8 @@ class HousesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         Moa.settings.cache.requestCachePolicy = .ReturnCacheDataElseLoad
         
         let imageUrl = NetworkClient.Constants.baseUrl + NetworkClient.Constants.imageFolder + house.mainImagePath
-        cell.scrollView.auk.settings.placeholderImage = UIImage(named: "NoImage")
+        cell.scrollView.auk.settings.placeholderImage = UIImage(named: "LoadingImage")
+        cell.scrollView.auk.settings.errorImage = UIImage(named: "NoImage")
         cell.scrollView.auk.show(url: imageUrl)
         
         cell.nameLabel.text = house.name
@@ -121,7 +122,11 @@ class HousesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // TODO: localization cell.toTheCenterLabel.text
         cell.toTheCenterDistance.text = "\(house.centerDistance) m"
         // TODO: localization cell.dailyFromLabel.text
-        cell.dailyFromPrice.text = "\(house.priceFrom) EUR"
+        if (house.priceFrom == 0){
+            cell.dailyFromPrice.text = "Request"
+        } else{
+            cell.dailyFromPrice.text = "\(house.priceFrom) EUR"
+        }
         cell.locationLabel.text = "\(house.destination!.name), \(house.destination!.region!.name)"
         
     }

@@ -139,8 +139,6 @@ class NetworkClient: NSObject {
                     var tempArray = [Any]()
                     // store apartment objects
                     var tempApartmentArray = [Any]()
-                    // store apartment objects
-                    var tempApartmentDict = [String:Any]()
                     
                     switch (elem.element!.name){
                     case "photos":
