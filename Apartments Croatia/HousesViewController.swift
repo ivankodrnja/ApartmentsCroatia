@@ -28,6 +28,9 @@ class HousesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         fetchedResultsController.delegate = self
         self.navigationItem.title = destination?.name
+        
+        tableView.tableFooterView = UIView()
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -96,8 +99,21 @@ class HousesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.preservesSuperviewLayoutMargins = false
         cell.layoutMargins = UIEdgeInsetsZero
         
+        // remove previous image from the newly created cell
+        cell.scrollView.auk.removeAll()
+        
+        
+        // enables scrolling to top by tappig status bar on top, there are two scrol views, this one and the uitableview, only one can have scrolls to top true
+        cell.scrollView.scrollsToTop = false
+        
         //***** set the apartment name or heading *****//
         // TODO: image caching
+        // cache downloaded images and use Auk image slideshow library from https://github.com/evgenyneu/Auk
+        Moa.settings.cache.requestCachePolicy = .ReturnCacheDataElseLoad
+        
+        let imageUrl = NetworkClient.Constants.baseUrl + NetworkClient.Constants.imageFolder + house.mainImagePath
+        cell.scrollView.auk.settings.placeholderImage = UIImage(named: "NoImage")
+        cell.scrollView.auk.show(url: imageUrl)
         
         cell.nameLabel.text = house.name
         // TODO: localization cell.toTheSeaLabel.text
@@ -107,7 +123,6 @@ class HousesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // TODO: localization cell.dailyFromLabel.text
         cell.dailyFromPrice.text = "\(house.priceFrom) EUR"
         cell.locationLabel.text = "\(house.destination!.name), \(house.destination!.region!.name)"
-        
         
     }
     

@@ -24,6 +24,8 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
             print(error)
         }
         fetchedResultsController.delegate = self
+        
+        tableView.tableFooterView = UIView()
     }
 
     override func didReceiveMemoryWarning() {

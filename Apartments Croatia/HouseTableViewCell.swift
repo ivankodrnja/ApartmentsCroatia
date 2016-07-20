@@ -11,6 +11,7 @@ import UIKit
 class HouseTableViewCell: UITableViewCell {
     
     @IBOutlet weak var houseMainImage: UIImageView!
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var toTheSeaLabel: UILabel!
     @IBOutlet weak var toTheSeaDistance: UILabel!

@@ -31,6 +31,7 @@ class DestinationsViewController: UIViewController, UITableViewDelegate, UITable
         fetchedResultsController.delegate = self
         
         self.navigationItem.title = region?.name
+        tableView.tableFooterView = UIView()
     }
 
     override func didReceiveMemoryWarning() {
