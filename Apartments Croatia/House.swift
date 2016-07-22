@@ -23,10 +23,10 @@ class House: NSManagedObject {
 
     @NSManaged var active: String
     @NSManaged var address: String
-    @NSManaged var centerDistance: Int
+    @NSManaged var centerDistance: NSNumber
     @NSManaged var email: String
     @NSManaged var favorite: String
-    @NSManaged var houseid: Int
+    @NSManaged var houseid: NSNumber
     @NSManaged var latitude: Double
     @NSManaged var longitude: Double
     @NSManaged var mainImagePath: String
@@ -34,9 +34,9 @@ class House: NSManagedObject {
     @NSManaged var parking: String
     @NSManaged var pets: String
     @NSManaged var phone: String
-    @NSManaged var priceFrom: Int
-    @NSManaged var seaDistance: Int
-    @NSManaged var statusID: Int
+    @NSManaged var priceFrom: NSNumber
+    @NSManaged var seaDistance: NSNumber
+    @NSManaged var statusID: NSNumber
     @NSManaged var website: String
     @NSManaged var apartments: [Apartment]
     @NSManaged var destination: Destination?
@@ -58,10 +58,10 @@ class House: NSManagedObject {
         // dictionary. This works in the same way that it did before we started on Core Data
         active = dictionary[NetworkClient.XMLResponseKeys.HouseActive] as! String
         address = dictionary[NetworkClient.XMLResponseKeys.HouseAddress] as! String
-        centerDistance = dictionary[NetworkClient.XMLResponseKeys.HouseCenterDistance] as! Int
+        centerDistance = dictionary[NetworkClient.XMLResponseKeys.HouseCenterDistance] as! NSNumber
         email = dictionary[NetworkClient.XMLResponseKeys.HouseEmail] as! String
         favorite = dictionary[NetworkClient.XMLResponseKeys.HouseFavorite] as! String
-        houseid = dictionary[NetworkClient.XMLResponseKeys.HouseID] as! Int
+        houseid = dictionary[NetworkClient.XMLResponseKeys.HouseID] as! NSNumber
         latitude = dictionary[NetworkClient.XMLResponseKeys.HouseLatitude] as! Double
         longitude = dictionary[NetworkClient.XMLResponseKeys.HouseLongitude] as! Double
         mainImagePath = dictionary[NetworkClient.XMLResponseKeys.HouseMainImage] as! String
@@ -69,9 +69,9 @@ class House: NSManagedObject {
         parking = dictionary[NetworkClient.XMLResponseKeys.HouseParking] as! String
         pets = dictionary[NetworkClient.XMLResponseKeys.HousePets] as! String
         phone = dictionary[NetworkClient.XMLResponseKeys.HousePhone] as! String
-        priceFrom = dictionary[NetworkClient.XMLResponseKeys.HousePriceFrom] as! Int
-        seaDistance = dictionary[NetworkClient.XMLResponseKeys.HouseSeaDistance] as! Int
-        statusID = dictionary[NetworkClient.XMLResponseKeys.HouseStatusID] as! Int
+        priceFrom = dictionary[NetworkClient.XMLResponseKeys.HousePriceFrom] as! NSNumber
+        seaDistance = dictionary[NetworkClient.XMLResponseKeys.HouseSeaDistance] as! NSNumber
+        statusID = dictionary[NetworkClient.XMLResponseKeys.HouseStatusID] as! NSNumber
         website = dictionary[NetworkClient.XMLResponseKeys.HouseWebsite] as! String
         
         

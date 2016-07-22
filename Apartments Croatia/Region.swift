@@ -21,7 +21,7 @@ import CoreData
 
 class Region: NSManagedObject {
     @NSManaged var name: String
-    @NSManaged var sortOrder: Int
+    @NSManaged var sortOrder: NSNumber
     @NSManaged var destinations: [Destination]
 
     
@@ -39,7 +39,7 @@ class Region: NSManagedObject {
         // After the Core Data work has been taken care of we can init the properties from the
         // dictionary. This works in the same way that it did before we started on Core Data
         name = dictionary[NetworkClient.XMLResponseKeys.RegionName] as! String
-        sortOrder = dictionary[NetworkClient.XMLResponseKeys.SortOrder] as! Int
+        sortOrder = dictionary[NetworkClient.XMLResponseKeys.SortOrder] as! NSNumber
     }
     
 }
