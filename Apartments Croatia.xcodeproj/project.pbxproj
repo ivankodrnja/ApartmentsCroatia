@@ -15,6 +15,9 @@
 		8312599B1CB29150003870EE /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831259931CB29150003870EE /* Destination.swift */; };
 		8357BC371D3F5C3E00B011B9 /* AukDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8357BC361D3F5C3E00B011B9 /* AukDistrib.swift */; };
 		8357BC3B1D3F5DBA00B011B9 /* MoaDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8357BC3A1D3F5DBA00B011B9 /* MoaDistrib.swift */; };
+		83A0B6EB1D4100D9000AC9AA /* HouseDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A0B6EA1D4100D9000AC9AA /* HouseDetailTableViewController.swift */; };
+		83A0B6ED1D4107C6000AC9AA /* ImageSliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A0B6EC1D4107C6000AC9AA /* ImageSliderCell.swift */; };
+		83A0B6EF1D4108BC000AC9AA /* MapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A0B6EE1D4108BC000AC9AA /* MapTableViewCell.swift */; };
 		83B5B72A1CA9015B00C4D63B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B5B7291CA9015B00C4D63B /* AppDelegate.swift */; };
 		83B5B72C1CA9015B00C4D63B /* DestinationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B5B72B1CA9015B00C4D63B /* DestinationsViewController.swift */; };
 		83B5B72F1CA9015B00C4D63B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83B5B72D1CA9015B00C4D63B /* Main.storyboard */; };
@@ -41,6 +44,9 @@
 		831259931CB29150003870EE /* Destination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
 		8357BC361D3F5C3E00B011B9 /* AukDistrib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AukDistrib.swift; sourceTree = "<group>"; };
 		8357BC3A1D3F5DBA00B011B9 /* MoaDistrib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoaDistrib.swift; sourceTree = "<group>"; };
+		83A0B6EA1D4100D9000AC9AA /* HouseDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseDetailTableViewController.swift; sourceTree = "<group>"; };
+		83A0B6EC1D4107C6000AC9AA /* ImageSliderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSliderCell.swift; sourceTree = "<group>"; };
+		83A0B6EE1D4108BC000AC9AA /* MapTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapTableViewCell.swift; sourceTree = "<group>"; };
 		83B5B7261CA9015B00C4D63B /* Apartments Croatia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Apartments Croatia.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		83B5B7291CA9015B00C4D63B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		83B5B72B1CA9015B00C4D63B /* DestinationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationsViewController.swift; sourceTree = "<group>"; };
@@ -77,6 +83,14 @@
 				83B5B72B1CA9015B00C4D63B /* DestinationsViewController.swift */,
 			);
 			name = Destinations;
+			sourceTree = "<group>";
+		};
+		83A0B6E91D40FE5B000AC9AA /* HouseDetail */ = {
+			isa = PBXGroup;
+			children = (
+				83A0B6EA1D4100D9000AC9AA /* HouseDetailTableViewController.swift */,
+			);
+			name = HouseDetail;
 			sourceTree = "<group>";
 		};
 		83B5B71D1CA9015B00C4D63B = {
@@ -133,6 +147,8 @@
 				83F9E1FB1CED7A8D00C85296 /* DestinationTableViewCell.swift */,
 				83EAD55D1D391FA300A58F39 /* RegionTableViewCell.swift */,
 				83EAD5611D39245B00A58F39 /* HouseTableViewCell.swift */,
+				83A0B6EC1D4107C6000AC9AA /* ImageSliderCell.swift */,
+				83A0B6EE1D4108BC000AC9AA /* MapTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -144,6 +160,7 @@
 				83EAD5571D391A2100A58F39 /* Regions */,
 				83046BFF1CABDA4900693F83 /* Destinations */,
 				83EAD5581D391C2F00A58F39 /* Houses */,
+				83A0B6E91D40FE5B000AC9AA /* HouseDetail */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -256,8 +273,10 @@
 			files = (
 				83EAD55A1D391C7700A58F39 /* RegionsViewController.swift in Sources */,
 				8357BC3B1D3F5DBA00B011B9 /* MoaDistrib.swift in Sources */,
+				83A0B6EB1D4100D9000AC9AA /* HouseDetailTableViewController.swift in Sources */,
 				831259991CB29150003870EE /* Photo.swift in Sources */,
 				83B5B72C1CA9015B00C4D63B /* DestinationsViewController.swift in Sources */,
+				83A0B6EF1D4108BC000AC9AA /* MapTableViewCell.swift in Sources */,
 				83EAD55E1D391FA300A58F39 /* RegionTableViewCell.swift in Sources */,
 				83E21A151CAAEF0900BA5EA0 /* NetworkClient.swift in Sources */,
 				831259971CB29150003870EE /* Region.swift in Sources */,
@@ -265,6 +284,7 @@
 				83046BFE1CABD87F00693F83 /* SWXMLHash.swift in Sources */,
 				83E21A121CAAED0700BA5EA0 /* CoreDataStackManager.swift in Sources */,
 				83B5B72A1CA9015B00C4D63B /* AppDelegate.swift in Sources */,
+				83A0B6ED1D4107C6000AC9AA /* ImageSliderCell.swift in Sources */,
 				83E21A101CAA9E3000BA5EA0 /* Model.xcdatamodeld in Sources */,
 				8312598B1CB290F8003870EE /* Apartment.swift in Sources */,
 				83EAD5601D39241B00A58F39 /* HousesViewController.swift in Sources */,

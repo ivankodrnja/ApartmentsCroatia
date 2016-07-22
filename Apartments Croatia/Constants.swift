@@ -14,6 +14,7 @@ extension NetworkClient {
         static let imageFolder: String = "house/"
         static let Path = "path"
         static let toInt = ["rating", "statusid", "sea_distance", "price_from", "houseid", "center_distance", "surface", "region_sort"]
+        static let BookNow = "BOOK NOW"
     }
     
     struct XMLResponseKeys {

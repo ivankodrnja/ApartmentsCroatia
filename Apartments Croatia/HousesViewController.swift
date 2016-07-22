@@ -11,6 +11,7 @@ import CoreData
 
 class HousesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
     
+
     @IBOutlet weak var tableView: UITableView!
     // variable will be initialized from previous VC
     var destination : Destination?
@@ -102,12 +103,10 @@ class HousesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // remove previous image from the newly created cell
         cell.scrollView.auk.removeAll()
         
-        
         // enables scrolling to top by tappig status bar on top, there are two scrol views, this one and the uitableview, only one can have scrolls to top true
         cell.scrollView.scrollsToTop = false
         
         //***** set the apartment name or heading *****//
-        // TODO: image caching
         // cache downloaded images and use Auk image slideshow library from https://github.com/evgenyneu/Auk
         Moa.settings.cache.requestCachePolicy = .ReturnCacheDataElseLoad
         
@@ -131,6 +130,17 @@ class HousesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let controller = storyboard!.instantiateViewControllerWithIdentifier("HouseDetailTableViewController") as! HouseDetailTableViewController
+        let house = fetchedResultsController.objectAtIndexPath(indexPath) as! House
+        
+        // set destination object in the detail VC
+        controller.house = house
+        
+        self.navigationController!.pushViewController(controller, animated: true)
+        
+    }
     
     // MARK: - Fetched Results Controller Delegate
     

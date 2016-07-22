@@ -156,18 +156,6 @@ class NetworkClient: NSObject {
                             
                             numberOfPhotoElements += 1
 
-                            
-                            /*
-                           // each xml entry goes to temporary dictionary which eventually goes to house object
-                            tempDict["\(numberOfPhotoElements)"] = photoelem.element!.text!
-                            
-                            // tempDict of photo objects will be added to house object after all photo elements have been added to tempDict
-                            if(numberOfPhotoElements == countOfPhotoElements){
-                                houseDict["photos"] = tempDict
-                            }
-                            
-                            numberOfPhotoElements += 1
-                             */
                         }
                         
                     case "apartments":
@@ -178,7 +166,7 @@ class NetworkClient: NSObject {
                         for apartelem in elem["apartment"].children {
                             tempDict["\(apartelem.element!.name)"] = apartelem.element!.text!
                             
-                            // each new apartmeent object finishes with <internet> xml element, when it occurs, add tempDict to tempApartmentArray and clear tempDict content
+                            // each new apartment object finishes with <internet> xml element, when it occurs, add tempDict to tempApartmentArray and clear tempDict content
                             if(apartelem.element!.name == NetworkClient.XMLResponseKeys.ApartmentInternet){
                                 // before clearing the houseDict, add it to the tempApartmentDict which eventually goes to house object
                                 tempApartmentArray.append(tempDict)

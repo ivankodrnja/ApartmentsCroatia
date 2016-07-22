@@ -102,12 +102,6 @@ class DestinationsViewController: UIViewController, UITableViewDelegate, UITable
         
         // set destination object in the detail VC
         controller.destination = destination
-        // set the first image to show in the detail VC
-        /*
-         if(self.cache.objectForKey(indexPath.row) != nil){
-         controller.firstImage = (self.cache.objectForKey(indexPath.row) as? UIImage)!
-         }
-         */
         
         self.navigationController!.pushViewController(controller, animated: true)
         
