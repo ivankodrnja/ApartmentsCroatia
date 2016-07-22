@@ -10,8 +10,9 @@ import UIKit
 import MapKit
 import CoreData
 
-class HouseDetailTableViewController: UITableViewController {
+class HouseDetailTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var tableView: UITableView!
     // variable will be initialized from previous VC
     var house : House?
     
@@ -54,18 +55,18 @@ class HouseDetailTableViewController: UITableViewController {
     
     // MARK: - Table view data source
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 4
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         // different sections have different number of rows
         switch(section){
         case 0:
-            return 4 // image slider, add to favorites, labels cell and book cell
+            return 4 // image slider, add to wishlist, labels cell and book cell
         case 1:
-            return 2 // description and amenities
+            return 1 // Apartment info
         case 2:
             return 1 // map cell
         default:
@@ -74,22 +75,22 @@ class HouseDetailTableViewController: UITableViewController {
         
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         // different sections have different number of rows
         switch(section){
         case 1:
-            return "Description" // description and amenities
+            return "Apartment info" // description and amenities
         case 2:
             return "Map" // map cell
         case 3:
-            return "Rental Rates" // rental rates : nightly, weekend night, weekly, monthly
+            return "Contact info" // rental rates : nightly, weekend night, weekly, monthly
         default:
             return ""
         }
     }
     
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         // cell type depends on section and a row inside the section
         switch(indexPath.section){
@@ -113,7 +114,7 @@ class HouseDetailTableViewController: UITableViewController {
                 }
                 
                 // load images only the first time cell appears
-               // if loadImages {
+                if loadImages {
                     // cache downloaded images and use Auk image slideshow library from https://github.com/evgenyneu/Auk
                     Moa.settings.cache.requestCachePolicy = .ReturnCacheDataElseLoad
                     for imageUrl in imageArray {
@@ -121,53 +122,61 @@ class HouseDetailTableViewController: UITableViewController {
                         cell.scrollView.auk.settings.errorImage = UIImage(named: "NoImage")
                         cell.scrollView.auk.show(url: imageUrl)
 
-                 //   }
-                 //   loadImages = false
+                    }
+                    loadImages = false
                 }
                 
                 return cell
             // add to favorites
             case 1:
                 let cell = tableView.dequeueReusableCellWithIdentifier("FavoritesCell", forIndexPath: indexPath)
-                cell.accessoryType = UITableViewCellAccessoryType.None
-                cell.backgroundColor = UIColor.grayColor()
-                cell.textLabel?.textAlignment = .Center
-                cell.textLabel!.font = UIFont.boldSystemFontOfSize(20)
-                cell.textLabel?.textColor = UIColor.whiteColor()
-                if house!.favorite == "Y" {
-                    cell.textLabel?.text = "Added to Favorites"
-                } else {
-                    cell.textLabel?.text = "Add to Favorites"
-                }
-                cell.selectionStyle = UITableViewCellSelectionStyle.None
-                
-                return cell
-            // labels cell
-            case 2:
-                let cell = tableView.dequeueReusableCellWithIdentifier("LabelCell", forIndexPath: indexPath)
                 
                 // make table cell separators stretch throught the screen width
                 cell.preservesSuperviewLayoutMargins = false
                 cell.layoutMargins = UIEdgeInsetsZero
                 cell.separatorInset = UIEdgeInsetsZero
                 
-                /*
-                if let bedroomsNumber = apartment!.attr!["bedrooms"] as? Int {
-                    cell.bedroomCount?.text = "\(bedroomsNumber)"
+                cell.accessoryType = UITableViewCellAccessoryType.None
+                cell.backgroundColor = UIColor.grayColor()
+                cell.textLabel?.textAlignment = .Center
+                cell.textLabel!.font = UIFont.boldSystemFontOfSize(20)
+                cell.textLabel?.textColor = UIColor.whiteColor()
+                if house!.favorite == "Y" {
+                    cell.textLabel?.text = "Added to Wishlist"
+                } else {
+                    cell.textLabel?.text = "Add to Wishlist"
                 }
-                if let bathroomsNumber = apartment!.attr!["bathrooms"] as? Int {
-                    cell.bathroomCount?.text = "\(bathroomsNumber)"
-                }
+                cell.selectionStyle = UITableViewCellSelectionStyle.None
                 
-                if let sleepsNumber = apartment!.attr!["occupancy"] as? Int {
-                    cell.sleepsCount?.text = "\(sleepsNumber)"
-                }
-                */
+                return cell
+            // labels cell
+            case 2:
+                let cell = tableView.dequeueReusableCellWithIdentifier("LabelCell", forIndexPath: indexPath) as! LabelTableViewCell
+                
+                // make table cell separators stretch throught the screen width
+                cell.preservesSuperviewLayoutMargins = false
+                cell.layoutMargins = UIEdgeInsetsZero
+                cell.separatorInset = UIEdgeInsetsZero
+                
+                cell.seaDistance.text = "Sea distance"
+                cell.seaDistanceCount.text =  "\(house!.seaDistance)"
+                cell.centerDistance.text = "Center distance"
+                cell.centerDistanceCount.text =  "\(house!.centerDistance)"
+                cell.parking.text = "Parking"
+                cell.hasParking.text =  house!.parking
+                cell.pets.text = "Pets"
+                cell.acceptsPets.text =  house!.pets
+                
                 return cell
                 
             // booking cell
             default:
                 let cell = tableView.dequeueReusableCellWithIdentifier("BookCell", forIndexPath: indexPath)
+                
+                // make table cell separators stretch throught the screen width
+                cell.preservesSuperviewLayoutMargins = false
+                cell.layoutMargins = UIEdgeInsetsZero
+                cell.separatorInset = UIEdgeInsetsZero
                 
                 cell.accessoryType = UITableViewCellAccessoryType.None
                 cell.backgroundColor = UIColor.orangeColor()
@@ -182,24 +191,22 @@ class HouseDetailTableViewController: UITableViewController {
             }
         // second section contains description and amenities
         case 1:
-            let cell = tableView.dequeueReusableCellWithIdentifier("DescriptionCell", forIndexPath: indexPath)
+            let cell = tableView.dequeueReusableCellWithIdentifier("ApartmentInfoCell", forIndexPath: indexPath)
             cell.accessoryType = .DisclosureIndicator
             // make table cell separators stretch throught the screen width
             cell.preservesSuperviewLayoutMargins = false
             cell.layoutMargins = UIEdgeInsetsZero
             cell.separatorInset = UIEdgeInsetsZero
             
-            switch(indexPath.row){
-            // description
-            case 0:
-                cell.textLabel?.text = house!.address
-                return cell
-            // amentites labels cell
-            default:
-                cell.textLabel?.text = "Amenities (\(house?.apartments.count))"
-                return cell
-                
+            
+            let aptCount = house!.apartments.count
+            var aptLabel = "apartments"
+            if aptCount > 1 {
+                aptLabel = "apartments"
             }
+            cell.textLabel?.text = "\(aptCount) " + aptLabel
+            return cell
+            
         // third section contains the map
         case 2:
             let cell = tableView.dequeueReusableCellWithIdentifier("MapCell", forIndexPath: indexPath) as! MapTableViewCell
@@ -221,7 +228,7 @@ class HouseDetailTableViewController: UITableViewController {
             
         // fourth section contains the rental rates: nightly, weekend night, weekly, monthly
         default:
-            let cell = UITableViewCell(style: .Value1, reuseIdentifier: "RentalRatesCell")
+            let cell = UITableViewCell(style: .Value1, reuseIdentifier: "ContactInfoCell")
             cell.detailTextLabel?.textColor = UIColor.blackColor()
             cell.selectionStyle = .None
             // make table cell separators stretch throught the screen width
@@ -231,28 +238,21 @@ class HouseDetailTableViewController: UITableViewController {
             
             // each of 4 rows shows different price type
             switch(indexPath.row){
-            // nightly or daily price
+            // postal address
             case 0:
-                if let nightlyPrice = house!.priceFrom as? Int {
-                    cell.textLabel?.text = "Nightly"
-                    cell.detailTextLabel?.text = "$ \(nightlyPrice)"
-                }
-            // weekend night price
+                cell.textLabel?.text = "Address:"
+                cell.detailTextLabel?.text = house!.address + ", " + (house!.destination?.name)!
+        
+            // website
             case 1:
-                if let weekendPrice = house!.priceFrom as? Int {
-                    cell.textLabel?.text = "Weekend night"
-                    cell.detailTextLabel?.text = "$ \(weekendPrice)"
-                }
+                cell.textLabel?.text = "Website:"
+                cell.detailTextLabel?.text = house!.website
             case 2:
-                if let weeklyPrice = house!.priceFrom as? Int {
-                    cell.textLabel?.text = "Weekly"
-                    cell.detailTextLabel?.text = "$ \(weeklyPrice)"
-                }
+                cell.textLabel?.text = "Call us"
+                cell.detailTextLabel?.text = house!.phone
             default:
-                if let monthlyPrice = house!.priceFrom as? Int {
-                    cell.textLabel?.text = "Monthly"
-                    cell.detailTextLabel?.text = "$ \(monthlyPrice)"
-                }
+                cell.textLabel?.text = "Get directions:"
+                cell.detailTextLabel?.text = house!.phone
                 
             }
             return cell

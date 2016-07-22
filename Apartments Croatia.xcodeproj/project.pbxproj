@@ -18,6 +18,7 @@
 		83A0B6EB1D4100D9000AC9AA /* HouseDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A0B6EA1D4100D9000AC9AA /* HouseDetailTableViewController.swift */; };
 		83A0B6ED1D4107C6000AC9AA /* ImageSliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A0B6EC1D4107C6000AC9AA /* ImageSliderCell.swift */; };
 		83A0B6EF1D4108BC000AC9AA /* MapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A0B6EE1D4108BC000AC9AA /* MapTableViewCell.swift */; };
+		83A0B6F11D423E4F000AC9AA /* LabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A0B6F01D423E4F000AC9AA /* LabelTableViewCell.swift */; };
 		83B5B72A1CA9015B00C4D63B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B5B7291CA9015B00C4D63B /* AppDelegate.swift */; };
 		83B5B72C1CA9015B00C4D63B /* DestinationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B5B72B1CA9015B00C4D63B /* DestinationsViewController.swift */; };
 		83B5B72F1CA9015B00C4D63B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83B5B72D1CA9015B00C4D63B /* Main.storyboard */; };
@@ -47,6 +48,7 @@
 		83A0B6EA1D4100D9000AC9AA /* HouseDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseDetailTableViewController.swift; sourceTree = "<group>"; };
 		83A0B6EC1D4107C6000AC9AA /* ImageSliderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSliderCell.swift; sourceTree = "<group>"; };
 		83A0B6EE1D4108BC000AC9AA /* MapTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapTableViewCell.swift; sourceTree = "<group>"; };
+		83A0B6F01D423E4F000AC9AA /* LabelTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelTableViewCell.swift; sourceTree = "<group>"; };
 		83B5B7261CA9015B00C4D63B /* Apartments Croatia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Apartments Croatia.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		83B5B7291CA9015B00C4D63B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		83B5B72B1CA9015B00C4D63B /* DestinationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationsViewController.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				83EAD5611D39245B00A58F39 /* HouseTableViewCell.swift */,
 				83A0B6EC1D4107C6000AC9AA /* ImageSliderCell.swift */,
 				83A0B6EE1D4108BC000AC9AA /* MapTableViewCell.swift */,
+				83A0B6F01D423E4F000AC9AA /* LabelTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 				83E21A121CAAED0700BA5EA0 /* CoreDataStackManager.swift in Sources */,
 				83B5B72A1CA9015B00C4D63B /* AppDelegate.swift in Sources */,
 				83A0B6ED1D4107C6000AC9AA /* ImageSliderCell.swift in Sources */,
+				83A0B6F11D423E4F000AC9AA /* LabelTableViewCell.swift in Sources */,
 				83E21A101CAA9E3000BA5EA0 /* Model.xcdatamodeld in Sources */,
 				8312598B1CB290F8003870EE /* Apartment.swift in Sources */,
 				83EAD5601D39241B00A58F39 /* HousesViewController.swift in Sources */,
