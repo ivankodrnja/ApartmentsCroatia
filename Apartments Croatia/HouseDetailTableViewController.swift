@@ -126,11 +126,11 @@ class HouseDetailTableViewController: UIViewController, UITableViewDelegate, UIT
                         cell.scrollView.auk.settings.placeholderImage = UIImage(named: "LoadingImage")
                         cell.scrollView.auk.settings.errorImage = UIImage(named: "NoImage")
                         cell.scrollView.auk.show(url: imageUrl)
-
+            
                     }
                     loadImages = false
                 }
-                
+  
                 return cell
             // add to favorites
             case 1:
@@ -402,9 +402,11 @@ class HouseDetailTableViewController: UIViewController, UITableViewDelegate, UIT
     // MARK: - Helpers
     
     @IBAction func openImageViewController(sender: AnyObject) {
+        let imageSliderIndexPath = NSIndexPath(forRow: 0, inSection: 0)
+        let imageSliderCell = self.tableView.cellForRowAtIndexPath(imageSliderIndexPath) as! ImageSliderCell
         let controller = storyboard!.instantiateViewControllerWithIdentifier("ImageViewController") as! ImageViewController
         controller.imageArray = self.imageArray
-        
+        controller.currentImageIndex = imageSliderCell.scrollView.auk.currentPageIndex
         self.navigationController!.pushViewController(controller, animated: true)
     }
     

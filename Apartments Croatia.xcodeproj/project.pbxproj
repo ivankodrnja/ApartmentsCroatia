@@ -17,6 +17,7 @@
 		832D5ACA1D46311200938B2E /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832D5AC91D46311200938B2E /* ImageViewController.swift */; };
 		8357BC371D3F5C3E00B011B9 /* AukDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8357BC361D3F5C3E00B011B9 /* AukDistrib.swift */; };
 		8357BC3B1D3F5DBA00B011B9 /* MoaDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8357BC3A1D3F5DBA00B011B9 /* MoaDistrib.swift */; };
+		836E55EE1D467D2E00A2501F /* MapTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836E55ED1D467D2E00A2501F /* MapTabViewController.swift */; };
 		8387EB851D43357E007CF0F6 /* WishlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8387EB841D43357E007CF0F6 /* WishlistViewController.swift */; };
 		8387EB871D4336A0007CF0F6 /* WishlistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8387EB861D4336A0007CF0F6 /* WishlistTableViewCell.swift */; };
 		8387EB891D43C1CB007CF0F6 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8387EB881D43C1CB007CF0F6 /* Reachability.swift */; };
@@ -54,6 +55,7 @@
 		832D5AC91D46311200938B2E /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		8357BC361D3F5C3E00B011B9 /* AukDistrib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AukDistrib.swift; sourceTree = "<group>"; };
 		8357BC3A1D3F5DBA00B011B9 /* MoaDistrib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoaDistrib.swift; sourceTree = "<group>"; };
+		836E55ED1D467D2E00A2501F /* MapTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapTabViewController.swift; sourceTree = "<group>"; };
 		8387EB841D43357E007CF0F6 /* WishlistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishlistViewController.swift; sourceTree = "<group>"; };
 		8387EB861D4336A0007CF0F6 /* WishlistTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishlistTableViewCell.swift; sourceTree = "<group>"; };
 		8387EB881D43C1CB007CF0F6 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
@@ -99,6 +101,14 @@
 				83B5B72B1CA9015B00C4D63B /* DestinationsViewController.swift */,
 			);
 			name = Destinations;
+			sourceTree = "<group>";
+		};
+		836E55EC1D467C9000A2501F /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				836E55ED1D467D2E00A2501F /* MapTabViewController.swift */,
+			);
+			name = Map;
 			sourceTree = "<group>";
 		};
 		8387EB831D43352C007CF0F6 /* Wishlist */ = {
@@ -193,6 +203,7 @@
 				83EAD5581D391C2F00A58F39 /* Houses */,
 				83A0B6E91D40FE5B000AC9AA /* HouseDetail */,
 				8387EB831D43352C007CF0F6 /* Wishlist */,
+				836E55EC1D467C9000A2501F /* Map */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -312,6 +323,7 @@
 				83A0B6EF1D4108BC000AC9AA /* MapTableViewCell.swift in Sources */,
 				83EAD55E1D391FA300A58F39 /* RegionTableViewCell.swift in Sources */,
 				83E21A151CAAEF0900BA5EA0 /* NetworkClient.swift in Sources */,
+				836E55EE1D467D2E00A2501F /* MapTabViewController.swift in Sources */,
 				831259971CB29150003870EE /* Region.swift in Sources */,
 				8357BC371D3F5C3E00B011B9 /* AukDistrib.swift in Sources */,
 				8387EB871D4336A0007CF0F6 /* WishlistTableViewCell.swift in Sources */,

@@ -52,30 +52,7 @@ class MapViewController: UIViewController {
         let mapItem = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!), addressDictionary: nil))
         let launchOptions = [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving]
         mapItem.openInMapsWithLaunchOptions(launchOptions)
-        /*
-        let request = MKDirectionsRequest()
-        request.source = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: NetworkClient.sharedInstance().userLocationLatitude, longitude: NetworkClient.sharedInstance().userLocationLongitude), addressDictionary: nil))
-        request.destination = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!), addressDictionary: nil))
-        request.requestsAlternateRoutes = true
-        request.transportType = .Automobile
-        
-        let directions = MKDirections(request: request)
-        
-        directions.calculateDirectionsWithCompletionHandler { [unowned self] response, error in
-            guard let unwrappedResponse = response else { return }
-            
-            for route in unwrappedResponse.routes {
-                self.mapView.addOverlay(route.polyline)
-                self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
-            }
-        }
-         */
-    }
-    
-    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
-        let renderer = MKPolylineRenderer(polyline: overlay as! MKPolyline)
-        renderer.strokeColor = UIColor.blueColor()
-        return renderer
+
     }
 
 }
