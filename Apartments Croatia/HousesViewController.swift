@@ -29,7 +29,7 @@ class HousesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         fetchedResultsController.delegate = self
         self.navigationItem.title = destination?.name
-        
+
         tableView.tableFooterView = UIView()
 
     }

@@ -14,6 +14,8 @@ import MessageUI
 class HouseDetailTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,MFMailComposeViewControllerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    
+    
     // variable will be initialized from previous VC
     var house : House?
     
@@ -145,7 +147,7 @@ class HouseDetailTableViewController: UIViewController, UITableViewDelegate, UIT
                 cell.textLabel!.font = UIFont.boldSystemFontOfSize(20)
                 cell.textLabel?.textColor = UIColor.whiteColor()
                 if house!.favorite == "Y" {
-                    cell.textLabel?.text = "Added to Wishlist"
+                    cell.textLabel?.text = "Remove from Wishlist"
                 } else {
                     cell.textLabel?.text = "Add to Wishlist"
                 }
@@ -305,17 +307,23 @@ class HouseDetailTableViewController: UIViewController, UITableViewDelegate, UIT
             switch(indexPath.row){
             // image slider
             case 0:
-                return
-            // add to wishlist
+                let controller = storyboard!.instantiateViewControllerWithIdentifier("ImageViewController") as! ImageViewController
+                controller.imageArray = self.imageArray
+                
+                self.navigationController!.pushViewController(controller, animated: true)
+            // add to/remove from wishlist
             case 1:
                 if !isFavorite {
                     house!.favorite = "Y"
-                    CoreDataStackManager.sharedInstance().saveContext()
                     
                     isFavorite = true
                     tableView.reloadData()
+                } else {
+                    house!.favorite = "N"
+                    isFavorite = false
+                    tableView.reloadData()
                 }
-                
+                CoreDataStackManager.sharedInstance().saveContext()
                 
                 
             // labels cell
@@ -383,7 +391,8 @@ class HouseDetailTableViewController: UIViewController, UITableViewDelegate, UIT
             
             // call us
             default:
-                return
+                let phoneUrlString = "tel://" + house!.phone
+                UIApplication.sharedApplication().openURL(NSURL(string:phoneUrlString)!)
             
         }
      }
@@ -391,6 +400,14 @@ class HouseDetailTableViewController: UIViewController, UITableViewDelegate, UIT
     
     
     // MARK: - Helpers
+    
+    @IBAction func openImageViewController(sender: AnyObject) {
+        let controller = storyboard!.instantiateViewControllerWithIdentifier("ImageViewController") as! ImageViewController
+        controller.imageArray = self.imageArray
+        
+        self.navigationController!.pushViewController(controller, animated: true)
+    }
+    
     
     func showAlertView(errorMessage: String?) {
         

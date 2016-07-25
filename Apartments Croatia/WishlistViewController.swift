@@ -12,8 +12,6 @@ import CoreData
 class WishlistViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
     
     @IBOutlet weak var tableView: UITableView!
-    // variable will be initialized from previous VC
-    var region : Region?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,14 +21,14 @@ class WishlistViewController: UIViewController, UITableViewDelegate, UITableView
         // fetch results
         do {
             try fetchedResultsController.performFetch()
-            
         } catch {
             print(error)
         }
         fetchedResultsController.delegate = self
-        
-        self.navigationItem.title = region?.name
+        self.navigationItem.title = "Wishlist"
+        self.navigationItem.rightBarButtonItem = editButtonItem()
         tableView.tableFooterView = UIView()
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -46,11 +44,10 @@ class WishlistViewController: UIViewController, UITableViewDelegate, UITableView
     
     lazy var fetchedResultsController: NSFetchedResultsController = {
         
-        let fetchRequest = NSFetchRequest(entityName: "Destination")
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true, selector: #selector(NSString.localizedStandardCompare(_:)))]
+        let fetchRequest = NSFetchRequest(entityName: "House")
         
-        // return only destiations that contain houses
-        fetchRequest.predicate = NSPredicate(format: "region.name == %@ AND houses.@count > 0", self.region!.name)
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        fetchRequest.predicate = NSPredicate(format: "favorite == %@", "Y")
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
                                                                   managedObjectContext: self.sharedContext,
                                                                   sectionNameKeyPath: nil,
@@ -64,7 +61,7 @@ class WishlistViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
-        return 80
+        return 350
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -81,46 +78,89 @@ class WishlistViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         /* Get cell type */
         
-        let destination = fetchedResultsController.objectAtIndexPath(indexPath) as! Destination
+        let house = fetchedResultsController.objectAtIndexPath(indexPath) as! House
         
-        let cellReuseIdentifier = "DestinationsCell"
+        let cellReuseIdentifier = "HousesCell"
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier)! as! DestinationTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier)! as! HouseTableViewCell
         
-        configureCell(cell, withDestination: destination, atIndexPath: indexPath)
+        configureCell(cell, withHouse: house, atIndexPath: indexPath)
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         
         return cell
     }
     
+    // MARK: - Configure Cell
+    
+    func configureCell(cell: HouseTableViewCell, withHouse house: House, atIndexPath indexPath: NSIndexPath) {
+        // make table cell separators stretch throught the screen width, in Storyboard separator insets of the table view and the cell have also set to 0
+        cell.preservesSuperviewLayoutMargins = false
+        cell.layoutMargins = UIEdgeInsetsZero
+        
+        // remove previous image from the newly created cell
+        cell.scrollView.auk.removeAll()
+        
+        // enables scrolling to top by tappig status bar on top, there are two scrol views, this one and the uitableview, only one can have scrolls to top true
+        cell.scrollView.scrollsToTop = false
+        
+        //***** set the apartment name or heading *****//
+        // cache downloaded images and use Auk image slideshow library from https://github.com/evgenyneu/Auk
+        Moa.settings.cache.requestCachePolicy = .ReturnCacheDataElseLoad
+        
+        let imageUrl = NetworkClient.Constants.baseUrl + NetworkClient.Constants.imageFolder + house.mainImagePath
+        cell.scrollView.auk.settings.placeholderImage = UIImage(named: "LoadingImage")
+        cell.scrollView.auk.settings.errorImage = UIImage(named: "NoImage")
+        cell.scrollView.auk.show(url: imageUrl)
+        
+        cell.nameLabel.text = house.name
+        // TODO: localization cell.toTheSeaLabel.text
+        cell.toTheSeaDistance.text = "\(house.seaDistance) m"
+        // TODO: localization cell.toTheCenterLabel.text
+        cell.toTheCenterDistance.text = "\(house.centerDistance) m"
+        // TODO: localization cell.dailyFromLabel.text
+        if (house.priceFrom == 0){
+            cell.dailyFromPrice.text = "Request"
+        } else{
+            cell.dailyFromPrice.text = "\(house.priceFrom) EUR"
+        }
+        cell.locationLabel.text = "\(house.destination!.name), \(house.destination!.region!.name)"
+        
+    }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        let controller = storyboard!.instantiateViewControllerWithIdentifier("HousesViewController") as! HousesViewController
-        let destination = fetchedResultsController.objectAtIndexPath(indexPath) as! Destination
+        let controller = storyboard!.instantiateViewControllerWithIdentifier("HouseDetailTableViewController") as! HouseDetailTableViewController
+        let house = fetchedResultsController.objectAtIndexPath(indexPath) as! House
         
         // set destination object in the detail VC
-        controller.destination = destination
+        controller.house = house
         
         self.navigationController!.pushViewController(controller, animated: true)
         
     }
     
-    // MARK: - Configure Cell
-    
-    func configureCell(cell: DestinationTableViewCell, withDestination destination: Destination, atIndexPath indexPath: NSIndexPath) {
-        // make table cell separators stretch throught the screen width, in Storyboard separator insets of the table view and the cell have also set to 0
-        cell.preservesSuperviewLayoutMargins = false
-        cell.layoutMargins = UIEdgeInsetsZero
+    func tableView(tableView: UITableView,
+                   commitEditingStyle editingStyle: UITableViewCellEditingStyle,
+                                      forRowAtIndexPath indexPath: NSIndexPath) {
         
-        
-        //***** set the apartment name or heading *****//
-        cell.nameLabel.text = destination.name
-        
-        
-        
+        switch (editingStyle) {
+        case .Delete:
+            
+            // set the house's favorite attribute to "N"
+            let house = fetchedResultsController.objectAtIndexPath(indexPath) as! House
+            house.favorite = "N"
+            CoreDataStackManager.sharedInstance().saveContext()
+            
+        default:
+            break
+        }
     }
     
+    override func setEditing(editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        self.tableView.setEditing(editing, animated: animated)
+    }
+
     
     // MARK: - Fetched Results Controller Delegate
     
@@ -153,7 +193,6 @@ class WishlistViewController: UIViewController, UITableViewDelegate, UITableView
         
         switch type {
         case .Insert:
-            // check for previously cached images at indexPath.row
             tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
             
             
@@ -161,9 +200,9 @@ class WishlistViewController: UIViewController, UITableViewDelegate, UITableView
             tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
             
         case .Update:
-            let cell = tableView.cellForRowAtIndexPath(indexPath!) as! DestinationTableViewCell
-            let destination = controller.objectAtIndexPath(indexPath!) as! Destination
-            self.configureCell(cell, withDestination: destination, atIndexPath: indexPath!)
+            let cell = tableView.cellForRowAtIndexPath(indexPath!) as! HouseTableViewCell
+            let house = controller.objectAtIndexPath(indexPath!) as! House
+            self.configureCell(cell, withHouse: house, atIndexPath: indexPath!)
             
         case .Move:
             tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)

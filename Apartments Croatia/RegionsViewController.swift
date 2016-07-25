@@ -29,7 +29,7 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
             print(error)
         }
         fetchedResultsController.delegate = self
-        
+
         tableView.tableFooterView = UIView()
         
         // will serve for requesting the user current location
@@ -159,12 +159,6 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         // set region object in the detail VC
         controller.region = region
-        // set the first image to show in the detail VC
-        /*
-        if(self.cache.objectForKey(indexPath.row) != nil){
-            controller.firstImage = (self.cache.objectForKey(indexPath.row) as? UIImage)!
-        }
-        */
         
         self.navigationController!.pushViewController(controller, animated: true)
         
@@ -229,7 +223,6 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
 extension RegionsViewController: CLLocationManagerDelegate {
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print(locations.last!.coordinate)
         NetworkClient.sharedInstance().userLocationLatitude = (locations.last?.coordinate.latitude)!
         NetworkClient.sharedInstance().userLocationLongitude = (locations.last?.coordinate.longitude)!
 
