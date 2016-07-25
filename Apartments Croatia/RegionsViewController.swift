@@ -8,10 +8,15 @@
 
 import UIKit
 import CoreData
+import CoreLocation
+
 
 class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    // will serve for requesting the user current location
+    let locationManager = CLLocationManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,6 +31,15 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
         fetchedResultsController.delegate = self
         
         tableView.tableFooterView = UIView()
+        
+        // will serve for requesting the user current location
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+            locationManager.requestLocation()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -209,4 +223,19 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.tableView.endUpdates()
     }
 
+}
+
+
+extension RegionsViewController: CLLocationManagerDelegate {
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print(locations.last!.coordinate)
+        NetworkClient.sharedInstance().userLocationLatitude = (locations.last?.coordinate.latitude)!
+        NetworkClient.sharedInstance().userLocationLongitude = (locations.last?.coordinate.longitude)!
+
+    }
+    
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        print(error)
+    }
 }

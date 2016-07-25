@@ -24,6 +24,11 @@ class NetworkClient: NSObject {
     // will serve to store last db sync date
     let defaults = NSUserDefaults.standardUserDefaults()
     
+    
+    // will serve for storing current user's location
+    var userLocationLatitude: Double = 0
+    var userLocationLongitude: Double = 0
+    
     // MARK: - Shared Instance
     class func sharedInstance() -> NetworkClient {
         

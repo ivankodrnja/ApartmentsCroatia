@@ -16,8 +16,10 @@ class LabelTableViewCell: UITableViewCell {
     @IBOutlet weak var pets: UILabel!
     @IBOutlet weak var seaDistanceCount: UILabel!
     @IBOutlet weak var centerDistanceCount: UILabel!
-    @IBOutlet weak var hasParking: UILabel!
-    @IBOutlet weak var acceptsPets: UILabel!
+
+    @IBOutlet weak var hasParking: UIImageView!
+    @IBOutlet weak var acceptsPets: UIImageView!
+
     
     override func awakeFromNib() {
         super.awakeFromNib()

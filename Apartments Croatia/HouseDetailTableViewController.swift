@@ -9,8 +9,9 @@
 import UIKit
 import MapKit
 import CoreData
+import MessageUI
 
-class HouseDetailTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class HouseDetailTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,MFMailComposeViewControllerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     // variable will be initialized from previous VC
@@ -22,7 +23,6 @@ class HouseDetailTableViewController: UIViewController, UITableViewDelegate, UIT
     // check if images have been loaded in the images slider cell
     var loadImages : Bool = true
     
-    // TODO: delete?
     // will serve to check if it is already in the favorites list
     var isFavorite: Bool = false
     
@@ -39,7 +39,10 @@ class HouseDetailTableViewController: UIViewController, UITableViewDelegate, UIT
             let photoUrl = NetworkClient.Constants.baseUrl + NetworkClient.Constants.imageFolder + aPhoto.path
             imageArray.append(photoUrl)
         }
-        print(imageArray)
+        
+        self.navigationItem.title = house?.name
+        tableView.tableFooterView = UIView()
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -158,14 +161,25 @@ class HouseDetailTableViewController: UIViewController, UITableViewDelegate, UIT
                 cell.layoutMargins = UIEdgeInsetsZero
                 cell.separatorInset = UIEdgeInsetsZero
                 
-                cell.seaDistance.text = "Sea distance"
-                cell.seaDistanceCount.text =  "\(house!.seaDistance)"
-                cell.centerDistance.text = "Center distance"
-                cell.centerDistanceCount.text =  "\(house!.centerDistance)"
+                cell.seaDistance.text = "Sea"
+                cell.seaDistanceCount.text =  "\(house!.seaDistance)" + " m"
+                cell.centerDistance.text = "Center"
+                cell.centerDistanceCount.text =  "\(house!.centerDistance)" + " m"
                 cell.parking.text = "Parking"
-                cell.hasParking.text =  house!.parking
+                
+                if house!.parking == "Y" {
+                    cell.hasParking.image = UIImage(named: "yescheckmark")
+                } else {
+                    cell.hasParking.image = UIImage(named: "nocheckmark")
+                }
+                
+
                 cell.pets.text = "Pets"
-                cell.acceptsPets.text =  house!.pets
+                if house!.pets == "Y" {
+                    cell.acceptsPets.image = UIImage(named: "yescheckmark")
+                } else {
+                    cell.acceptsPets.image = UIImage(named: "nocheckmark")
+                }
                 
                 return cell
                 
@@ -226,7 +240,7 @@ class HouseDetailTableViewController: UIViewController, UITableViewDelegate, UIT
             
             return cell
             
-        // fourth section contains the rental rates: nightly, weekend night, weekly, monthly
+        // fourth section contains contact info
         default:
             let cell = UITableViewCell(style: .Value1, reuseIdentifier: "ContactInfoCell")
             cell.detailTextLabel?.textColor = UIColor.blackColor()
@@ -235,25 +249,46 @@ class HouseDetailTableViewController: UIViewController, UITableViewDelegate, UIT
             cell.preservesSuperviewLayoutMargins = false
             cell.layoutMargins = UIEdgeInsetsZero
             cell.separatorInset = UIEdgeInsetsZero
-            
-            // each of 4 rows shows different price type
+
             switch(indexPath.row){
             // postal address
             case 0:
+                
                 cell.textLabel?.text = "Address:"
                 cell.detailTextLabel?.text = house!.address + ", " + (house!.destination?.name)!
-        
-            // website
+  
+            // get directions
             case 1:
-                cell.textLabel?.text = "Website:"
-                cell.detailTextLabel?.text = house!.website
-            case 2:
-                cell.textLabel?.text = "Call us"
-                cell.detailTextLabel?.text = house!.phone
-            default:
-                cell.textLabel?.text = "Get directions:"
-                cell.detailTextLabel?.text = house!.phone
                 
+                cell.accessoryType = UITableViewCellAccessoryType.None
+                cell.backgroundColor = UIColor.grayColor()
+                cell.textLabel!.font = UIFont.boldSystemFontOfSize(20)
+                cell.textLabel?.textColor = UIColor.whiteColor()
+                cell.textLabel?.text = "Get directions"
+                
+                cell.accessoryType = .DisclosureIndicator
+            // website
+            case 2:
+
+                cell.textLabel?.text = "Website:"
+                
+                let website = house!.website
+                if website == "http://www.croapartments.net/nowebsite.html" {
+                    cell.detailTextLabel?.text = "N/A"
+                } else {
+                    cell.detailTextLabel?.text = website
+                    cell.accessoryType = .DisclosureIndicator
+                }
+
+            default:
+                cell.accessoryType = UITableViewCellAccessoryType.None
+                cell.backgroundColor = UIColor.orangeColor()
+                cell.textLabel?.textAlignment = .Center
+                cell.textLabel!.font = UIFont.boldSystemFontOfSize(20)
+                cell.textLabel?.textColor = UIColor.whiteColor()
+                cell.textLabel?.text = "Call us"
+                
+                cell.accessoryType = .DisclosureIndicator
             }
             return cell
             
@@ -262,47 +297,19 @@ class HouseDetailTableViewController: UIViewController, UITableViewDelegate, UIT
         
         
     }
-    /*
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         switch(indexPath.section){
-        // first section contains image slider, labels cell and book cell
+        // first section contains image slider, add to wishlist, labels cell and book cell
         case 0:
             switch(indexPath.row){
             // image slider
             case 0:
                 return
-            // add to favorites
+            // add to wishlist
             case 1:
-                // save to favorites list using Core Data only if already isn't added to favorites list
                 if !isFavorite {
-                    // prepare a dictionary to save as an Apartment object
-                    let aptDict: [String : AnyObject] = [ZilyoClient.JSONResponseKeys.Id : (self.apartment?.id)!, ZilyoClient.JSONResponseKeys.LatLng : (self.apartment?.latLng)!, ZilyoClient.JSONResponseKeys.Location : (self.apartment?.location)!, ZilyoClient.JSONResponseKeys.Attr : (self.apartment?.attr)!, ZilyoClient.JSONResponseKeys.Provider : (self.apartment?.provider)!]
-                    let apt = Apartment(dictionary: aptDict, context: self.sharedContext)
-                    
-                    // add amenities
-                    for amenity in apartment!.amenities! {
-                        let anAmenity = Amenity(dictionary: amenity, context: self.sharedContext)
-                        anAmenity.apartment = apt
-                    }
-                    
-                    
-                    // add prices
-                    let pricesDict = apartment?.price
-                    let price = Price(dictionary: pricesDict!, context: self.sharedContext)
-                    price.apartment = apt
-                    
-                    // add attributes
-                    let attributesDict = apartment?.attr
-                    let attribute = Attribute(dictionary: attributesDict!, context: self.sharedContext)
-                    attribute.apartment = apt
-                    
-                    // add photo urls
-                    for anImage in apartment!.photos! {
-                        let photo = Photo(dictionary: anImage, context: self.sharedContext)
-                        photo.apartment = apt
-                    }
-                    
-                    // save the apartment data
+                    house!.favorite = "Y"
                     CoreDataStackManager.sharedInstance().saveContext()
                     
                     isFavorite = true
@@ -311,67 +318,77 @@ class HouseDetailTableViewController: UIViewController, UITableViewDelegate, UIT
                 
                 
                 
-            // booking labels cell
+            // labels cell
             case 2:
                 return
-                
+            // book now cell
             default:
-                
-                if Reachability.isConnectedToNetwork() == true {
-                    print("Internet connection OK")
-                    let controller = storyboard!.instantiateViewControllerWithIdentifier("BookingViewController") as! BookingViewController
-                    
-                    // set description text in detail controller
-                    controller.urlString = apartment!.provider!["url"] as? String
-                    self.navigationController!.pushViewController(controller, animated: true)
+                let mailComposeViewController = configuredMailComposeViewController()
+                if MFMailComposeViewController.canSendMail() {
+                    self.presentViewController(mailComposeViewController, animated: true, completion: nil)
                 } else {
-                    print("Internet connection not present")
-                    self.showAlertView("Internet connection not present")
+                    self.showAlertView("Your device could not send e-mail.  Please check e-mail configuration and try again.")
                 }
-                
                 
             }
             
-        // second section contains description and amenities
+        // second section contains apartment info
         case 1:
             
             switch(indexPath.row){
-            // description
-            case 0:
-                
-                let controller = storyboard!.instantiateViewControllerWithIdentifier("DescriptionDetailViewController") as! DescriptionDetailViewController
-                
-                // set description text in detail controller
-                controller.descriptionText = apartment!.attr!["description"] as? String
-                // set title text in detail controller
-                controller.titleText = "Description"
-                
-                self.navigationController!.pushViewController(controller, animated: true)
-                
-            // amentites labels cell
             default:
-                let controller = storyboard!.instantiateViewControllerWithIdentifier("DescriptionDetailViewController") as! DescriptionDetailViewController
-                
-                var amenitiesArray = String()
-                for amenity in apartment!.amenities! {
-                    let amenityText = amenity["text"] as! String
-                    amenitiesArray += "\(amenityText) "
-                }
-                
-                // set description text in detail controller
-                controller.descriptionText = amenitiesArray
-                // set title text in detail controller
-                controller.titleText = "Amenities"
+                let controller = storyboard!.instantiateViewControllerWithIdentifier("ApartmentDetailViewController") as! ApartmentDetailViewController
+                controller.apartments = house?.apartments
                 
                 self.navigationController!.pushViewController(controller, animated: true)
                 
             }
+        // map
+        case 2:
+            let controller = storyboard!.instantiateViewControllerWithIdentifier("MapViewController") as! MapViewController
+            controller.latitude = house?.latitude
+            controller.longitude = house?.longitude
             
+            self.navigationController!.pushViewController(controller, animated: true)
+            
+        // contact info
         default:
-            return
+            
+            switch(indexPath.row){
+            // house address
+            case 0:
+                return
+                
+            // get directions in Map App
+            case 1:
+                let mapItem = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: house!.latitude, longitude: house!.longitude), addressDictionary: nil))
+                let launchOptions = [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving]
+                mapItem.openInMapsWithLaunchOptions(launchOptions)
+                
+            // website
+            case 2:
+                // check if website exists and show it if it does
+                let website = house!.website
+                if website == "http://www.croapartments.net/nowebsite.html" {
+                    return
+                } else {
+                    if Reachability.isConnectedToNetwork() == true {
+                        UIApplication.sharedApplication().openURL(NSURL(string:website)!)
+                    } else {
+                        print("Internet connection not present")
+                        self.showAlertView("Internet connection not present")
+                    }
+                    
+                }
+            
+            // call us
+            default:
+                return
+            
         }
-    }
-    */
+     }
+}
+    
     
     // MARK: - Helpers
     
@@ -389,6 +406,29 @@ class HouseDetailTableViewController: UIViewController, UITableViewDelegate, UIT
             
         }
         
+    }
+    
+    func configuredMailComposeViewController() -> MFMailComposeViewController {
+        let mailComposerVC = MFMailComposeViewController()
+        mailComposerVC.mailComposeDelegate = self // Extremely important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
+        
+        mailComposerVC.setToRecipients([house!.email])
+        mailComposerVC.setSubject("Upit za Vaš apartman / Apartments Croatia iPhone-Android app")
+        mailComposerVC.setMessageBody("Enter your query", isHTML: false)
+        
+        return mailComposerVC
+    }
+    
+    
+    // MARK: MFMailComposeViewControllerDelegate Method
+    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+        print(result)
+        if result == MFMailComposeResultCancelled{
+            print("cancelled")
+        } else if result == MFMailComposeResultSent {
+            print("sent")
+        }
+        controller.dismissViewControllerAnimated(true, completion: nil)
     }
 
 }
