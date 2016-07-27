@@ -18,6 +18,13 @@
 		8357BC371D3F5C3E00B011B9 /* AukDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8357BC361D3F5C3E00B011B9 /* AukDistrib.swift */; };
 		8357BC3B1D3F5DBA00B011B9 /* MoaDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8357BC3A1D3F5DBA00B011B9 /* MoaDistrib.swift */; };
 		836E55EE1D467D2E00A2501F /* MapTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836E55ED1D467D2E00A2501F /* MapTabViewController.swift */; };
+		836E55F71D46864B00A2501F /* FBAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836E55F01D46864B00A2501F /* FBAnnotation.swift */; };
+		836E55F81D46864B00A2501F /* FBAnnotationCluster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836E55F11D46864B00A2501F /* FBAnnotationCluster.swift */; };
+		836E55F91D46864B00A2501F /* FBAnnotationClusterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836E55F21D46864B00A2501F /* FBAnnotationClusterView.swift */; };
+		836E55FA1D46864B00A2501F /* FBBoundingBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836E55F31D46864B00A2501F /* FBBoundingBox.swift */; };
+		836E55FB1D46864B00A2501F /* FBClusteringManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836E55F41D46864B00A2501F /* FBClusteringManager.swift */; };
+		836E55FC1D46864B00A2501F /* FBQuadTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836E55F51D46864B00A2501F /* FBQuadTree.swift */; };
+		836E55FD1D46864B00A2501F /* FBQuadTreeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836E55F61D46864B00A2501F /* FBQuadTreeNode.swift */; };
 		8387EB851D43357E007CF0F6 /* WishlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8387EB841D43357E007CF0F6 /* WishlistViewController.swift */; };
 		8387EB871D4336A0007CF0F6 /* WishlistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8387EB861D4336A0007CF0F6 /* WishlistTableViewCell.swift */; };
 		8387EB891D43C1CB007CF0F6 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8387EB881D43C1CB007CF0F6 /* Reachability.swift */; };
@@ -56,6 +63,13 @@
 		8357BC361D3F5C3E00B011B9 /* AukDistrib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AukDistrib.swift; sourceTree = "<group>"; };
 		8357BC3A1D3F5DBA00B011B9 /* MoaDistrib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoaDistrib.swift; sourceTree = "<group>"; };
 		836E55ED1D467D2E00A2501F /* MapTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapTabViewController.swift; sourceTree = "<group>"; };
+		836E55F01D46864B00A2501F /* FBAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBAnnotation.swift; sourceTree = "<group>"; };
+		836E55F11D46864B00A2501F /* FBAnnotationCluster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBAnnotationCluster.swift; sourceTree = "<group>"; };
+		836E55F21D46864B00A2501F /* FBAnnotationClusterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBAnnotationClusterView.swift; sourceTree = "<group>"; };
+		836E55F31D46864B00A2501F /* FBBoundingBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBBoundingBox.swift; sourceTree = "<group>"; };
+		836E55F41D46864B00A2501F /* FBClusteringManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBClusteringManager.swift; sourceTree = "<group>"; };
+		836E55F51D46864B00A2501F /* FBQuadTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBQuadTree.swift; sourceTree = "<group>"; };
+		836E55F61D46864B00A2501F /* FBQuadTreeNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBQuadTreeNode.swift; sourceTree = "<group>"; };
 		8387EB841D43357E007CF0F6 /* WishlistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishlistViewController.swift; sourceTree = "<group>"; };
 		8387EB861D4336A0007CF0F6 /* WishlistTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishlistTableViewCell.swift; sourceTree = "<group>"; };
 		8387EB881D43C1CB007CF0F6 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
@@ -106,9 +120,24 @@
 		836E55EC1D467C9000A2501F /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				836E55EF1D4685C600A2501F /* FBAnnotationClusteringSwift */,
 				836E55ED1D467D2E00A2501F /* MapTabViewController.swift */,
 			);
 			name = Map;
+			sourceTree = "<group>";
+		};
+		836E55EF1D4685C600A2501F /* FBAnnotationClusteringSwift */ = {
+			isa = PBXGroup;
+			children = (
+				836E55F01D46864B00A2501F /* FBAnnotation.swift */,
+				836E55F11D46864B00A2501F /* FBAnnotationCluster.swift */,
+				836E55F21D46864B00A2501F /* FBAnnotationClusterView.swift */,
+				836E55F31D46864B00A2501F /* FBBoundingBox.swift */,
+				836E55F41D46864B00A2501F /* FBClusteringManager.swift */,
+				836E55F51D46864B00A2501F /* FBQuadTree.swift */,
+				836E55F61D46864B00A2501F /* FBQuadTreeNode.swift */,
+			);
+			name = FBAnnotationClusteringSwift;
 			sourceTree = "<group>";
 		};
 		8387EB831D43352C007CF0F6 /* Wishlist */ = {
@@ -324,16 +353,22 @@
 				83EAD55E1D391FA300A58F39 /* RegionTableViewCell.swift in Sources */,
 				83E21A151CAAEF0900BA5EA0 /* NetworkClient.swift in Sources */,
 				836E55EE1D467D2E00A2501F /* MapTabViewController.swift in Sources */,
+				836E55F91D46864B00A2501F /* FBAnnotationClusterView.swift in Sources */,
 				831259971CB29150003870EE /* Region.swift in Sources */,
 				8357BC371D3F5C3E00B011B9 /* AukDistrib.swift in Sources */,
+				836E55FB1D46864B00A2501F /* FBClusteringManager.swift in Sources */,
+				836E55FA1D46864B00A2501F /* FBBoundingBox.swift in Sources */,
 				8387EB871D4336A0007CF0F6 /* WishlistTableViewCell.swift in Sources */,
 				83046BFE1CABD87F00693F83 /* SWXMLHash.swift in Sources */,
 				832D5AC81D45E24900938B2E /* MapViewController.swift in Sources */,
+				836E55F81D46864B00A2501F /* FBAnnotationCluster.swift in Sources */,
 				83E21A121CAAED0700BA5EA0 /* CoreDataStackManager.swift in Sources */,
+				836E55FD1D46864B00A2501F /* FBQuadTreeNode.swift in Sources */,
 				8387EB851D43357E007CF0F6 /* WishlistViewController.swift in Sources */,
 				83B5B72A1CA9015B00C4D63B /* AppDelegate.swift in Sources */,
 				832D5ACA1D46311200938B2E /* ImageViewController.swift in Sources */,
 				83A313FB1D4526EB00F578E4 /* ApartmentDetailCell.swift in Sources */,
+				836E55F71D46864B00A2501F /* FBAnnotation.swift in Sources */,
 				83A0B6ED1D4107C6000AC9AA /* ImageSliderCell.swift in Sources */,
 				83A0B6F11D423E4F000AC9AA /* LabelTableViewCell.swift in Sources */,
 				83E21A101CAA9E3000BA5EA0 /* Model.xcdatamodeld in Sources */,
@@ -343,6 +378,7 @@
 				831259951CB29150003870EE /* House.swift in Sources */,
 				8312599B1CB29150003870EE /* Destination.swift in Sources */,
 				83F9E1FC1CED7A8D00C85296 /* DestinationTableViewCell.swift in Sources */,
+				836E55FC1D46864B00A2501F /* FBQuadTree.swift in Sources */,
 				83EAD5621D39245B00A58F39 /* HouseTableViewCell.swift in Sources */,
 				83F04E5B1D3CF2E40075C23F /* UpdatingViewController.swift in Sources */,
 				83E21A171CAAEF8000BA5EA0 /* Constants.swift in Sources */,

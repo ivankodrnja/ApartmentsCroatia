@@ -229,7 +229,7 @@
             </objects>
             <point key="canvasLocation" x="-50" y="652"/>
         </scene>
-        <!--Map-->
+        <!--Map Tab View Controller-->
         <scene sceneID="W0d-aY-DSN">
             <objects>
                 <viewController id="R7D-we-xT8" customClass="MapTabViewController" customModule="Apartments_Croatia" customModuleProvider="target" sceneMemberID="viewController">
@@ -243,6 +243,9 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="hcl-qW-mJL">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <connections>
+                                    <outlet property="delegate" destination="R7D-we-xT8" id="nkP-Bx-wea"/>
+                                </connections>
                             </mapView>
                         </subviews>
                         <constraints>
@@ -252,14 +255,14 @@
                             <constraint firstAttribute="trailingMargin" secondItem="hcl-qW-mJL" secondAttribute="trailing" constant="-20" id="igO-jf-ehB"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Map" image="Map Icon" selectedImage="Map Icon" id="Yhl-0A-1la"/>
+                    <navigationItem key="navigationItem" id="7Gx-Qg-gay"/>
                     <connections>
                         <outlet property="mapView" destination="hcl-qW-mJL" id="C4H-7n-yWw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kpn-1i-njb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-810" y="1520"/>
+            <point key="canvasLocation" x="2" y="1520"/>
         </scene>
         <!--Regions View Controller-->
         <scene sceneID="vJY-qX-fYJ">
@@ -738,7 +741,7 @@
                     <connections>
                         <segue destination="BDH-GM-XPa" kind="relationship" relationship="viewControllers" id="UkL-Pn-Hsv"/>
                         <segue destination="keK-km-r7v" kind="relationship" relationship="viewControllers" id="KFW-wR-AOu"/>
-                        <segue destination="R7D-we-xT8" kind="relationship" relationship="viewControllers" id="aoL-lv-1fq"/>
+                        <segue destination="Yja-E4-Zfa" kind="relationship" relationship="viewControllers" id="aoL-lv-1fq"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="91e-Xb-ieX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1381,6 +1384,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gjv-Nz-ns6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2785" y="720"/>
+        </scene>
+        <!--Map-->
+        <scene sceneID="qfN-Zf-4zY">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Yja-E4-Zfa" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Map" image="Map Icon" selectedImage="Map Icon" id="Yhl-0A-1la"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wwZ-uB-Q4w">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="R7D-we-xT8" kind="relationship" relationship="rootViewController" id="Rti-tZ-6Av"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2xg-na-gez" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-810" y="1520"/>
         </scene>
     </scenes>
     <resources>
