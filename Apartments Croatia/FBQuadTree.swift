@@ -22,6 +22,41 @@ public class FBQuadTree : NSObject {
         
     }
     
+    func removeAnnotation(annotation:MKAnnotation) -> Bool {
+        return self.removeAnnotation(annotation, fromNode: self.rootNode!)
+    }
+    
+    func removeAnnotation(annotation:MKAnnotation, fromNode node:FBQuadTreeNode) -> Bool {
+        
+        if !FBQuadTreeNode.FBBoundingBoxContainsCoordinate(node.boundingBox!, coordinate: annotation.coordinate) {
+            return false
+        }
+        
+        if (node.annotations.contains({$0 === annotation})) {
+            let index = node.annotations.indexOf({$0 === annotation})
+            node.annotations.removeAtIndex(index!)
+            node.count -= 1
+            return true
+        }
+        
+        if self.removeAnnotation(annotation, fromNode: node.northEast!) {
+            return true
+        }
+        
+        if self.removeAnnotation(annotation, fromNode: node.northWest!) {
+            return true
+        }
+        
+        if self.removeAnnotation(annotation, fromNode: node.southEast!) {
+            return true
+        }
+        
+        if self.removeAnnotation(annotation, fromNode: node.southWest!) {
+            return true
+        }
+        return false
+    }
+    
     func insertAnnotation(annotation:MKAnnotation) -> Bool {
         return insertAnnotation(annotation, toNode:rootNode!)
     }

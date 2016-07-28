@@ -9,35 +9,56 @@
 import UIKit
 import MapKit
 import CoreData
-
+import CoreLocation
 
 class MapTabViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     
     // init of the FBClusterManager
     let clusteringManager = FBClusteringManager()
     
+    // allhouses annotations array
+    var allHousesAnnotationsArray : [MKAnnotation]?
+    // wishlisthouses annotations array
+    var wishlistHousesAnnotationsArray : [MKAnnotation]?
+    
+    //control over selcted segment in the segmented control
+    var segmentedControlIndex: Int = 0
+    
+    // will serve for requesting the user current location
+    let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let array:[MKAnnotation] = houseLocations()
-        clusteringManager.addAnnotations(array)
-        clusteringManager.delegate = self
+
         // show the map
         let latitude = 44.281863
         let longitude = 16.382595
         mapView.mapType = MKMapType.Hybrid
-        let location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-        let span = MKCoordinateSpanMake(7.9, 7.9)
-        let region = MKCoordinateRegion(center: location, span: span)
-        mapView.setRegion(region, animated: true)
-        /*
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = location
-         */
+        showMapRect(latitude: latitude, longitude: longitude)
+        
+        // show all houses
+        clusteringManager.delegate = self
+        showAllHouses()
+        
+        // will serve for requesting the user current location
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.startUpdatingLocation()
+            mapView.showsUserLocation = true
+        }
+
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        // Start get the location on viewWillAppear
+        locationManager.startUpdatingLocation()
     }
     
     // MARK: - Core Data Convenience
@@ -46,10 +67,20 @@ class MapTabViewController: UIViewController {
         return CoreDataStackManager.sharedInstance().managedObjectContext
     }
     
-    func getAllLatLng() -> [House] {
+    func getAllHousesLatLng() -> [House] {
         
-        let getAllLatLngFetchRequest = NSFetchRequest(entityName: "House")
-        let allLatLng = (try! sharedContext.executeFetchRequest(getAllLatLngFetchRequest)) as! [House]
+        let getAllHousesLatLngFetchRequest = NSFetchRequest(entityName: "House")
+        let allLatLng = (try! sharedContext.executeFetchRequest(getAllHousesLatLngFetchRequest)) as! [House]
+        
+        return allLatLng
+        
+    }
+    
+    func getWishlistHousesLatLng() -> [House] {
+        
+        let getAllHousesLatLngFetchRequest = NSFetchRequest(entityName: "House")
+        getAllHousesLatLngFetchRequest.predicate = NSPredicate(format: "favorite == %@", "Y")
+        let allLatLng = (try! sharedContext.executeFetchRequest(getAllHousesLatLngFetchRequest)) as! [House]
         
         return allLatLng
         
@@ -57,21 +88,110 @@ class MapTabViewController: UIViewController {
     
     // MARK: - Utility
     
-    func houseLocations() -> [FBAnnotation] {
-        var array:[FBAnnotation] = []
-        let allLatLng = getAllLatLng()
+    func showAllHouses() {
+        var fbArray:[FBAnnotation] = []
+        let allLatLng = getAllHousesLatLng()
         
         for house in allLatLng {
             let a:FBAnnotation = FBAnnotation()
             a.coordinate = CLLocationCoordinate2D(latitude:house.latitude, longitude: house.longitude )
             a.title = house.name
             a.house = house
-            array.append(a)
+            fbArray.append(a)
         }
+        allHousesAnnotationsArray = fbArray
 
-        return array
+        clusteringManager.addAnnotations(allHousesAnnotationsArray!)
     }
     
+    func showHousesFromWishlist() {
+        var fbArray:[FBAnnotation] = []
+        let allLatLng = getWishlistHousesLatLng()
+        
+        for house in allLatLng {
+            let a:FBAnnotation = FBAnnotation()
+            a.coordinate = CLLocationCoordinate2D(latitude:house.latitude, longitude: house.longitude )
+            a.title = house.name
+            a.house = house
+            fbArray.append(a)
+        }
+        wishlistHousesAnnotationsArray = fbArray
+
+        clusteringManager.addAnnotations(wishlistHousesAnnotationsArray!)
+
+    }
+    
+    func showMapRect(latitude latitude: Double, longitude: Double) {
+    
+        mapView.showsPointsOfInterest = false
+        let location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        let span = MKCoordinateSpanMake(8.1, 8.1)
+        let region = MKCoordinateRegion(center: location, span: span)
+        mapView.setRegion(region, animated: true)
+        
+    }
+    
+
+    
+    @IBAction func segmentedControlAction(sender: AnyObject) {
+        
+        
+        
+        switch sender.selectedSegmentIndex {
+        case 0:
+            self.segmentedControlIndex = 0
+            mapView.removeAnnotations(wishlistHousesAnnotationsArray!)
+            clusteringManager.removeAnnotations(wishlistHousesAnnotationsArray!)
+            clusteringManager.addAnnotations(allHousesAnnotationsArray!)
+            self.showMapRect(latitude: 44.281863, longitude: 16.382595)
+            
+        case 1:
+            self.segmentedControlIndex = 1
+            self.showHousesFromWishlist()
+            mapView.removeAnnotations(allHousesAnnotationsArray!)
+            clusteringManager.removeAnnotations(allHousesAnnotationsArray!)
+            self.showMapRect(latitude: 44.281862, longitude: 16.382594)
+            
+        case 2:
+            self.segmentedControlIndex = 2
+            return
+            
+        case 3:
+            // selected segment will remain the one which was previously selected
+            self.segmentedControl.selectedSegmentIndex = self.segmentedControlIndex
+            self.chooseMapStyle()
+        default:
+            return
+        }
+    }
+    
+    func chooseMapStyle() {
+        
+        let alert = UIAlertController(title: "Choose Map Style", message: nil, preferredStyle: .Alert) // 1
+        let firstAction = UIAlertAction(title: "Standard", style: .Default) { (alert: UIAlertAction!) -> Void in
+            self.mapView.mapType = MKMapType.Standard
+        }
+        
+        let secondAction = UIAlertAction(title: "Satellite", style: .Default) { (alert: UIAlertAction!) -> Void in
+            self.mapView.mapType = MKMapType.Satellite
+        }
+        
+        let thirdAction = UIAlertAction(title: "Hybrid", style: .Default) { (alert: UIAlertAction!) -> Void in
+            self.mapView.mapType = MKMapType.Hybrid
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (alert: UIAlertAction!) -> Void in
+            
+        }
+        
+        alert.addAction(firstAction)
+        alert.addAction(secondAction)
+        alert.addAction(thirdAction)
+        alert.addAction(cancelAction)
+        
+        presentViewController(alert, animated: true, completion:nil)
+        
+    }
 }
 
     
@@ -116,9 +236,11 @@ extension MapTabViewController : MKMapViewDelegate {
             clusterView = FBAnnotationClusterView(annotation: annotation, reuseIdentifier: reuseId, options: nil)
             
             return clusterView
-            
-        } else {
-            
+          
+            // show user location as a blue dot
+        } else if annotation.isKindOfClass(MKUserLocation) {
+            return nil
+        } else  {
             reuseId = "Pin"
             var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId) as? MKPinAnnotationView
             pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
@@ -147,4 +269,17 @@ extension MapTabViewController : MKMapViewDelegate {
         }
     }
     
+}
+
+extension MapTabViewController: CLLocationManagerDelegate {
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        NetworkClient.sharedInstance().userLocationLatitude = (locations.last?.coordinate.latitude)!
+        NetworkClient.sharedInstance().userLocationLongitude = (locations.last?.coordinate.longitude)!
+        
+    }
+    
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        print(error)
+    }
 }

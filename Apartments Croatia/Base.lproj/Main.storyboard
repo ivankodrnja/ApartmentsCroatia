@@ -255,9 +255,25 @@
                             <constraint firstAttribute="trailingMargin" secondItem="hcl-qW-mJL" secondAttribute="trailing" constant="-20" id="igO-jf-ehB"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="7Gx-Qg-gay"/>
+                    <navigationItem key="navigationItem" id="7Gx-Qg-gay">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="AHj-Ui-h2k">
+                            <rect key="frame" x="149" y="7" width="303" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Home"/>
+                                <segment title="Wishlist"/>
+                                <segment title="Nearby"/>
+                                <segment title="Map Style"/>
+                            </segments>
+                            <connections>
+                                <action selector="segmentedControlAction:" destination="R7D-we-xT8" eventType="valueChanged" id="Lm3-pI-UYt"/>
+                            </connections>
+                        </segmentedControl>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="hcl-qW-mJL" id="C4H-7n-yWw"/>
+                        <outlet property="segmentedControl" destination="AHj-Ui-h2k" id="Mah-K0-MKj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kpn-1i-njb" userLabel="First Responder" sceneMemberID="firstResponder"/>

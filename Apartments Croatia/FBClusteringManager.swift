@@ -51,6 +51,20 @@ public class FBClusteringManager : NSObject {
         lock.unlock()
     }
     
+    public func removeAnnotations(annotations: [MKAnnotation]){
+        if tree == nil{
+            return
+        }
+        
+        lock.lock()
+        
+        for annotation in annotations {
+            tree!.removeAnnotation(annotation)
+        }
+        
+        lock.unlock()
+    }
+    
     public func clusteredAnnotationsWithinMapRect(rect:MKMapRect, withZoomScale zoomScale:Double) -> [MKAnnotation]{
         guard !zoomScale.isInfinite else { return [] }
         

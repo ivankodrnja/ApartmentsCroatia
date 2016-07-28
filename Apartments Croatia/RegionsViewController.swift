@@ -37,7 +37,7 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
         locationManager.requestWhenInUseAuthorization()
         
         if CLLocationManager.locationServicesEnabled() {
-            locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.requestLocation()
         }
     }
