@@ -178,9 +178,11 @@ class MapTabViewController: UIViewController {
             }
             self.segmentedControlIndex = 1
             
-            if wishlistHousesAnnotationsArray != nil {
+   
+            
+          //  if wishlistHousesAnnotationsArray != nil {
                 self.showHousesFromWishlist()
-            }
+            //}
             self.showMapRect(latitude: 44.281862, longitude: 16.382594)
         
         // show nearby houses

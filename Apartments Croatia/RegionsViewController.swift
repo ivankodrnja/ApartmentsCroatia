@@ -10,16 +10,23 @@ import UIKit
 import CoreData
 import CoreLocation
 
-
 class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
-
+    
     @IBOutlet weak var tableView: UITableView!
     // will serve for requesting the user current location
     let locationManager = CLLocationManager()
     
+    
+    // initialize search controller
+    var searchController = UISearchController(searchResultsController: nil)
+    
+    var destinationSearchResults: [Destination]?
+    var houeseSearchResults: [House]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
         // Do any additional setup after loading the view.
         
         // fetch results
@@ -40,6 +47,25 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.requestLocation()
         }
+        
+        
+        self.navigationItem.title = "Apartments Croatia"
+        // search
+        
+        searchController.searchResultsUpdater = self
+
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        //self.navigationItem.titleView = searchController.searchBar
+        tableView.tableHeaderView = searchController.searchBar
+        searchController.searchBar.scopeButtonTitles = ["Destination", "House"]
+        searchController.searchBar.delegate = self
+        
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 100
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,6 +73,26 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Dispose of any resources that can be recreated.
     }
     
+    func getDestinationName(searchText: String) -> [Destination] {
+        
+        let getDestinationByNameFetchRequest = NSFetchRequest(entityName: "Destination")
+        getDestinationByNameFetchRequest.predicate = NSPredicate(format: "name CONTAINS %@", searchText)
+        let allDestinations = (try! sharedContext.executeFetchRequest(getDestinationByNameFetchRequest)) as! [Destination]
+        
+        return allDestinations
+        
+    }
+    
+    func getHouseName(searchText: String) -> [House] {
+        
+        let getHouseByNameFetchRequest = NSFetchRequest(entityName: "House")
+        getHouseByNameFetchRequest.predicate = NSPredicate(format: "name CONTAINS %@", searchText)
+        let allHouses = (try! sharedContext.executeFetchRequest(getHouseByNameFetchRequest)) as! [House]
+        
+        return allHouses
+        
+    }
+
     // TODO:delete
     var loop = 1
     
@@ -104,23 +150,68 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     // MARK: - Table View
     
+    /*
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
         return 100
     }
-    
+ */
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // TODO: delete
+        if searchController.active && searchController.searchBar.text != "" {
+            
+            let scope = searchController.searchBar.scopeButtonTitles![searchController.searchBar.selectedScopeButtonIndex]
+            
+            if scope == "Destination" {
+                return (destinationSearchResults?.count)!
+            } else {
+                return (houeseSearchResults?.count)!
+            }
+            
+        } else {
         let sectionInfo = self.fetchedResultsController.sections![section]
         return sectionInfo.numberOfObjects
-        
+        }
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         /* Get cell type */
+        
+        //TODO: delete
+        
+        if searchController.active && searchController.searchBar.text != "" {
+            
+            let scope = searchController.searchBar.scopeButtonTitles![searchController.searchBar.selectedScopeButtonIndex]
+            
+            if scope == "Destination" {
+                let destination = destinationSearchResults![indexPath.row]
+                let cell = tableView.dequeueReusableCellWithIdentifier("DestinationsCell", forIndexPath: indexPath) as! DestinationTableViewCell
+                cell.nameLabel.text = destination.name
+                return cell
+            } else {
+                let house = houeseSearchResults![indexPath.row]
+                let cell = tableView.dequeueReusableCellWithIdentifier("HousesCell", forIndexPath: indexPath) as! HouseTableViewCell
+                cell.nameLabel.text = house.name
+                // TODO: localization cell.toTheSeaLabel.text
+                cell.toTheSeaDistance.text = "\(house.seaDistance) m"
+                // TODO: localization cell.toTheCenterLabel.text
+                cell.toTheCenterDistance.text = "\(house.centerDistance) m"
+                // TODO: localization cell.dailyFromLabel.text
+                if (house.priceFrom == 0){
+                    cell.dailyFromPrice.text = "Request"
+                } else{
+                    cell.dailyFromPrice.text = "\(house.priceFrom) EUR"
+                }
+                cell.locationLabel.text = "\(house.destination!.name), \(house.destination!.region!.name)"
+                return cell
+            }
+            
+        } else {
+        
         
         let region = fetchedResultsController.objectAtIndexPath(indexPath) as! Region
         
@@ -128,10 +219,13 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier)! as! RegionTableViewCell
         
+        
+        
         configureCell(cell, withRegion: region, atIndexPath: indexPath)
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         
         return cell
+        }
     }
     
 
@@ -219,6 +313,7 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
 
 }
 
+// MARK: - Core Location Delegate
 
 extension RegionsViewController: CLLocationManagerDelegate {
     
@@ -230,5 +325,43 @@ extension RegionsViewController: CLLocationManagerDelegate {
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
         print(error)
+    }
+}
+
+// MARK: - UISearchResultsUpdating
+
+extension RegionsViewController: UISearchResultsUpdating {
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+        let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
+        
+        switch scope {
+            case "Destination":
+            destinationSearchResults = getDestinationName(searchController.searchBar.text!)
+            tableView.reloadData()
+            case "House":
+            houeseSearchResults = getHouseName(searchController.searchBar.text!)
+            tableView.reloadData()
+                default:
+            return
+        }
+        
+    }
+}
+
+// MARK: - SearchBarDelegate
+extension RegionsViewController: UISearchBarDelegate {
+    func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        let scope = searchBar.scopeButtonTitles![selectedScope]
+        switch scope {
+        case "Destination":
+           destinationSearchResults = getDestinationName(searchController.searchBar.text!)
+            
+        case "House":
+           houeseSearchResults = getHouseName(searchController.searchBar.text!)
+        default:
+            return
+        }
+
     }
 }
