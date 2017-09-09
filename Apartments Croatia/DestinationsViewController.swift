@@ -45,9 +45,9 @@ class DestinationsViewController: UIViewController, UITableViewDelegate, UITable
         return CoreDataStackManager.sharedInstance().managedObjectContext
     }
     
-    lazy var fetchedResultsController: NSFetchedResultsController = {
+    lazy var fetchedResultsController: NSFetchedResultsController<Destination> = {
         
-        let fetchRequest = NSFetchRequest(entityName: "Destination")
+        let fetchRequest = NSFetchRequest<Destination>(entityName: "Destination")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true, selector: #selector(NSString.localizedStandardCompare(_:)))]
 
         // return only destiations that contain houses
@@ -63,42 +63,42 @@ class DestinationsViewController: UIViewController, UITableViewDelegate, UITable
     
     // MARK: - Table View
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 
         return 80
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sectionInfo = self.fetchedResultsController.sections![section]
         return sectionInfo.numberOfObjects
         
     }
     
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         /* Get cell type */
         
-        let destination = fetchedResultsController.objectAtIndexPath(indexPath) as! Destination
+        let destination = fetchedResultsController.object(at: indexPath) 
         
         let cellReuseIdentifier = "DestinationsCell"
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier)! as! DestinationTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier)! as! DestinationTableViewCell
         
         configureCell(cell, withDestination: destination, atIndexPath: indexPath)
-        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
         
         return cell
     }
     
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let controller = storyboard!.instantiateViewControllerWithIdentifier("HousesViewController") as! HousesViewController
-        let destination = fetchedResultsController.objectAtIndexPath(indexPath) as! Destination
+        let controller = storyboard!.instantiateViewController(withIdentifier: "HousesViewController") as! HousesViewController
+        let destination = fetchedResultsController.object(at: indexPath) 
         
         // set destination object in the detail VC
         controller.destination = destination
@@ -109,10 +109,10 @@ class DestinationsViewController: UIViewController, UITableViewDelegate, UITable
     
     // MARK: - Configure Cell
     
-    func configureCell(cell: DestinationTableViewCell, withDestination destination: Destination, atIndexPath indexPath: NSIndexPath) {
+    func configureCell(_ cell: DestinationTableViewCell, withDestination destination: Destination, atIndexPath indexPath: IndexPath) {
         // make table cell separators stretch throught the screen width, in Storyboard separator insets of the table view and the cell have also set to 0
         cell.preservesSuperviewLayoutMargins = false
-        cell.layoutMargins = UIEdgeInsetsZero
+        cell.layoutMargins = UIEdgeInsets.zero
         
         
         //***** set the apartment name or heading *****//
@@ -125,54 +125,54 @@ class DestinationsViewController: UIViewController, UITableViewDelegate, UITable
     
     // MARK: - Fetched Results Controller Delegate
     
-    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         self.tableView.beginUpdates()
     }
     
-    func controller(controller: NSFetchedResultsController,
-                    didChangeSection sectionInfo: NSFetchedResultsSectionInfo,
-                                     atIndex sectionIndex: Int,
-                                             forChangeType type: NSFetchedResultsChangeType) {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
+                    didChange sectionInfo: NSFetchedResultsSectionInfo,
+                                     atSectionIndex sectionIndex: Int,
+                                             for type: NSFetchedResultsChangeType) {
         
         switch type {
-        case .Insert:
-            self.tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
+        case .insert:
+            self.tableView.insertSections(IndexSet(integer: sectionIndex), with: .fade)
             
-        case .Delete:
-            self.tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
+        case .delete:
+            self.tableView.deleteSections(IndexSet(integer: sectionIndex), with: .fade)
             
         default:
             return
         }
     }
     
-    func controller(controller: NSFetchedResultsController,
-                    didChangeObject anObject: AnyObject,
-                                    atIndexPath indexPath: NSIndexPath?,
-                                                forChangeType type: NSFetchedResultsChangeType,
-                                                              newIndexPath: NSIndexPath?) {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
+                    didChange anObject: Any,
+                                    at indexPath: IndexPath?,
+                                                for type: NSFetchedResultsChangeType,
+                                                              newIndexPath: IndexPath?) {
         
         switch type {
-        case .Insert:
+        case .insert:
             // check for previously cached images at indexPath.row
-            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
+            tableView.insertRows(at: [newIndexPath!], with: .fade)
             
             
-        case .Delete:
-            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
+        case .delete:
+            tableView.deleteRows(at: [indexPath!], with: .fade)
             
-        case .Update:
-            let cell = tableView.cellForRowAtIndexPath(indexPath!) as! DestinationTableViewCell
-            let destination = controller.objectAtIndexPath(indexPath!) as! Destination
+        case .update:
+            let cell = tableView.cellForRow(at: indexPath!) as! DestinationTableViewCell
+            let destination = controller.object(at: indexPath!) as! Destination
             self.configureCell(cell, withDestination: destination, atIndexPath: indexPath!)
             
-        case .Move:
-            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
-            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
+        case .move:
+            tableView.deleteRows(at: [indexPath!], with: .fade)
+            tableView.insertRows(at: [newIndexPath!], with: .fade)
             
         }
     }
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         self.tableView.endUpdates()
     }
 }

@@ -43,16 +43,16 @@ class House: NSManagedObject {
     @NSManaged var photos: [Photo]
     
     
-    override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
-        super.init(entity: entity, insertIntoManagedObjectContext: context)
+    override init(entity: NSEntityDescription, insertInto context: NSManagedObjectContext?) {
+        super.init(entity: entity, insertInto: context)
     }
     
     
     init(dictionary: [String : Any], context: NSManagedObjectContext) {
         
-        let entity =  NSEntityDescription.entityForName("House", inManagedObjectContext: context)!
+        let entity =  NSEntityDescription.entity(forEntityName: "House", in: context)!
         
-        super.init(entity: entity,insertIntoManagedObjectContext: context)
+        super.init(entity: entity,insertInto: context)
         
         // After the Core Data work has been taken care of we can init the properties from the
         // dictionary. This works in the same way that it did before we started on Core Data

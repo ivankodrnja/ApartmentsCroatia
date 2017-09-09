@@ -18,7 +18,10 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     
     // initialize search controller
-    var searchController = UISearchController(searchResultsController: nil)
+    //var resultsTableController = UITableViewController(style: .Plain)
+    //var searchController = UISearchController(searchResultsController: nil)
+    var resultsTableController: SearchResultsViewController!
+    var searchController: UISearchController!
     
     var destinationSearchResults: [Destination]?
     var houeseSearchResults: [House]?
@@ -37,7 +40,7 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         fetchedResultsController.delegate = self
 
-        tableView.tableFooterView = UIView()
+        
         
         // will serve for requesting the user current location
         locationManager.delegate = self
@@ -51,43 +54,50 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         self.navigationItem.title = "Apartments Croatia"
         // search
+        resultsTableController = SearchResultsViewController()
+        self.searchController = UISearchController(searchResultsController: resultsTableController)
         
-        searchController.searchResultsUpdater = self
-
-        searchController.hidesNavigationBarDuringPresentation = false
-        searchController.dimsBackgroundDuringPresentation = false
-        definesPresentationContext = true
-        //self.navigationItem.titleView = searchController.searchBar
-        tableView.tableHeaderView = searchController.searchBar
-        searchController.searchBar.scopeButtonTitles = ["Destination", "House"]
-        searchController.searchBar.delegate = self
-        
-        
+        /*
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100
-
+         */
+        tableView.tableFooterView = UIView()
     }
+    
 
+    @IBAction func searchButtonClicked(_ sender: AnyObject) {
+        
+        self.searchController.hidesNavigationBarDuringPresentation = true
+        self.searchController.searchResultsUpdater = self
+        self.searchController.dimsBackgroundDuringPresentation = false
+        self.definesPresentationContext = true
+        self.searchController.searchBar.scopeButtonTitles = ["Destination", "House"]
+        self.searchController.searchBar.delegate = self
+        
+        self.present(self.searchController, animated: true, completion: nil)
+        
+        
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    func getDestinationName(searchText: String) -> [Destination] {
+    func getDestinationName(_ searchText: String) -> [Destination] {
         
-        let getDestinationByNameFetchRequest = NSFetchRequest(entityName: "Destination")
+        let getDestinationByNameFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Destination")
         getDestinationByNameFetchRequest.predicate = NSPredicate(format: "name CONTAINS %@", searchText)
-        let allDestinations = (try! sharedContext.executeFetchRequest(getDestinationByNameFetchRequest)) as! [Destination]
+        let allDestinations = (try! sharedContext.fetch(getDestinationByNameFetchRequest)) as! [Destination]
         
         return allDestinations
         
     }
     
-    func getHouseName(searchText: String) -> [House] {
+    func getHouseName(_ searchText: String) -> [House] {
         
-        let getHouseByNameFetchRequest = NSFetchRequest(entityName: "House")
+        let getHouseByNameFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "House")
         getHouseByNameFetchRequest.predicate = NSPredicate(format: "name CONTAINS %@", searchText)
-        let allHouses = (try! sharedContext.executeFetchRequest(getHouseByNameFetchRequest)) as! [House]
+        let allHouses = (try! sharedContext.fetch(getHouseByNameFetchRequest)) as! [House]
         
         return allHouses
         
@@ -96,31 +106,31 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
     // TODO:delete
     var loop = 1
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
 
         // TODO:delete and handle error in UpdatingVC
         if (loop == 1){
         let dateString = "2015-06-22"
-        let dateFormatter = NSDateFormatter()
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        let dateFromString = dateFormatter.dateFromString(dateString)
+        let dateFromString = dateFormatter.date(from: dateString)
         
-        NetworkClient.sharedInstance().defaults.setObject(dateFromString, forKey: "lastSyncDate")
+        NetworkClient.sharedInstance().defaults.set(dateFromString, forKey: "lastSyncDate")
             
         loop += 1
         }
         
         // present UpdatingViewController if syncing of databse occured 7 or more days ago
-        let lastSyncDate = NetworkClient.sharedInstance().defaults.objectForKey("lastSyncDate") as? NSDate ?? NSDate()
+        let lastSyncDate = NetworkClient.sharedInstance().defaults.object(forKey: "lastSyncDate") as? Date ?? Date()
         print("RegionsViewController lastSyncDate from NSUserDefaults: \(lastSyncDate)")
-        let today = NSDate()
+        let today = Date()
         
-        let diffDateComponents = NSCalendar.currentCalendar().components([NSCalendarUnit.Day], fromDate: lastSyncDate, toDate: today, options: NSCalendarOptions.init(rawValue: 0))
+        let diffDateComponents = (Calendar.current as NSCalendar).components([NSCalendar.Unit.day], from: lastSyncDate, to: today, options: NSCalendar.Options.init(rawValue: 0))
 
             
-           if (diffDateComponents.day > 7){
-            let updatingVC = self.storyboard?.instantiateViewControllerWithIdentifier("UpdatingViewController") as! UpdatingViewController
-            presentViewController(updatingVC, animated: true, completion: nil)
+           if (diffDateComponents.day! > 7){
+            let updatingVC = self.storyboard?.instantiateViewController(withIdentifier: "UpdatingViewController") as! UpdatingViewController
+            present(updatingVC, animated: true, completion: nil)
         }
         
 
@@ -132,9 +142,9 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
         return CoreDataStackManager.sharedInstance().managedObjectContext
     }
     
-    lazy var fetchedResultsController: NSFetchedResultsController = {
+    lazy var fetchedResultsController: NSFetchedResultsController<Region> = {
         
-        let fetchRequest = NSFetchRequest(entityName: "Region")
+        let fetchRequest = NSFetchRequest<Region>(entityName: "Region")
         
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "sortOrder", ascending: true)]
         // return only regions that contain destinations 
@@ -156,13 +166,13 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
         return 100
     }
  */
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // TODO: delete
-        if searchController.active && searchController.searchBar.text != "" {
+        if searchController.isActive && searchController.searchBar.text != "" {
             
             let scope = searchController.searchBar.scopeButtonTitles![searchController.searchBar.selectedScopeButtonIndex]
             
@@ -178,23 +188,23 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         /* Get cell type */
         
         //TODO: delete
         
-        if searchController.active && searchController.searchBar.text != "" {
+        if searchController.isActive && searchController.searchBar.text != "" {
             
             let scope = searchController.searchBar.scopeButtonTitles![searchController.searchBar.selectedScopeButtonIndex]
             
             if scope == "Destination" {
                 let destination = destinationSearchResults![indexPath.row]
-                let cell = tableView.dequeueReusableCellWithIdentifier("DestinationsCell", forIndexPath: indexPath) as! DestinationTableViewCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "DestinationsCell", for: indexPath) as! DestinationTableViewCell
                 cell.nameLabel.text = destination.name
                 return cell
             } else {
                 let house = houeseSearchResults![indexPath.row]
-                let cell = tableView.dequeueReusableCellWithIdentifier("HousesCell", forIndexPath: indexPath) as! HouseTableViewCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "HousesCell", for: indexPath) as! HouseTableViewCell
                 cell.nameLabel.text = house.name
                 // TODO: localization cell.toTheSeaLabel.text
                 cell.toTheSeaDistance.text = "\(house.seaDistance) m"
@@ -213,16 +223,16 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
         } else {
         
         
-        let region = fetchedResultsController.objectAtIndexPath(indexPath) as! Region
+        let region = fetchedResultsController.object(at: indexPath) 
         
         let cellReuseIdentifier = "RegionsCell"
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier)! as! RegionTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier)! as! RegionTableViewCell
         
         
         
         configureCell(cell, withRegion: region, atIndexPath: indexPath)
-        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
         
         return cell
         }
@@ -232,10 +242,10 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     // MARK: - Configure Cell
     
-    func configureCell(cell: RegionTableViewCell, withRegion region: Region, atIndexPath indexPath: NSIndexPath) {
+    func configureCell(_ cell: RegionTableViewCell, withRegion region: Region, atIndexPath indexPath: IndexPath) {
         // make table cell separators stretch throught the screen width, in Storyboard separator insets of the table view and the cell have also set to 0
         cell.preservesSuperviewLayoutMargins = false
-        cell.layoutMargins = UIEdgeInsetsZero
+        cell.layoutMargins = UIEdgeInsets.zero
         
         
         
@@ -246,10 +256,10 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
         
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let controller = storyboard!.instantiateViewControllerWithIdentifier("DestinationsViewController") as! DestinationsViewController
-        let region = fetchedResultsController.objectAtIndexPath(indexPath) as! Region
+        let controller = storyboard!.instantiateViewController(withIdentifier: "DestinationsViewController") as! DestinationsViewController
+        let region = fetchedResultsController.object(at: indexPath) 
         
         // set region object in the detail VC
         controller.region = region
@@ -260,54 +270,54 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     // MARK: - Fetched Results Controller Delegate
     
-    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         self.tableView.beginUpdates()
     }
     
-    func controller(controller: NSFetchedResultsController,
-                    didChangeSection sectionInfo: NSFetchedResultsSectionInfo,
-                                     atIndex sectionIndex: Int,
-                                             forChangeType type: NSFetchedResultsChangeType) {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
+                    didChange sectionInfo: NSFetchedResultsSectionInfo,
+                                     atSectionIndex sectionIndex: Int,
+                                             for type: NSFetchedResultsChangeType) {
         
         switch type {
-        case .Insert:
-            self.tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
+        case .insert:
+            self.tableView.insertSections(IndexSet(integer: sectionIndex), with: .fade)
             
-        case .Delete:
-            self.tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
+        case .delete:
+            self.tableView.deleteSections(IndexSet(integer: sectionIndex), with: .fade)
             
         default:
             return
         }
     }
     
-    func controller(controller: NSFetchedResultsController,
-                    didChangeObject anObject: AnyObject,
-                                    atIndexPath indexPath: NSIndexPath?,
-                                                forChangeType type: NSFetchedResultsChangeType,
-                                                              newIndexPath: NSIndexPath?) {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
+                    didChange anObject: Any,
+                                    at indexPath: IndexPath?,
+                                                for type: NSFetchedResultsChangeType,
+                                                              newIndexPath: IndexPath?) {
         
         switch type {
-        case .Insert:
+        case .insert:
             // check for previously cached images at indexPath.row
-            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
+            tableView.insertRows(at: [newIndexPath!], with: .fade)
             
             
-        case .Delete:
-            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
+        case .delete:
+            tableView.deleteRows(at: [indexPath!], with: .fade)
             
-        case .Update:
-            let cell = tableView.cellForRowAtIndexPath(indexPath!) as! RegionTableViewCell
-            let region = controller.objectAtIndexPath(indexPath!) as! Region
+        case .update:
+            let cell = tableView.cellForRow(at: indexPath!) as! RegionTableViewCell
+            let region = controller.object(at: indexPath!) as! Region
             self.configureCell(cell, withRegion: region, atIndexPath: indexPath!)
             
-        case .Move:
-            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
-            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
+        case .move:
+            tableView.deleteRows(at: [indexPath!], with: .fade)
+            tableView.insertRows(at: [newIndexPath!], with: .fade)
             
         }
     }
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         self.tableView.endUpdates()
     }
 
@@ -317,13 +327,13 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
 
 extension RegionsViewController: CLLocationManagerDelegate {
     
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         NetworkClient.sharedInstance().userLocationLatitude = (locations.last?.coordinate.latitude)!
         NetworkClient.sharedInstance().userLocationLongitude = (locations.last?.coordinate.longitude)!
 
     }
     
-    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error)
     }
 }
@@ -331,7 +341,7 @@ extension RegionsViewController: CLLocationManagerDelegate {
 // MARK: - UISearchResultsUpdating
 
 extension RegionsViewController: UISearchResultsUpdating {
-    func updateSearchResultsForSearchController(searchController: UISearchController) {
+    func updateSearchResults(for searchController: UISearchController) {
         let searchBar = searchController.searchBar
         let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
         
@@ -351,7 +361,7 @@ extension RegionsViewController: UISearchResultsUpdating {
 
 // MARK: - SearchBarDelegate
 extension RegionsViewController: UISearchBarDelegate {
-    func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         let scope = searchBar.scopeButtonTitles![selectedScope]
         switch scope {
         case "Destination":

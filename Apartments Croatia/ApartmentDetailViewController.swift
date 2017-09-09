@@ -36,29 +36,29 @@ class ApartmentDetailViewController: UIViewController, UITableViewDelegate, UITa
     
     // MARK: - Table view data source
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return apartments!.count
         
     }
     
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let apartment = apartments![indexPath.row]
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("ApartmentDetailCell", forIndexPath: indexPath) as! ApartmentDetailCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ApartmentDetailCell", for: indexPath) as! ApartmentDetailCell
         
         // make table cell separators stretch throught the screen width
         cell.preservesSuperviewLayoutMargins = false
-        cell.layoutMargins = UIEdgeInsetsZero
-        cell.separatorInset = UIEdgeInsetsZero
+        cell.layoutMargins = UIEdgeInsets.zero
+        cell.separatorInset = UIEdgeInsets.zero
 
-        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
         
         cell.apartmentType.text = apartment.type + " \(apartmentsCount)"
         cell.numberOfBedsValue.text = apartment.numberOfBeds
@@ -87,7 +87,7 @@ class ApartmentDetailViewController: UIViewController, UITableViewDelegate, UITa
         
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         return
     }
 

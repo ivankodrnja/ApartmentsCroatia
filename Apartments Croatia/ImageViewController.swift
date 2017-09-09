@@ -23,15 +23,15 @@ class ImageViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         // cache downloaded images and use Auk image slideshow library from https://github.com/evgenyneu/Auk
-        Moa.settings.cache.requestCachePolicy = .ReturnCacheDataElseLoad
+        Moa.settings.cache.requestCachePolicy = .returnCacheDataElseLoad
         for imageUrl in imageArray {
             scrollView.auk.settings.placeholderImage = UIImage(named: "LoadingImage")
             scrollView.auk.settings.errorImage = UIImage(named: "NoImage")
-            scrollView.auk.settings.contentMode = .ScaleAspectFit
+            scrollView.auk.settings.contentMode = .scaleAspectFit
             scrollView.auk.show(url: imageUrl)
         }
         
-        scrollView.auk.scrollTo(currentImageIndex!, animated: true)
+        scrollView.auk.scrollToPage(atIndex: currentImageIndex!, animated: true)
 
     }
     

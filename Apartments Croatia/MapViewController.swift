@@ -22,10 +22,10 @@ class MapViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Get directions", style: .Plain, target: self, action: #selector(getDirections))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Get directions", style: .plain, target: self, action: #selector(getDirections))
         
         
-        mapView.mapType = MKMapType.Hybrid
+        mapView.mapType = MKMapType.hybrid
         
         // draw the location of the house
         let location = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
@@ -51,7 +51,7 @@ class MapViewController: UIViewController {
         
         let mapItem = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!), addressDictionary: nil))
         let launchOptions = [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving]
-        mapItem.openInMapsWithLaunchOptions(launchOptions)
+        mapItem.openInMaps(launchOptions: launchOptions)
 
     }
 

@@ -12,17 +12,17 @@ import CoreData
 class NetworkClient: NSObject {
 
     
-    typealias CompletionHander = (result: AnyObject!, error: NSError?) -> Void
+    typealias CompletionHander = (_ result: AnyObject?, _ error: NSError?) -> Void
     
     /* Shared Session */
-    var session: NSURLSession
+    var session: URLSession
     
     override init() {
-        session = NSURLSession.sharedSession()
+        session = URLSession.shared
         super.init()
     }
     // will serve to store last db sync date
-    let defaults = NSUserDefaults.standardUserDefaults()
+    let defaults = UserDefaults.standard
     
     
     // will serve for storing current user's location
@@ -45,81 +45,80 @@ class NetworkClient: NSObject {
         return CoreDataStackManager.sharedInstance().managedObjectContext
     }
     
-    func getRegionByName(name: String) -> [Region] {
+    func getRegionByName(_ name: String) -> [Region] {
         
-        let regionByNameFetchRequest = NSFetchRequest(entityName: "Region")
+        let regionByNameFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Region")
         regionByNameFetchRequest.predicate = NSPredicate(format: "name == %@", name)
         
         
-        let regionByName = (try! sharedContext.executeFetchRequest(regionByNameFetchRequest)) as! [Region]
+        let regionByName = (try! sharedContext.fetch(regionByNameFetchRequest)) as! [Region]
         
         return regionByName
         
     }
     
-    func getDestinationByName(name: String) -> [Destination] {
+    func getDestinationByName(_ name: String) -> [Destination] {
         
-        let destinationByNameFetchRequest = NSFetchRequest(entityName: "Destination")
+        let destinationByNameFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Destination")
         destinationByNameFetchRequest.predicate = NSPredicate(format: "name == %@", name)
         
         
-        let destinationByName = (try! sharedContext.executeFetchRequest(destinationByNameFetchRequest)) as! [Destination]
+        let destinationByName = (try! sharedContext.fetch(destinationByNameFetchRequest)) as! [Destination]
         
         return destinationByName
     }
     
     
-    func getHouseById(houseid: Int) -> [House] {
+    func getHouseById(_ houseid: Int) -> [House] {
         
-        let houseByIdFetchRequest = NSFetchRequest(entityName: "House")
+        let houseByIdFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "House")
         houseByIdFetchRequest.predicate = NSPredicate(format: "houseid == \(houseid)")
         
         
-        let houseById = (try! sharedContext.executeFetchRequest(houseByIdFetchRequest)) as! [House]
+        let houseById = (try! sharedContext.fetch(houseByIdFetchRequest)) as! [House]
         
         return houseById
     }
     
-    func getRentals(modifiedDate: NSDate, completionHandler: (result: [String:AnyObject]?, error: NSError?) -> Void) {
+    func getRentals(_ modifiedDate: Date, completionHandlerForGetRentals: @escaping (_ result: [String:AnyObject]?, _ error: NSError?) -> Void) {
         
         /* 1. Set the parameters */
-        let dateFormatter = NSDateFormatter()
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        let stringFromDate = dateFormatter.stringFromDate(modifiedDate)
+        let stringFromDate = dateFormatter.string(from: modifiedDate)
         
         /* 2. Build the URL */
         let urlString = NetworkClient.Constants.baseUrl + NetworkClient.Constants.reloadMethod + stringFromDate
-        let url = NSURL(string: urlString)!
+        let url = URL(string: urlString)!
         
         /* 3. Configure the request */
-        let request = NSMutableURLRequest(URL: url)
+        let request = NSMutableURLRequest(url: url)
         
         /* 4. Make the request */
-        let task = session.dataTaskWithRequest(request) { data, response, error in
+        let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
+            
+            func sendError(_ error: String) {
+                print(error)
+                let userInfo = [NSLocalizedDescriptionKey : error]
+                completionHandlerForGetRentals(nil, NSError(domain: "getRentals", code: 1, userInfo: userInfo))
+            }
             
             /* GUARD: Was there an error? */
             guard (error == nil) else {
                 
-                completionHandler(result: nil, error: error)
-                print("There was an error with your request: \(error)")
+                sendError("There was an error with your request: \(error!)")
                 return
             }
             
             /* GUARD: Did we get a successful 2XX response? */
-            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
-                if let response = response as? NSHTTPURLResponse {
-                    print("Your request returned an invalid response! Status code: \(response.statusCode)!")
-                } else if let response = response {
-                    print("Your request returned an invalid response! Response: \(response)!")
-                } else {
-                    print("Your request returned an invalid response!")
-                }
+            guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
+                sendError("Your request returned a status code other than 2xx!")
                 return
             }
             
             /* GUARD: Was there any data returned? */
             guard let data = data else {
-                print("No data was returned by the request!")
+                sendError("No data was returned by the request!")
                 return
             }
             
@@ -152,7 +151,7 @@ class NetworkClient: NSObject {
                         
                         for photoelem in elem["photo"].children {
                             // each xml entry goes to temporary array which eventually goes to house object
-                            tempArray.append(photoelem.element!.text!)
+                            tempArray.append(photoelem.element!.text)
                             
                             // tempArray of photo objects will be added to house object after all photo elements have been added to tempDict
                             if(numberOfPhotoElements == countOfPhotoElements){
@@ -169,7 +168,7 @@ class NetworkClient: NSObject {
                         var numberOfApartmentObjects = 1
                         
                         for apartelem in elem["apartment"].children {
-                            tempDict["\(apartelem.element!.name)"] = apartelem.element!.text!
+                            tempDict["\(apartelem.element!.name)"] = apartelem.element!.text
                             
                             // each new apartment object finishes with <internet> xml element, when it occurs, add tempDict to tempApartmentArray and clear tempDict content
                             if(apartelem.element!.name == NetworkClient.XMLResponseKeys.ApartmentInternet){
@@ -199,12 +198,12 @@ class NetworkClient: NSObject {
                     default:
                         // check if xml element should be an int or a Duble and typecast it from string
                         if (NetworkClient.Constants.toInt.contains(elem.element!.name)){
-                           houseDict["\(elem.element!.name)"] = Int(elem.element!.text!)
+                           houseDict["\(elem.element!.name)"] = Int(elem.element!.text)
                         } else if (elem.element!.name == NetworkClient.XMLResponseKeys.HouseLatitude || elem.element!.name == NetworkClient.XMLResponseKeys.HouseLongitude){
-                            houseDict["\(elem.element!.name)"] = Double(elem.element!.text!)
+                            houseDict["\(elem.element!.name)"] = Double(elem.element!.text)
                             // leave as deafult type which is String
                         } else {
-                            houseDict["\(elem.element!.name)"] = elem.element!.text!
+                            houseDict["\(elem.element!.name)"] = elem.element!.text
                         }
                     }
                     
@@ -222,13 +221,13 @@ class NetworkClient: NSObject {
                 }
 
             } catch {
-                print("Could not parse the data as XML: '\(XMLIndexer.Error.self)'")
+                print("Could not parse the data as XML: '\(XMLIndexer.xmlError.self)'")
                 return
             }
             
             /* 6. Use the data! */
             // parse the newly created array and insert records into Core Data
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 for house in housesArray{
                     
                     // check the current database if region, destination or house exists, array's first function is used to return the corresponding object
@@ -277,7 +276,7 @@ class NetworkClient: NSObject {
                         }
                       // check if house needs to be deleted, i.e. house is already in CD and has status id !3 in the paresed xml file
                     } else if (aHouse != nil && house[NetworkClient.XMLResponseKeys.HouseStatusID] as! Int != 3) {
-                            self.sharedContext.deleteObject(aHouse!)
+                            self.sharedContext.delete(aHouse!)
                         
                     }
 
@@ -285,8 +284,8 @@ class NetworkClient: NSObject {
                     CoreDataStackManager.sharedInstance().saveContext()
                 }
             }
-            let lastUpdate = ["lastUpdate" : NSDate()]
-            completionHandler(result: lastUpdate, error: nil)
+            let lastUpdate = ["lastUpdate" : Date()]
+            completionHandlerForGetRentals(lastUpdate as [String : AnyObject], nil)
             
             /*
             if let apartmentDictionary = parsedResult.valueForKey(ZilyoClient.JSONResponseKeys.Result) as? [[String:AnyObject]] {

@@ -37,7 +37,7 @@ class MapTabViewController: UIViewController {
         // show the map
         let latitude = 44.281863
         let longitude = 16.382595
-        mapView.mapType = MKMapType.Hybrid
+        mapView.mapType = MKMapType.hybrid
         showMapRect(latitude: latitude, longitude: longitude)
         
         // show all houses
@@ -56,7 +56,7 @@ class MapTabViewController: UIViewController {
 
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         // Start get the location on viewWillAppear
         locationManager.startUpdatingLocation()
     }
@@ -69,8 +69,8 @@ class MapTabViewController: UIViewController {
     
     func getAllHousesLatLng() -> [House] {
         
-        let getAllHousesLatLngFetchRequest = NSFetchRequest(entityName: "House")
-        let allLatLng = (try! sharedContext.executeFetchRequest(getAllHousesLatLngFetchRequest)) as! [House]
+        let getAllHousesLatLngFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "House")
+        let allLatLng = (try! sharedContext.fetch(getAllHousesLatLngFetchRequest)) as! [House]
         
         return allLatLng
         
@@ -78,9 +78,9 @@ class MapTabViewController: UIViewController {
     
     func getWishlistHousesLatLng() -> [House] {
         
-        let getAllHousesLatLngFetchRequest = NSFetchRequest(entityName: "House")
+        let getAllHousesLatLngFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "House")
         getAllHousesLatLngFetchRequest.predicate = NSPredicate(format: "favorite == %@", "Y")
-        let allLatLng = (try! sharedContext.executeFetchRequest(getAllHousesLatLngFetchRequest)) as! [House]
+        let allLatLng = (try! sharedContext.fetch(getAllHousesLatLngFetchRequest)) as! [House]
         
         return allLatLng
         
@@ -100,8 +100,8 @@ class MapTabViewController: UIViewController {
             fbArray.append(a)
         }
         allHousesAnnotationsArray = fbArray
+        clusteringManager.add(annotations: allHousesAnnotationsArray!)
 
-        clusteringManager.addAnnotations(allHousesAnnotationsArray!)
     }
     
     func showHousesFromWishlist() {
@@ -117,11 +117,11 @@ class MapTabViewController: UIViewController {
         }
         wishlistHousesAnnotationsArray = fbArray
 
-        clusteringManager.addAnnotations(wishlistHousesAnnotationsArray!)
+        clusteringManager.add(annotations: wishlistHousesAnnotationsArray!)
 
     }
     
-    func showMapRect(latitude latitude: Double, longitude: Double) {
+    func showMapRect(latitude: Double, longitude: Double) {
     
         mapView.showsPointsOfInterest = false
         let location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
@@ -131,7 +131,7 @@ class MapTabViewController: UIViewController {
         
     }
     
-    func showNearbyMapRect(latitude latitude: Double, longitude: Double) {
+    func showNearbyMapRect(latitude: Double, longitude: Double) {
         
         mapView.showsPointsOfInterest = false
         let location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
@@ -143,7 +143,7 @@ class MapTabViewController: UIViewController {
 
 
     
-    @IBAction func segmentedControlAction(sender: AnyObject) {
+    @IBAction func segmentedControlAction(_ sender: AnyObject) {
         
 
         switch sender.selectedSegmentIndex {
@@ -153,19 +153,21 @@ class MapTabViewController: UIViewController {
             if (self.segmentedControlIndex == 1){
                 if wishlistHousesAnnotationsArray != nil {
                     mapView.removeAnnotations(wishlistHousesAnnotationsArray!)
-                    clusteringManager.removeAnnotations(wishlistHousesAnnotationsArray!)
+                    //clusteringManager.removeAnnotations(wishlistHousesAnnotationsArray!)
+                    clusteringManager.removeAll()
                 }
             }
             if (self.segmentedControlIndex == 2){
                 if allHousesAnnotationsArray != nil {
                     mapView.removeAnnotations(allHousesAnnotationsArray!)
-                    clusteringManager.removeAnnotations(allHousesAnnotationsArray!)
+                    //clusteringManager.removeAnnotations(allHousesAnnotationsArray!)
+                    clusteringManager.removeAll()
                 }
             }
             self.segmentedControlIndex = 0
 
             
-            clusteringManager.addAnnotations(allHousesAnnotationsArray!)
+            clusteringManager.add(annotations: allHousesAnnotationsArray!)
             self.showMapRect(latitude: 44.281863, longitude: 16.382595)
         // show houses from the wishlist
         case 1:
@@ -173,7 +175,8 @@ class MapTabViewController: UIViewController {
             if (self.segmentedControlIndex == 0 || self.segmentedControlIndex == 2){
                 if allHousesAnnotationsArray != nil {
                     mapView.removeAnnotations(allHousesAnnotationsArray!)
-                    clusteringManager.removeAnnotations(allHousesAnnotationsArray!)
+                    //clusteringManager.removeAnnotations(allHousesAnnotationsArray!)
+                    clusteringManager.removeAll()
                 }
             }
             self.segmentedControlIndex = 1
@@ -191,33 +194,35 @@ class MapTabViewController: UIViewController {
             if (self.segmentedControlIndex == 0){
                 if allHousesAnnotationsArray != nil {
                     mapView.removeAnnotations(allHousesAnnotationsArray!)
-                    clusteringManager.removeAnnotations(allHousesAnnotationsArray!)
+                    //clusteringManager.removeAnnotations(allHousesAnnotationsArray!)
+                    clusteringManager.removeAll()
                 }
             }
             if (self.segmentedControlIndex == 1){
                 if wishlistHousesAnnotationsArray != nil {
                     mapView.removeAnnotations(wishlistHousesAnnotationsArray!)
-                    clusteringManager.removeAnnotations(wishlistHousesAnnotationsArray!)
+                    //clusteringManager.removeAnnotations(wishlistHousesAnnotationsArray!)
+                    clusteringManager.removeAll()
                 }
             }
-            clusteringManager.addAnnotations(allHousesAnnotationsArray!)
+            clusteringManager.add(annotations: allHousesAnnotationsArray!)
             self.segmentedControlIndex = 2
             // check for location services
             if CLLocationManager.locationServicesEnabled() {
                 switch(CLLocationManager.authorizationStatus()) {
-                case .NotDetermined:
+                case .notDetermined:
                     locationManager.delegate = self
                     locationManager.requestWhenInUseAuthorization()
                     
-                case .AuthorizedAlways, .AuthorizedWhenInUse:
+                case .authorizedAlways, .authorizedWhenInUse:
                     locationManager.delegate = self
                     locationManager.startUpdatingLocation()
                     self.showNearbyMapRect(latitude: NetworkClient.sharedInstance().userLocationLatitude, longitude: NetworkClient.sharedInstance().userLocationLongitude)
                 
-                case .Denied:
+                case .denied:
                     self.openSettingsToEnableLocationService()
                     
-                case .Restricted:
+                case .restricted:
                     self.openSettingsToEnableLocationService()
                 }
             }
@@ -235,18 +240,18 @@ class MapTabViewController: UIViewController {
     
     func chooseMapStyle() {
         
-        let alert = UIAlertController(title: "Choose Map Style", message: nil, preferredStyle: .Alert) // 1
+        let alert = UIAlertController(title: "Choose Map Style", message: nil, preferredStyle: .alert) // 1
         
-        let firstAction = UIAlertAction(title: "Standard", style: .Default) { (alert: UIAlertAction!) -> Void in
-            self.mapView.mapType = MKMapType.Standard
+        let firstAction = UIAlertAction(title: "Standard", style: .default) { (alert: UIAlertAction!) -> Void in
+            self.mapView.mapType = MKMapType.standard
         }
-        let secondAction = UIAlertAction(title: "Satellite", style: .Default) { (alert: UIAlertAction!) -> Void in
-            self.mapView.mapType = MKMapType.Satellite
+        let secondAction = UIAlertAction(title: "Satellite", style: .default) { (alert: UIAlertAction!) -> Void in
+            self.mapView.mapType = MKMapType.satellite
         }
-        let thirdAction = UIAlertAction(title: "Hybrid", style: .Default) { (alert: UIAlertAction!) -> Void in
-            self.mapView.mapType = MKMapType.Hybrid
+        let thirdAction = UIAlertAction(title: "Hybrid", style: .default) { (alert: UIAlertAction!) -> Void in
+            self.mapView.mapType = MKMapType.hybrid
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (alert: UIAlertAction!) -> Void in
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (alert: UIAlertAction!) -> Void in
         }
         
         alert.addAction(firstAction)
@@ -254,32 +259,31 @@ class MapTabViewController: UIViewController {
         alert.addAction(thirdAction)
         alert.addAction(cancelAction)
         
-        presentViewController(alert, animated: true, completion:nil)
+        present(alert, animated: true, completion:nil)
         
     }
     
     func openSettingsToEnableLocationService(){
-        let alertController = UIAlertController (title: "Please enable location services in Settings", message: "Go to Settings?", preferredStyle: .Alert)
+        let alertController = UIAlertController (title: "Please enable location services in Settings", message: "Go to Settings?", preferredStyle: .alert)
         
-        let settingsAction = UIAlertAction(title: "Settings", style: .Default) { (_) -> Void in
-            let settingsUrl = NSURL(string: UIApplicationOpenSettingsURLString)
+        let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
+            let settingsUrl = URL(string: UIApplicationOpenSettingsURLString)
             if let url = settingsUrl {
-                UIApplication.sharedApplication().openURL(url)
+                UIApplication.shared.openURL(url)
             }
     }
     
-    let cancelAction = UIAlertAction(title: "Cancel", style: .Default, handler: nil)
+    let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
     alertController.addAction(settingsAction)
     alertController.addAction(cancelAction)
     
-    presentViewController(alertController, animated: true, completion: nil)
+    present(alertController, animated: true, completion: nil)
     }
 }
 
 
 extension MapTabViewController : FBClusteringManagerDelegate {
-    
-    func cellSizeFactorForCoordinator(coordinator:FBClusteringManager) -> CGFloat{
+    func cellSizeFactor(forCoordinator coordinator: FBClusteringManager) -> CGFloat {
         return 1.0
     }
     
@@ -289,9 +293,9 @@ extension MapTabViewController : FBClusteringManagerDelegate {
 
 extension MapTabViewController : MKMapViewDelegate {
     
-    func mapView(mapView: MKMapView, regionDidChangeAnimated animated: Bool){
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool){
         
-        NSOperationQueue().addOperationWithBlock({
+        DispatchQueue.global(qos: .userInitiated).async{
             
             let mapBoundsWidth = Double(self.mapView.bounds.size.width)
             
@@ -299,52 +303,62 @@ extension MapTabViewController : MKMapViewDelegate {
             
             let scale:Double = mapBoundsWidth / mapRectWidth
             
-            let annotationArray = self.clusteringManager.clusteredAnnotationsWithinMapRect(self.mapView.visibleMapRect, withZoomScale:scale)
+            let annotationArray = self.clusteringManager.clusteredAnnotations(withinMapRect: self.mapView.visibleMapRect, zoomScale:scale)
+            DispatchQueue.main.async {
+                self.clusteringManager.display(annotations:annotationArray, onMapView:self.mapView)
+            }
             
-            self.clusteringManager.displayAnnotations(annotationArray, onMapView:self.mapView)
-        
-            
-        })
+        }
         
     }
     
-    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         var reuseId = ""
         
-        if annotation.isKindOfClass(FBAnnotationCluster) {
+        if annotation.isKind(of: FBAnnotationCluster.self) {
             
             reuseId = "Cluster"
-            var clusterView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId)
-            clusterView = FBAnnotationClusterView(annotation: annotation, reuseIdentifier: reuseId, options: nil)
+            var clusterView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId)
+            
+            if clusterView == nil {
+                    clusterView = FBAnnotationClusterView(annotation: annotation, reuseIdentifier: reuseId, configuration: FBAnnotationClusterViewConfiguration.default())
+            } else {
+                clusterView?.annotation = annotation
+            }
             
             return clusterView
           
             // show user location as a blue dot
-        } else if annotation.isKindOfClass(MKUserLocation) {
+        } else if annotation.isKind(of: MKUserLocation.self) {
             return nil
             // show houses as green pins
         } else  {
             reuseId = "Pin"
-            var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId) as? MKPinAnnotationView
-            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-            pinView!.canShowCallout = true
-            pinView!.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure)
+            var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
             
-            pinView!.pinTintColor = UIColor.greenColor()
+            if pinView == nil {
+                pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+                pinView!.canShowCallout = true
+                pinView!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+                
+                pinView!.pinTintColor = UIColor.green
+            } else {
+                pinView?.annotation = annotation
+            }
             
             return pinView
         }
         
     }
     
-    func mapView(mapView: MKMapView, annotationView: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+    func mapView(_ mapView: MKMapView, annotationView: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         
         if control == annotationView.rightCalloutAccessoryView {
-            let controller = storyboard!.instantiateViewControllerWithIdentifier("HouseDetailTableViewController") as! HouseDetailTableViewController
+            let controller = storyboard!.instantiateViewController(withIdentifier: "HouseDetailTableViewController") as! HouseDetailTableViewController
             let object = annotationView.annotation as! FBAnnotation
             let house = object.house
-            print(house)
+            print(house!)
             // set destination object in the detail VC
             controller.house = house!
             
@@ -359,18 +373,18 @@ extension MapTabViewController : MKMapViewDelegate {
 
 extension MapTabViewController: CLLocationManagerDelegate {
     
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         NetworkClient.sharedInstance().userLocationLatitude = (locations.last?.coordinate.latitude)!
         NetworkClient.sharedInstance().userLocationLongitude = (locations.last?.coordinate.longitude)!
         
     }
     
-    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error)
     }
     
-    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        if status == .AuthorizedWhenInUse || status == .AuthorizedAlways {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse || status == .authorizedAlways {
             manager.startUpdatingLocation()
 
         }
