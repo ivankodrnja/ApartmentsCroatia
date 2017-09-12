@@ -30,7 +30,26 @@ class DestinationsViewController: UIViewController, UITableViewDelegate, UITable
         }
         fetchedResultsController.delegate = self
         
-        self.navigationItem.title = region?.name
+        var regionName: String!
+        
+        switch region!.name {
+        case "Istria":
+            regionName = NSLocalizedString("istria", comment: "Istria")
+        case "Kvarner":
+            regionName = NSLocalizedString("kvarner", comment: "Kvarner")
+        case "Northern Dalmatia":
+            regionName = NSLocalizedString("northernDalmatia", comment: "Northern Dalmatia")
+        case "Central Dalmatia":
+            regionName = NSLocalizedString("centralDalmatia", comment: "Central Dalmatia")
+        case "Southern Dalmatia":
+            regionName = NSLocalizedString("southernDalmatia", comment: "Southern Dalmatia")
+        case "Continental Croatia":
+            regionName = NSLocalizedString("continentalCroatia", comment: "Continental Croatia")
+        default:
+            break
+        }
+        
+        self.navigationItem.title = regionName
         tableView.tableFooterView = UIView()
     }
 

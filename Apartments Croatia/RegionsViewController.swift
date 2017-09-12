@@ -52,7 +52,7 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         
         
-        self.navigationItem.title = "Apartments Croatia"
+        self.navigationItem.title = NSLocalizedString("app-title", comment: "Apartments Croatia")
         // search
         resultsTableController = SearchResultsViewController()
         self.searchController = UISearchController(searchResultsController: resultsTableController)
@@ -71,7 +71,7 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.searchController.searchResultsUpdater = self
         self.searchController.dimsBackgroundDuringPresentation = false
         self.definesPresentationContext = true
-        self.searchController.searchBar.scopeButtonTitles = ["Destination", "House"]
+        self.searchController.searchBar.scopeButtonTitles = [NSLocalizedString("destination", comment: "Destination"), NSLocalizedString("house", comment: "House")]
         self.searchController.searchBar.delegate = self
         
         self.present(self.searchController, animated: true, completion: nil)
@@ -212,7 +212,7 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
                 cell.toTheCenterDistance.text = "\(house.centerDistance) m"
                 // TODO: localization cell.dailyFromLabel.text
                 if (house.priceFrom == 0){
-                    cell.dailyFromPrice.text = "Request"
+                    cell.dailyFromPrice.text = NSLocalizedString("request", comment: "Request")
                 } else{
                     cell.dailyFromPrice.text = "\(house.priceFrom) EUR"
                 }
@@ -223,7 +223,9 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
         } else {
         
         
-        let region = fetchedResultsController.object(at: indexPath) 
+        let region = fetchedResultsController.object(at: indexPath)
+            
+
         
         let cellReuseIdentifier = "RegionsCell"
         
@@ -247,10 +249,27 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.preservesSuperviewLayoutMargins = false
         cell.layoutMargins = UIEdgeInsets.zero
         
+        var regionName: String!
         
+        switch region.name {
+        case "Istria":
+            regionName = NSLocalizedString("istria", comment: "Istria")
+        case "Kvarner":
+            regionName = NSLocalizedString("kvarner", comment: "Kvarner")
+        case "Northern Dalmatia":
+            regionName = NSLocalizedString("northernDalmatia", comment: "Northern Dalmatia")
+        case "Central Dalmatia":
+            regionName = NSLocalizedString("centralDalmatia", comment: "Central Dalmatia")
+        case "Southern Dalmatia":
+            regionName = NSLocalizedString("southernDalmatia", comment: "Southern Dalmatia")
+        case "Continental Croatia":
+            regionName = NSLocalizedString("continentalCroatia", comment: "Continental Croatia")
+        default:
+            break
+        }
         
         //***** set the region name or heading *****//
-        cell.nameLabel.text = region.name
+        cell.nameLabel.text = regionName
         cell.imgView.image = UIImage(named: region.name)
         
         

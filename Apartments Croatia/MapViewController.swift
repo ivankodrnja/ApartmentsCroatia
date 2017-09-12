@@ -22,7 +22,7 @@ class MapViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Get directions", style: .plain, target: self, action: #selector(getDirections))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("getDirections", comment: "Get directions"), style: .plain, target: self, action: #selector(getDirections))
         
         
         mapView.mapType = MKMapType.hybrid

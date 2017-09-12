@@ -25,7 +25,7 @@ class WishlistViewController: UIViewController, UITableViewDelegate, UITableView
             print(error)
         }
         fetchedResultsController.delegate = self
-        self.navigationItem.title = "Wishlist"
+        self.navigationItem.title = NSLocalizedString("wishlist", comment: "Wishlist")
         self.navigationItem.rightBarButtonItem = editButtonItem
         tableView.tableFooterView = UIView()
         
@@ -113,16 +113,17 @@ class WishlistViewController: UIViewController, UITableViewDelegate, UITableView
         cell.scrollView.auk.show(url: imageUrl)
         
         cell.nameLabel.text = house.name
-        // TODO: localization cell.toTheSeaLabel.text
+        cell.toTheSeaLabel.text = NSLocalizedString("sea", comment: "Sea") + ":"
         cell.toTheSeaDistance.text = "\(house.seaDistance) m"
-        // TODO: localization cell.toTheCenterLabel.text
+        cell.toTheCenterLabel.text = NSLocalizedString("center", comment: "Center") + ":"
         cell.toTheCenterDistance.text = "\(house.centerDistance) m"
-        // TODO: localization cell.dailyFromLabel.text
+        cell.dailyFromLabel.text = NSLocalizedString("priceFrom", comment: "Daily from") + ":"
         if (house.priceFrom == 0){
-            cell.dailyFromPrice.text = "Request"
+            cell.dailyFromPrice.text = NSLocalizedString("request", comment: "Request")
         } else{
             cell.dailyFromPrice.text = "\(house.priceFrom) EUR"
         }
+
         cell.locationLabel.text = "\(house.destination!.name), \(house.destination!.region!.name)"
         
     }

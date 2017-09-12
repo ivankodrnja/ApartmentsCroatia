@@ -60,10 +60,31 @@ class ApartmentDetailViewController: UIViewController, UITableViewDelegate, UITa
 
         cell.selectionStyle = UITableViewCellSelectionStyle.none
         
-        cell.apartmentType.text = apartment.type + " \(apartmentsCount)"
+        switch apartment.type {
+        case "Apartment":
+            cell.apartmentType.text = NSLocalizedString("apartment", comment: "apartment").capitalized + " \(apartmentsCount)"
+        case "Room":
+            cell.apartmentType.text = NSLocalizedString("room", comment: "Room").capitalized + " \(apartmentsCount)"
+            
+        default:
+            break
+        }
+        
+        cell.numberOfBedsLabel.text = NSLocalizedString("numberOfBeds", comment: "Number of beds") + ":"
         cell.numberOfBedsValue.text = apartment.numberOfBeds
-        cell.pricePerDayFromValue.text = apartment.priceRange + " EUR"
+        cell.pricePerDayFromLabel.text = NSLocalizedString("pricePerDayFromInApartmentDetail", comment: "Price per day from") + ":"
+        
+        if apartment.priceRange == "0" {
+            cell.pricePerDayFromValue.text = NSLocalizedString("onRequest", comment: "On request")
+        } else {
+            cell.pricePerDayFromValue.text = apartment.priceRange + " EUR"
+        }
+        cell.sizeLabel.text = NSLocalizedString("size", comment: "Size") + ":"
         cell.sizeValue.text = apartment.surface + " m2"
+        
+        cell.airConditionLabel.text = NSLocalizedString("airCondition", comment: "Air Condition")
+        cell.satelliteTVLabel.text = NSLocalizedString("satelliteTV", comment: "Satellite TV")
+        cell.internetLabel.text = NSLocalizedString("internet", comment: "Internet")
         
         if apartment.aircondition == "Y" {
                 cell.airConditionImage.image = UIImage(named: "yescheckmark")

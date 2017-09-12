@@ -84,11 +84,11 @@ class HouseDetailTableViewController: UIViewController, UITableViewDelegate, UIT
         // different sections have different number of rows
         switch(section){
         case 1:
-            return "Apartment info" // description and amenities
+            return NSLocalizedString("apartmentInfo", comment: "Apartment info") // description and amenities
         case 2:
-            return "Map" // map cell
+            return NSLocalizedString("map", comment: "Map") // map cell
         case 3:
-            return "Contact info" // rental rates : nightly, weekend night, weekly, monthly
+            return NSLocalizedString("contactInfo", comment: "Contact info") // rental rates : nightly, weekend night, weekly, monthly
         default:
             return ""
         }
@@ -147,9 +147,9 @@ class HouseDetailTableViewController: UIViewController, UITableViewDelegate, UIT
                 cell.textLabel!.font = UIFont.boldSystemFont(ofSize: 20)
                 cell.textLabel?.textColor = UIColor.white
                 if house!.favorite == "Y" {
-                    cell.textLabel?.text = "Remove from Wishlist"
+                    cell.textLabel?.text = NSLocalizedString("removeFromWishlist", comment: "Remove from Wishlist")
                 } else {
-                    cell.textLabel?.text = "Add to Wishlist"
+                    cell.textLabel?.text = NSLocalizedString("addToWishlist", comment: "Add to Wishlist")
                 }
                 cell.selectionStyle = UITableViewCellSelectionStyle.none
                 
@@ -163,11 +163,11 @@ class HouseDetailTableViewController: UIViewController, UITableViewDelegate, UIT
                 cell.layoutMargins = UIEdgeInsets.zero
                 cell.separatorInset = UIEdgeInsets.zero
                 
-                cell.seaDistance.text = "Sea"
+                cell.seaDistance.text = NSLocalizedString("sea", comment: "Sea")
                 cell.seaDistanceCount.text =  "\(house!.seaDistance)" + " m"
-                cell.centerDistance.text = "Center"
+                cell.centerDistance.text = NSLocalizedString("center", comment: "Center")
                 cell.centerDistanceCount.text =  "\(house!.centerDistance)" + " m"
-                cell.parking.text = "Parking"
+                cell.parking.text = NSLocalizedString("parking", comment: "Parking")
                 
                 if house!.parking == "Y" {
                     cell.hasParking.image = UIImage(named: "yescheckmark")
@@ -176,7 +176,7 @@ class HouseDetailTableViewController: UIViewController, UITableViewDelegate, UIT
                 }
                 
 
-                cell.pets.text = "Pets"
+                cell.pets.text = NSLocalizedString("pets", comment: "Pets")
                 if house!.pets == "Y" {
                     cell.acceptsPets.image = UIImage(named: "yescheckmark")
                 } else {
@@ -199,7 +199,7 @@ class HouseDetailTableViewController: UIViewController, UITableViewDelegate, UIT
                 cell.textLabel?.textAlignment = .center
                 cell.textLabel!.font = UIFont.boldSystemFont(ofSize: 20)
                 cell.textLabel?.textColor = UIColor.white
-                cell.textLabel?.text = NetworkClient.Constants.BookNow
+                cell.textLabel?.text = NSLocalizedString("bookNow", comment: "BOOK NOW")
                 cell.selectionStyle = UITableViewCellSelectionStyle.none
                 
                 return cell
@@ -219,9 +219,9 @@ class HouseDetailTableViewController: UIViewController, UITableViewDelegate, UIT
             
             
             let aptCount = house!.apartments.count
-            var aptLabel = "apartments"
+            var aptLabel = NSLocalizedString("apartment", comment: "apartment")
             if aptCount > 1 {
-                aptLabel = "apartments"
+                aptLabel = NSLocalizedString("apartments", comment: "apartments")
             }
             cell.textLabel?.text = "\(aptCount) " + aptLabel
             return cell
@@ -259,7 +259,7 @@ class HouseDetailTableViewController: UIViewController, UITableViewDelegate, UIT
             // postal address
             case 0:
                 
-                cell.textLabel?.text = "Address:"
+                cell.textLabel?.text = NSLocalizedString("address", comment: "Address") + ":"
                 cell.detailTextLabel?.text = house!.address + ", " + (house!.destination?.name)!
   
             // get directions
@@ -269,13 +269,13 @@ class HouseDetailTableViewController: UIViewController, UITableViewDelegate, UIT
                 cell.backgroundColor = UIColor.gray
                 cell.textLabel!.font = UIFont.boldSystemFont(ofSize: 20)
                 cell.textLabel?.textColor = UIColor.white
-                cell.textLabel?.text = "Get directions"
+                cell.textLabel?.text = NSLocalizedString("getDirections", comment: "Get directions")
                 
                 cell.accessoryType = .disclosureIndicator
             // website
             case 2:
 
-                cell.textLabel?.text = "Website:"
+                cell.textLabel?.text = "Website" + ":"
                 
                 let website = house!.website
                 if website == "http://www.croapartments.net/nowebsite.html" {
@@ -291,7 +291,7 @@ class HouseDetailTableViewController: UIViewController, UITableViewDelegate, UIT
                 cell.textLabel?.textAlignment = .center
                 cell.textLabel!.font = UIFont.boldSystemFont(ofSize: 20)
                 cell.textLabel?.textColor = UIColor.white
-                cell.textLabel?.text = "Call us"
+                cell.textLabel?.text = NSLocalizedString("callUs", comment: "Call us")
                 
                 cell.accessoryType = .disclosureIndicator
             }
@@ -338,7 +338,7 @@ class HouseDetailTableViewController: UIViewController, UITableViewDelegate, UIT
                 if MFMailComposeViewController.canSendMail() {
                     self.present(mailComposeViewController, animated: true, completion: nil)
                 } else {
-                    self.showAlertView("Your device could not send e-mail.  Please check e-mail configuration and try again.")
+                    self.showAlertView(NSLocalizedString("emailSendingError", comment: "Your device could not send e-mail. Please check e-mail configuration and try again."))
                 }
                 
             }
@@ -387,7 +387,7 @@ class HouseDetailTableViewController: UIViewController, UITableViewDelegate, UIT
                         UIApplication.shared.openURL(URL(string:website)!)
                     } else {
                         print("Internet connection not present")
-                        self.showAlertView("Internet connection not present")
+                        self.showAlertView(NSLocalizedString("noInternet", comment: "Internet connection not present"))
                     }
                     
                 }
@@ -435,7 +435,7 @@ class HouseDetailTableViewController: UIViewController, UITableViewDelegate, UIT
         mailComposerVC.mailComposeDelegate = self // Extremely important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
         
         mailComposerVC.setToRecipients([house!.email])
-        mailComposerVC.setSubject("Upit za Vaš apartman / Apartments Croatia iPhone-Android app")
+        mailComposerVC.setSubject("Upit za Vaš apartman \(String(describing: house?.name)) / Apartments Croatia iPhone-Android app")
         mailComposerVC.setMessageBody("Enter your query", isHTML: false)
         
         return mailComposerVC

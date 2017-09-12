@@ -53,6 +53,11 @@ class MapTabViewController: UIViewController {
             locationManager.startUpdatingLocation()
             mapView.showsUserLocation = true
         }
+        
+        segmentedControl.setTitle(NSLocalizedString("home", comment: "Home"), forSegmentAt: 0)
+        segmentedControl.setTitle(NSLocalizedString("wishlist", comment: "Wishlist"), forSegmentAt: 1)
+        segmentedControl.setTitle(NSLocalizedString("nearby", comment: "Nearby"), forSegmentAt: 2)
+        segmentedControl.setTitle(NSLocalizedString("mapStyle", comment: "Map Style"), forSegmentAt: 3)
 
     }
     
@@ -240,18 +245,18 @@ class MapTabViewController: UIViewController {
     
     func chooseMapStyle() {
         
-        let alert = UIAlertController(title: "Choose Map Style", message: nil, preferredStyle: .alert) // 1
+        let alert = UIAlertController(title: NSLocalizedString("chooseMapStyle", comment: "Choose Map Style"), message: nil, preferredStyle: .alert) // 1
         
-        let firstAction = UIAlertAction(title: "Standard", style: .default) { (alert: UIAlertAction!) -> Void in
+        let firstAction = UIAlertAction(title: NSLocalizedString("standard", comment: "Standard"), style: .default) { (alert: UIAlertAction!) -> Void in
             self.mapView.mapType = MKMapType.standard
         }
-        let secondAction = UIAlertAction(title: "Satellite", style: .default) { (alert: UIAlertAction!) -> Void in
+        let secondAction = UIAlertAction(title: NSLocalizedString("satellite", comment: "Satellite"), style: .default) { (alert: UIAlertAction!) -> Void in
             self.mapView.mapType = MKMapType.satellite
         }
-        let thirdAction = UIAlertAction(title: "Hybrid", style: .default) { (alert: UIAlertAction!) -> Void in
+        let thirdAction = UIAlertAction(title: NSLocalizedString("hybrid", comment: "Hybrid"), style: .default) { (alert: UIAlertAction!) -> Void in
             self.mapView.mapType = MKMapType.hybrid
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (alert: UIAlertAction!) -> Void in
+        let cancelAction = UIAlertAction(title: NSLocalizedString("cancel", comment: "Cancel"), style: .cancel) { (alert: UIAlertAction!) -> Void in
         }
         
         alert.addAction(firstAction)
@@ -264,16 +269,16 @@ class MapTabViewController: UIViewController {
     }
     
     func openSettingsToEnableLocationService(){
-        let alertController = UIAlertController (title: "Please enable location services in Settings", message: "Go to Settings?", preferredStyle: .alert)
+        let alertController = UIAlertController (title: NSLocalizedString("enableLocationServices", comment: "Please enable location services in Settings"), message: NSLocalizedString("goToSettings", comment: "Go to Settings?"), preferredStyle: .alert)
         
-        let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
+        let settingsAction = UIAlertAction(title: NSLocalizedString("settings", comment: "Settings"), style: .default) { (_) -> Void in
             let settingsUrl = URL(string: UIApplicationOpenSettingsURLString)
             if let url = settingsUrl {
                 UIApplication.shared.openURL(url)
             }
     }
     
-    let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+    let cancelAction = UIAlertAction(title: NSLocalizedString("cancel", comment: "Cancel"), style: .default, handler: nil)
     alertController.addAction(settingsAction)
     alertController.addAction(cancelAction)
     
