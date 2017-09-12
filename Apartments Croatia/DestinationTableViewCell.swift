@@ -13,6 +13,7 @@ class DestinationTableViewCell: UITableViewCell {
     
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var firstLetterLabel: UILabel!
 
     
     override func awakeFromNib() {

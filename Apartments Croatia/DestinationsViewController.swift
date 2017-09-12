@@ -136,7 +136,8 @@ class DestinationsViewController: UIViewController, UITableViewDelegate, UITable
         
         //***** set the apartment name or heading *****//
         cell.nameLabel.text = destination.name
-
+        // show separately first letter of the name
+        cell.firstLetterLabel.text = String(destination.name[destination.name.startIndex])
         
 
     }
