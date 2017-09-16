@@ -30,6 +30,7 @@
 "apartment" = "apartment";
 "apartments" = "apartments";
 "room" = "Room";
+"studioApartment" = "Studio Apartment";
 "numberOfBeds" = "Number of beds";
 "pricePerDayFromInApartmentDetail" = "Price per day from";
 "size" = "Size";

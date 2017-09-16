@@ -1,0 +1,57 @@
+/* 
+  Localizable.strings
+  Apartments Croatia
+
+  Created by Ivan Kodrnja on 10/09/2017.
+  Copyright © 2017 Ivan Kodrnja. All rights reserved.
+*/
+"app-title" = "Apartments Croatia";
+"istria" = "L’Istria";
+"kvarner" = "Il Quarnero";
+"northernDalmatia" = "La Dalmazia del Nord";
+"centralDalmatia" = "La Dalmazia centrale";
+"southernDalmatia" = "La Dalmazia del Sud";
+"continentalCroatia" = "Croazia continentale";
+"destination" = "Destinazione";
+"house" = "Casa";
+"request" = "A richiesta";
+"apartmentInfo" = "Detagli";
+"map" = "Mappa";
+"contactInfo" = "Contatti";
+"removeFromWishlist" = "Rimuovi dai Favoriti";
+"addToWishlist" = "Aggiungi ai Favoriti";
+"wishlist" = "Favoriti";
+"bookNow" = "PRENOTA ORA";
+"sea" = "MAre";
+"center" = "Centro";
+"priceFrom" = "Prezzo da";
+"parking" = "Parcheggio";
+"pets" = "Animali domestici";
+"apartment" = "Appartamento";
+"apartments" = "Appartamenti";
+"room" = "Camera";
+"studioApartment" = "Monolocale";
+"numberOfBeds" = "Numero di posti letto";
+"pricePerDayFromInApartmentDetail" = "Prezzo al giorno da";
+"size" = "Superficie";
+"onRequest" = "A richiesta";
+"airCondition" = "Aria condizionata";
+"satelliteTV" = "TV via satellite";
+"internet" = "Internet";
+"address" = "Indirizzo";
+"getDirections" = "Istruzioni";
+"website" = "Pagina web";
+"callUs" = "Chiamateci";
+"emailSendingError" = "Fallimento invio di e-mail";
+"noInternet" = "Internet connection not present";
+"chooseMapStyle" = "Tipo di mappa";
+"standard" = "Standard";
+"satellite" = "Satellitare";
+"hybrid" = "Ibrida";
+"cancel" = "Annulla";
+"enableLocationServices" = "Please enable location services in Settings";
+"goToSettings" = "Go to Settings?";
+"settings" = "Settings";
+"home" = "Home";
+"nearby" = "In vicino";
+"mapStyle" = "Tipo di mappa";

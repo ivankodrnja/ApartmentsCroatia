@@ -85,9 +85,9 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func getDestinationName(_ searchText: String) -> [Destination] {
         
-        let getDestinationByNameFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Destination")
+        let getDestinationByNameFetchRequest = NSFetchRequest<Destination>(entityName: "Destination")
         getDestinationByNameFetchRequest.predicate = NSPredicate(format: "name CONTAINS %@", searchText)
-        let allDestinations = (try! sharedContext.fetch(getDestinationByNameFetchRequest)) as! [Destination]
+        let allDestinations = (try! sharedContext.fetch(getDestinationByNameFetchRequest)) 
         
         return allDestinations
         
@@ -95,9 +95,9 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func getHouseName(_ searchText: String) -> [House] {
         
-        let getHouseByNameFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "House")
+        let getHouseByNameFetchRequest = NSFetchRequest<House>(entityName: "House")
         getHouseByNameFetchRequest.predicate = NSPredicate(format: "name CONTAINS %@", searchText)
-        let allHouses = (try! sharedContext.fetch(getHouseByNameFetchRequest)) as! [House]
+        let allHouses = (try! sharedContext.fetch(getHouseByNameFetchRequest)) 
         
         return allHouses
         
@@ -277,13 +277,44 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let controller = storyboard!.instantiateViewController(withIdentifier: "DestinationsViewController") as! DestinationsViewController
-        let region = fetchedResultsController.object(at: indexPath) 
+        if searchController.isActive && searchController.searchBar.text != "" {
+            
+            let scope = searchController.searchBar.scopeButtonTitles![searchController.searchBar.selectedScopeButtonIndex]
+            
+            if scope == "Destination" {
+                
+                let controller = storyboard!.instantiateViewController(withIdentifier: "HousesViewController") as! HousesViewController
+                let destination = destinationSearchResults![indexPath.row]
+                
+                // set destination object in the detail VC
+                controller.destination = destination
+                
+                self.navigationController!.pushViewController(controller, animated: true)
+                
+                
+            } else {
+                let house = houeseSearchResults![indexPath.row]
+                
+                let controller = storyboard!.instantiateViewController(withIdentifier: "HouseDetailTableViewController") as! HouseDetailTableViewController
+          
+                
+                // set destination object in the detail VC
+                controller.house = house
+                
+                self.navigationController!.pushViewController(controller, animated: true)
+    
+            }
+            
+        } else {
         
-        // set region object in the detail VC
-        controller.region = region
-        
-        self.navigationController!.pushViewController(controller, animated: true)
+            let controller = storyboard!.instantiateViewController(withIdentifier: "DestinationsViewController") as! DestinationsViewController
+            let region = fetchedResultsController.object(at: indexPath) 
+            
+            // set region object in the detail VC
+            controller.region = region
+            
+            self.navigationController!.pushViewController(controller, animated: true)
+        }
         
     }
     

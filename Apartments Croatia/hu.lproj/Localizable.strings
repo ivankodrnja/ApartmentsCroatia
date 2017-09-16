@@ -1,0 +1,57 @@
+/* 
+  Localizable.strings
+  Apartments Croatia
+
+  Created by Ivan Kodrnja on 10/09/2017.
+  Copyright © 2017 Ivan Kodrnja. All rights reserved.
+*/
+"app-title" = "Apartments Croatia";
+"istria" = "Isztria";
+"kvarner" = "Kvarner";
+"northernDalmatia" = "Észak Dalmácia";
+"centralDalmatia" = "Közép Dalmácia";
+"southernDalmatia" = "Dél Dalmácia";
+"continentalCroatia" = "Kontinentális Horvátország";
+"destination" = "Helyben";
+"house" = "Házban";
+"request" = "Lekérdezés";
+"apartmentInfo" = "Apartmanok";
+"map" = "Térkép";
+"contactInfo" = "Kapcsolatok";
+"removeFromWishlist" = "Vegye ki a Kedvenclista";
+"addToWishlist" = "Hozzáadni a Kedvenclista";
+"wishlist" = "Kedvenclista";
+"bookNow" = "FOGLALD LE MOST";
+"sea" = "Tenger";
+"center" = "Központ";
+"priceFrom" = "Ár tól/től";
+"parking" = "Parkoló";
+"pets" = "Házi kedvencek";
+"apartment" = "Apartman";
+"apartments" = "Apartmanok";
+"room" = "Szoba";
+"studioApartment" = "Garzon Apartman";
+"numberOfBeds" = "Az ágyak száma";
+"pricePerDayFromInApartmentDetail" = "Napi ár tól/től:";
+"size" = "Alapterület";
+"onRequest" = "Lekérdezés";
+"airCondition" = "Légkondicionáló berendezés";
+"satelliteTV" = "Műholdas TV";
+"internet" = "Internet";
+"address" = "Cím";
+"getDirections" = "Utasítások";
+"website" = "Web oldal";
+"callUs" = "Hívjon fel bennünket";
+"emailSendingError" = "Az e-maila nem sikerült.";
+"noInternet" = "Internet connection not present";
+"chooseMapStyle" = "A térkép fajtája";
+"standard" = "Standard";
+"satellite" = "Műholdas";
+"hybrid" = "Hibrid";
+"cancel" = "Megszakítás";
+"enableLocationServices" = "Please enable location services in Settings";
+"goToSettings" = "Go to Settings?";
+"settings" = "Settings";
+"home" = "Kezdő";
+"nearby" = "Közelben";
+"mapStyle" = "A térkép fajtája";

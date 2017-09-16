@@ -30,6 +30,7 @@
 "apartment" = "apartman";
 "apartments" = "apartmana";
 "room" = "Soba";
+"studioApartment" = "Studio Apartman";
 "numberOfBeds" = "Broj kreveta";
 "pricePerDayFromInApartmentDetail" = "Cijena po danu od";
 "size" = "Površina";

@@ -1,0 +1,57 @@
+/* 
+  Localizable.strings
+  Apartments Croatia
+
+  Created by Ivan Kodrnja on 10/09/2017.
+  Copyright © 2017 Ivan Kodrnja. All rights reserved.
+*/
+"app-title" = "Apartments Croatia";
+"istria" = "Istra";
+"kvarner" = "Kvarner";
+"northernDalmatia" = "Severná Dalmácia";
+"centralDalmatia" = "Stredná Dalmácia";
+"southernDalmatia" = "Južná Dalmacija";
+"continentalCroatia" = "Kontinentálne Chorvátsko";
+"destination" = "Miesto";
+"house" = "Dom";
+"request" = "Na žiadosť";
+"apartmentInfo" = "Apartmány";
+"map" = "Mapa";
+"contactInfo" = "Kontakty";
+"removeFromWishlist" = "Odstrániť zo želania";
+"addToWishlist" = "Pridať do želania";
+"wishlist" = "Želania";
+"bookNow" = "REZERVOVAŤ";
+"sea" = "More";
+"center" = "Centrum";
+"priceFrom" = "Cena od";
+"parking" = "Parking";
+"pets" = "Domáce zvieratá";
+"apartment" = "Apartmán";
+"apartments" = "Apartmány";
+"room" = "Izba";
+"studioApartment" = "Studio Apartmán";
+"numberOfBeds" = "Počet postelí";
+"pricePerDayFromInApartmentDetail" = "Cena od";
+"size" = "Povrch";
+"onRequest" = "Na žiadosť";
+"airCondition" = "Klimatizácia";
+"satelliteTV" = "Satelitová TV";
+"internet" = "Internet";
+"address" = "Adresa";
+"getDirections" = "Upute";
+"website" = "Webová stránka";
+"callUs" = "Zavolaj nás";
+"emailSendingError" = "Vyslanie emaila neúspešné.";
+"noInternet" = "Internet connection not present";
+"chooseMapStyle" = "Druh mapy";
+"standard" = "Standardný";
+"satellite" = "Satelitový";
+"hybrid" = "Vidlica";
+"cancel" = "Zrušiť";
+"enableLocationServices" = "Please enable location services in Settings";
+"goToSettings" = "Go to Settings?";
+"settings" = "Settings";
+"home" = "Základná";
+"nearby" = "V blízkosti";
+"mapStyle" = "Druh mapy";

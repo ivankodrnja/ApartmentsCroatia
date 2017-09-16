@@ -65,7 +65,8 @@ class ApartmentDetailViewController: UIViewController, UITableViewDelegate, UITa
             cell.apartmentType.text = NSLocalizedString("apartment", comment: "apartment").capitalized + " \(apartmentsCount)"
         case "Room":
             cell.apartmentType.text = NSLocalizedString("room", comment: "Room").capitalized + " \(apartmentsCount)"
-            
+         case "Studio Apartment":
+            cell.apartmentType.text = NSLocalizedString("studioApartment", comment: "Studio Apartment").capitalized + " \(apartmentsCount)"
         default:
             break
         }

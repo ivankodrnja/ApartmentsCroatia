@@ -278,7 +278,7 @@ class HouseDetailTableViewController: UIViewController, UITableViewDelegate, UIT
                 cell.textLabel?.text = "Website" + ":"
                 
                 let website = house!.website
-                if website == "http://www.croapartments.net/nowebsite.html" {
+                if website == "http://www.croapartments.net/nowebsite.html" || website == "http://www.croapartments.net/iphone/nowebsite.html" {
                     cell.detailTextLabel?.text = "N/A"
                 } else {
                     cell.detailTextLabel?.text = website
@@ -380,7 +380,7 @@ class HouseDetailTableViewController: UIViewController, UITableViewDelegate, UIT
             case 2:
                 // check if website exists and show it if it does
                 let website = house!.website
-                if website == "http://www.croapartments.net/nowebsite.html" {
+                if website == "http://www.croapartments.net/nowebsite.html" || website == "http://www.croapartments.net/iphone/nowebsite.html" {
                     return
                 } else {
                     if Reachability.shared.isConnectedToNetwork() == true {
@@ -435,7 +435,7 @@ class HouseDetailTableViewController: UIViewController, UITableViewDelegate, UIT
         mailComposerVC.mailComposeDelegate = self // Extremely important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
         
         mailComposerVC.setToRecipients([house!.email])
-        mailComposerVC.setSubject("Upit za Vaš apartman \(String(describing: house?.name)) / Apartments Croatia iPhone-Android app")
+        mailComposerVC.setSubject("Upit za Vaš apartman \(String(describing: house!.name)) / Apartments Croatia iPhone-Android app")
         mailComposerVC.setMessageBody("Enter your query", isHTML: false)
         
         return mailComposerVC
