@@ -18,12 +18,6 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     
     // initialize search controller
-    //var resultsTableController = UITableViewController(style: .Plain)
-    //var searchController = UISearchController(searchResultsController: nil)
-    // TODO delete results
-    // var resultsTableController: SearchResultsViewController!
-    
-    
     var searchController: UISearchController!
     
     var destinationSearchResults: [Destination]?
@@ -57,9 +51,6 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         self.navigationItem.title = NSLocalizedString("app-title", comment: "Apartments Croatia")
         // search
-        // TODO delete results
-        //resultsTableController = SearchResultsViewController()
-        //self.searchController = UISearchController(searchResultsController: resultsTableController)
         
         // Initializing with searchResultsController set to nil means that
         // searchController will use this view controller to display the search results
@@ -78,14 +69,9 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         // Sets this view controller as presenting view controller for the search interface
         definesPresentationContext = true
-        
-        
-    
-        /*
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 100
-         */
+
         tableView.tableFooterView = UIView()
+        navigationItem.rightBarButtonItem = nil
     }
     
 
@@ -110,7 +96,7 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
     func getDestinationName(_ searchText: String) -> [Destination] {
         
         let getDestinationByNameFetchRequest = NSFetchRequest<Destination>(entityName: "Destination")
-        getDestinationByNameFetchRequest.predicate = NSPredicate(format: "name CONTAINS %@", searchText)
+        getDestinationByNameFetchRequest.predicate = NSPredicate(format: "name CONTAINS[c] %@", searchText)
         let allDestinations = (try! sharedContext.fetch(getDestinationByNameFetchRequest)) 
         
         return allDestinations
@@ -120,7 +106,7 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
     func getHouseName(_ searchText: String) -> [House] {
         
         let getHouseByNameFetchRequest = NSFetchRequest<House>(entityName: "House")
-        getHouseByNameFetchRequest.predicate = NSPredicate(format: "name CONTAINS %@", searchText)
+        getHouseByNameFetchRequest.predicate = NSPredicate(format: "name CONTAINS[c] %@", searchText)
         let allHouses = (try! sharedContext.fetch(getHouseByNameFetchRequest)) 
         
         return allHouses
@@ -186,7 +172,7 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     /*
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        <#code#>
+        return 100
     }
     */
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -214,8 +200,6 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         /* Get cell type */
         
-        //TODO: delete
-        
         if searchController.isActive && searchController.searchBar.text != "" {
             
             let scope = searchController.searchBar.scopeButtonTitles![searchController.searchBar.selectedScopeButtonIndex]
@@ -226,6 +210,8 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
                 tableView.register(UINib(nibName: "DestinationTableViewCell", bundle: nil), forCellReuseIdentifier: "DestinationTableViewCell")
             
                 tableView.rowHeight = 80
+                tableView.separatorStyle = UITableViewCellSeparatorStyle.singleLine
+                tableView.separatorColor = UIColor.lightGray
                 let cell = tableView.dequeueReusableCell(withIdentifier: "DestinationTableViewCell", for: indexPath) as! DestinationTableViewCell
                 
 
@@ -245,6 +231,7 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
                 
                 tableView.register(UINib(nibName: "HouseTableViewCell", bundle: nil), forCellReuseIdentifier: "HousesCell")
                 tableView.rowHeight = 350
+                tableView.separatorStyle = UITableViewCellSeparatorStyle.none
                 let cell = tableView.dequeueReusableCell(withIdentifier: "HousesCell", for: indexPath) as! HouseTableViewCell
                 // make table cell separators stretch throught the screen width, in Storyboard separator insets of the table view and the cell have also set to 0
                 cell.preservesSuperviewLayoutMargins = false
@@ -286,9 +273,6 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         
         let region = fetchedResultsController.object(at: indexPath)
-            
-
-        
         let cellReuseIdentifier = "RegionsCell"
         tableView.rowHeight = 104
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier)! as! RegionTableViewCell
@@ -417,9 +401,14 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
             tableView.deleteRows(at: [indexPath!], with: .fade)
             
         case .update:
-            let cell = tableView.cellForRow(at: indexPath!) as! RegionTableViewCell
-            let region = controller.object(at: indexPath!) as! Region
-            self.configureCell(cell, withRegion: region, atIndexPath: indexPath!)
+            if let indexPath = indexPath, let cell = tableView.cellForRow(at: indexPath){
+                
+                let region = controller.object(at: indexPath) as! Region
+                self.configureCell(cell as! RegionTableViewCell, withRegion: region, atIndexPath: indexPath)
+            }
+            //let cell = tableView.cellForRow(at: indexPath!) as! RegionTableViewCell
+            //let region = controller.object(at: indexPath!) as! Region
+            //self.configureCell(cell, withRegion: region, atIndexPath: indexPath!)
             
         case .move:
             tableView.deleteRows(at: [indexPath!], with: .fade)

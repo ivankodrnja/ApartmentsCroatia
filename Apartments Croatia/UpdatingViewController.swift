@@ -22,7 +22,7 @@ class UpdatingViewController: UIViewController {
         
         // check when is the database last synced
         self.syncingLabel.text = "Syncing database with the server. Please wait."
-        print(NetworkClient.sharedInstance().defaults.object(forKey: "lastSyncDate") as? Date)
+        print(NetworkClient.sharedInstance().defaults.object(forKey: "lastSyncDate") as? Date as Any)
         let lastSyncDate = NetworkClient.sharedInstance().defaults.object(forKey: "lastSyncDate") as? Date ?? Date()
         print("UpdatingViewController lastSyncDate from NSUserDefaults: \(lastSyncDate)")
         

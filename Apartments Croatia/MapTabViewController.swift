@@ -74,8 +74,8 @@ class MapTabViewController: UIViewController {
     
     func getAllHousesLatLng() -> [House] {
         
-        let getAllHousesLatLngFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "House")
-        let allLatLng = (try! sharedContext.fetch(getAllHousesLatLngFetchRequest)) as! [House]
+        let getAllHousesLatLngFetchRequest = NSFetchRequest<House>(entityName: "House")
+        let allLatLng = (try! sharedContext.fetch(getAllHousesLatLngFetchRequest))
         
         return allLatLng
         
@@ -83,9 +83,9 @@ class MapTabViewController: UIViewController {
     
     func getWishlistHousesLatLng() -> [House] {
         
-        let getAllHousesLatLngFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "House")
+        let getAllHousesLatLngFetchRequest = NSFetchRequest<House>(entityName: "House")
         getAllHousesLatLngFetchRequest.predicate = NSPredicate(format: "favorite == %@", "Y")
-        let allLatLng = (try! sharedContext.fetch(getAllHousesLatLngFetchRequest)) as! [House]
+        let allLatLng = (try! sharedContext.fetch(getAllHousesLatLngFetchRequest)) 
         
         return allLatLng
         
