@@ -102,10 +102,15 @@ class DestinationsViewController: UIViewController, UITableViewDelegate, UITable
         /* Get cell type */
         
         let destination = fetchedResultsController.object(at: indexPath) 
-        
+        /*
         let cellReuseIdentifier = "DestinationsCell"
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier)! as! DestinationTableViewCell
+        */
+        tableView.register(UINib(nibName: "DestinationTableViewCell", bundle: nil), forCellReuseIdentifier: "DestinationTableViewCell")
+        
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DestinationTableViewCell", for: indexPath) as! DestinationTableViewCell
         
         configureCell(cell, withDestination: destination, atIndexPath: indexPath)
         cell.selectionStyle = UITableViewCellSelectionStyle.none

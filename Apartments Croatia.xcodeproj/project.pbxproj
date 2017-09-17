@@ -15,6 +15,8 @@
 		8312599B1CB29150003870EE /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831259931CB29150003870EE /* Destination.swift */; };
 		832D5AC81D45E24900938B2E /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832D5AC71D45E24900938B2E /* MapViewController.swift */; };
 		832D5ACA1D46311200938B2E /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832D5AC91D46311200938B2E /* ImageViewController.swift */; };
+		8336EC501F6E79380032863A /* DestinationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8336EC4F1F6E79380032863A /* DestinationTableViewCell.xib */; };
+		8336EC521F6E82020032863A /* HouseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8336EC511F6E82020032863A /* HouseTableViewCell.xib */; };
 		8357BC371D3F5C3E00B011B9 /* AukDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8357BC361D3F5C3E00B011B9 /* AukDistrib.swift */; };
 		8357BC3B1D3F5DBA00B011B9 /* MoaDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8357BC3A1D3F5DBA00B011B9 /* MoaDistrib.swift */; };
 		836E55EE1D467D2E00A2501F /* MapTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836E55ED1D467D2E00A2501F /* MapTabViewController.swift */; };
@@ -66,6 +68,8 @@
 		831259931CB29150003870EE /* Destination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
 		832D5AC71D45E24900938B2E /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		832D5AC91D46311200938B2E /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		8336EC4F1F6E79380032863A /* DestinationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DestinationTableViewCell.xib; sourceTree = "<group>"; };
+		8336EC511F6E82020032863A /* HouseTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HouseTableViewCell.xib; sourceTree = "<group>"; };
 		834656F71F6705EA00B5C706 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		834656F81F6705EA00B5C706 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		834656F91F6705EA00B5C706 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -256,8 +260,10 @@
 				8357BC361D3F5C3E00B011B9 /* AukDistrib.swift */,
 				8357BC3A1D3F5DBA00B011B9 /* MoaDistrib.swift */,
 				83F9E1FB1CED7A8D00C85296 /* DestinationTableViewCell.swift */,
+				8336EC4F1F6E79380032863A /* DestinationTableViewCell.xib */,
 				83EAD55D1D391FA300A58F39 /* RegionTableViewCell.swift */,
 				83EAD5611D39245B00A58F39 /* HouseTableViewCell.swift */,
+				8336EC511F6E82020032863A /* HouseTableViewCell.xib */,
 				83A0B6EC1D4107C6000AC9AA /* ImageSliderCell.swift */,
 				83A0B6EE1D4108BC000AC9AA /* MapTableViewCell.swift */,
 				83A0B6F01D423E4F000AC9AA /* LabelTableViewCell.swift */,
@@ -387,10 +393,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8336EC521F6E82020032863A /* HouseTableViewCell.xib in Resources */,
 				83B5B7341CA9015B00C4D63B /* LaunchScreen.storyboard in Resources */,
 				83719B5E1F65CEC7002B58BE /* Localizable.strings in Resources */,
 				83B5B7311CA9015B00C4D63B /* Assets.xcassets in Resources */,
 				83B5B72F1CA9015B00C4D63B /* Main.storyboard in Resources */,
+				8336EC501F6E79380032863A /* DestinationTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

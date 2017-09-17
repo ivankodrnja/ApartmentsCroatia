@@ -20,7 +20,10 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
     // initialize search controller
     //var resultsTableController = UITableViewController(style: .Plain)
     //var searchController = UISearchController(searchResultsController: nil)
-    var resultsTableController: SearchResultsViewController!
+    // TODO delete results
+    // var resultsTableController: SearchResultsViewController!
+    
+    
     var searchController: UISearchController!
     
     var destinationSearchResults: [Destination]?
@@ -54,9 +57,30 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         self.navigationItem.title = NSLocalizedString("app-title", comment: "Apartments Croatia")
         // search
-        resultsTableController = SearchResultsViewController()
-        self.searchController = UISearchController(searchResultsController: resultsTableController)
+        // TODO delete results
+        //resultsTableController = SearchResultsViewController()
+        //self.searchController = UISearchController(searchResultsController: resultsTableController)
         
+        // Initializing with searchResultsController set to nil means that
+        // searchController will use this view controller to display the search results
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        
+        // If we are using this same view controller to present the results
+        // dimming it out wouldn't make sense. Should probably only set
+        // this to yes if using another controller to display the search results.
+        searchController.dimsBackgroundDuringPresentation = false
+        
+        searchController.searchBar.sizeToFit()
+        tableView.tableHeaderView = searchController.searchBar
+        searchController.searchBar.scopeButtonTitles = [NSLocalizedString("destination", comment: "Destination"), NSLocalizedString("house", comment: "House")]
+        searchController.searchBar.delegate = self
+        
+        // Sets this view controller as presenting view controller for the search interface
+        definesPresentationContext = true
+        
+        
+    
         /*
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100
@@ -159,13 +183,12 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
     }()
     
     // MARK: - Table View
-    
+
     /*
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        
-        return 100
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        <#code#>
     }
- */
+    */
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -176,7 +199,7 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             let scope = searchController.searchBar.scopeButtonTitles![searchController.searchBar.selectedScopeButtonIndex]
             
-            if scope == "Destination" {
+            if scope == NSLocalizedString("destination", comment: "Destination") {
                 return (destinationSearchResults?.count)!
             } else {
                 return (houeseSearchResults?.count)!
@@ -197,26 +220,65 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             let scope = searchController.searchBar.scopeButtonTitles![searchController.searchBar.selectedScopeButtonIndex]
             
-            if scope == "Destination" {
+            if scope == NSLocalizedString("destination", comment: "Destination") {
                 let destination = destinationSearchResults![indexPath.row]
-                let cell = tableView.dequeueReusableCell(withIdentifier: "DestinationsCell", for: indexPath) as! DestinationTableViewCell
+                
+                tableView.register(UINib(nibName: "DestinationTableViewCell", bundle: nil), forCellReuseIdentifier: "DestinationTableViewCell")
+            
+                tableView.rowHeight = 80
+                let cell = tableView.dequeueReusableCell(withIdentifier: "DestinationTableViewCell", for: indexPath) as! DestinationTableViewCell
+                
+
+                // make table cell separators stretch throught the screen width, in Storyboard separator insets of the table view and the cell have also set to 0
+                cell.preservesSuperviewLayoutMargins = false
+                cell.layoutMargins = UIEdgeInsets.zero
+            
+   
+                //***** set the apartment name or heading *****//
                 cell.nameLabel.text = destination.name
+                // show separately first letter of the name
+                cell.firstLetterLabel.text = String(destination.name[destination.name.startIndex])
+                cell.selectionStyle = UITableViewCellSelectionStyle.none
                 return cell
             } else {
                 let house = houeseSearchResults![indexPath.row]
+                
+                tableView.register(UINib(nibName: "HouseTableViewCell", bundle: nil), forCellReuseIdentifier: "HousesCell")
+                tableView.rowHeight = 350
                 let cell = tableView.dequeueReusableCell(withIdentifier: "HousesCell", for: indexPath) as! HouseTableViewCell
+                // make table cell separators stretch throught the screen width, in Storyboard separator insets of the table view and the cell have also set to 0
+                cell.preservesSuperviewLayoutMargins = false
+                cell.layoutMargins = UIEdgeInsets.zero
+                
+                // remove previous image from the newly created cell
+                cell.scrollView.auk.removeAll()
+                
+                // enables scrolling to top by tappig status bar on top, there are two scrol views, this one and the uitableview, only one can have scrolls to top true
+                cell.scrollView.scrollsToTop = false
+                
+                //***** set the apartment name or heading *****//
+                // cache downloaded images and use Auk image slideshow library from https://github.com/evgenyneu/Auk
+                Moa.settings.cache.requestCachePolicy = .returnCacheDataElseLoad
+                
+                let imageUrl = NetworkClient.Constants.baseUrl + NetworkClient.Constants.imageFolder + house.mainImagePath
+                cell.scrollView.auk.settings.placeholderImage = UIImage(named: "LoadingImage")
+                cell.scrollView.auk.settings.errorImage = UIImage(named: "NoImage")
+                cell.scrollView.auk.show(url: imageUrl)
+                
                 cell.nameLabel.text = house.name
-                // TODO: localization cell.toTheSeaLabel.text
+                cell.toTheSeaLabel.text = NSLocalizedString("sea", comment: "Sea") + ":"
                 cell.toTheSeaDistance.text = "\(house.seaDistance) m"
-                // TODO: localization cell.toTheCenterLabel.text
+                cell.toTheCenterLabel.text = NSLocalizedString("center", comment: "Center") + ":"
                 cell.toTheCenterDistance.text = "\(house.centerDistance) m"
-                // TODO: localization cell.dailyFromLabel.text
+                cell.dailyFromLabel.text = NSLocalizedString("priceFrom", comment: "Daily from") + ":"
                 if (house.priceFrom == 0){
                     cell.dailyFromPrice.text = NSLocalizedString("request", comment: "Request")
                 } else{
                     cell.dailyFromPrice.text = "\(house.priceFrom) EUR"
                 }
                 cell.locationLabel.text = "\(house.destination!.name), \(house.destination!.region!.name)"
+                
+                cell.selectionStyle = UITableViewCellSelectionStyle.none
                 return cell
             }
             
@@ -228,10 +290,8 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
 
         
         let cellReuseIdentifier = "RegionsCell"
-        
+        tableView.rowHeight = 104
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier)! as! RegionTableViewCell
-        
-        
         
         configureCell(cell, withRegion: region, atIndexPath: indexPath)
         cell.selectionStyle = UITableViewCellSelectionStyle.none
@@ -281,7 +341,7 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             let scope = searchController.searchBar.scopeButtonTitles![searchController.searchBar.selectedScopeButtonIndex]
             
-            if scope == "Destination" {
+            if scope == NSLocalizedString("destination", comment: "Destination") {
                 
                 let controller = storyboard!.instantiateViewController(withIdentifier: "HousesViewController") as! HousesViewController
                 let destination = destinationSearchResults![indexPath.row]
@@ -396,10 +456,10 @@ extension RegionsViewController: UISearchResultsUpdating {
         let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
         
         switch scope {
-            case "Destination":
+            case NSLocalizedString("destination", comment: "Destination"):
             destinationSearchResults = getDestinationName(searchController.searchBar.text!)
             tableView.reloadData()
-            case "House":
+            case NSLocalizedString("house", comment: "House"):
             houeseSearchResults = getHouseName(searchController.searchBar.text!)
             tableView.reloadData()
                 default:
@@ -414,10 +474,10 @@ extension RegionsViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         let scope = searchBar.scopeButtonTitles![selectedScope]
         switch scope {
-        case "Destination":
+        case NSLocalizedString("destination", comment: "Destination"):
            destinationSearchResults = getDestinationName(searchController.searchBar.text!)
             
-        case "House":
+        case NSLocalizedString("house", comment: "House"):
            houeseSearchResults = getHouseName(searchController.searchBar.text!)
         default:
             return
