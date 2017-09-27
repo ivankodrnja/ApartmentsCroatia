@@ -30,6 +30,10 @@ class HouseDetailTableViewController: UIViewController, UITableViewDelegate, UIT
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let houseAnalyticsParameters = ["HouseName:" : house!.name, "WebHouseId": house!.houseid] as [String : Any]
+        Flurry.logEvent("HouseLoaded", withParameters: houseAnalyticsParameters, timed: true)
+        Flurry.logPageView()
+        
         // set rows of different dimensions
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         //tableView.rowHeight = UITableViewAutomaticDimension
@@ -316,6 +320,8 @@ class HouseDetailTableViewController: UIViewController, UITableViewDelegate, UIT
                 self.navigationController!.pushViewController(controller, animated: true)
             // add to/remove from wishlist
             case 1:
+                
+                print(house!)
                 if !isFavorite {
                     house!.favorite = "Y"
                     

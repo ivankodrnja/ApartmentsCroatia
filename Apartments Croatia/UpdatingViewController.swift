@@ -39,7 +39,7 @@ class UpdatingViewController: UIViewController {
                 print("UpdatingViewController lastSyncDate from NSUserDefaults after sync: \(lastSyncDate)")
                 
                 self.presentingViewController?.dismiss(animated: true, completion: nil)
-                //TODO: handle error
+
             } else {
                 self.activityIndicator.hidesWhenStopped = true
                 self.activityIndicator.stopAnimating()

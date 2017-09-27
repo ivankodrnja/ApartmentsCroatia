@@ -15,9 +15,7 @@ class ApartmentDetailViewController: UIViewController, UITableViewDelegate, UITa
 
     // variable will be initialized from previous VC
     var apartments : [Apartment]?
-    
-    // apartments count
-    var apartmentsCount = 1
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +47,9 @@ class ApartmentDetailViewController: UIViewController, UITableViewDelegate, UITa
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        
+        let apartmentIndex = indexPath.row.hashValue
+        
         let apartment = apartments![indexPath.row]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ApartmentDetailCell", for: indexPath) as! ApartmentDetailCell
@@ -62,11 +63,11 @@ class ApartmentDetailViewController: UIViewController, UITableViewDelegate, UITa
         
         switch apartment.type {
         case "Apartment":
-            cell.apartmentType.text = NSLocalizedString("apartment", comment: "apartment").capitalized + " \(apartmentsCount)"
+            cell.apartmentType.text = NSLocalizedString("apartment", comment: "apartment").capitalized + " \(apartmentIndex + 1)"
         case "Room":
-            cell.apartmentType.text = NSLocalizedString("room", comment: "Room").capitalized + " \(apartmentsCount)"
+            cell.apartmentType.text = NSLocalizedString("room", comment: "Room").capitalized + " \(apartmentIndex + 1)"
          case "Studio Apartment":
-            cell.apartmentType.text = NSLocalizedString("studioApartment", comment: "Studio Apartment").capitalized + " \(apartmentsCount)"
+            cell.apartmentType.text = NSLocalizedString("studioApartment", comment: "Studio Apartment").capitalized + " \(apartmentIndex + 1)"
         default:
             break
         }
@@ -103,7 +104,7 @@ class ApartmentDetailViewController: UIViewController, UITableViewDelegate, UITa
             cell.internetImage.image = UIImage(named: "nocheckmark")
         }
         
-        apartmentsCount+=1
+        
         
         return cell
         

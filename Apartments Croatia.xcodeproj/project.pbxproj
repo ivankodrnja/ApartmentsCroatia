@@ -13,6 +13,7 @@
 		831259971CB29150003870EE /* Region.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8312598F1CB29150003870EE /* Region.swift */; };
 		831259991CB29150003870EE /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831259911CB29150003870EE /* Photo.swift */; };
 		8312599B1CB29150003870EE /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831259931CB29150003870EE /* Destination.swift */; };
+		831C68F91F76748500BD0F91 /* api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831C68F81F76748500BD0F91 /* api.swift */; };
 		832D5AC81D45E24900938B2E /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832D5AC71D45E24900938B2E /* MapViewController.swift */; };
 		832D5ACA1D46311200938B2E /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832D5AC91D46311200938B2E /* ImageViewController.swift */; };
 		8336EC501F6E79380032863A /* DestinationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8336EC4F1F6E79380032863A /* DestinationTableViewCell.xib */; };
@@ -47,6 +48,11 @@
 		83B5B72F1CA9015B00C4D63B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83B5B72D1CA9015B00C4D63B /* Main.storyboard */; };
 		83B5B7311CA9015B00C4D63B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83B5B7301CA9015B00C4D63B /* Assets.xcassets */; };
 		83B5B7341CA9015B00C4D63B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83B5B7321CA9015B00C4D63B /* LaunchScreen.storyboard */; };
+		83CD7E901F73073F00350FE3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83CD7E8F1F73073F00350FE3 /* Security.framework */; };
+		83CD7E921F73074B00350FE3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83CD7E911F73074B00350FE3 /* SystemConfiguration.framework */; };
+		83CD7E9D1F730DB500350FE3 /* FlurryEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CD7E961F730DB500350FE3 /* FlurryEmpty.m */; };
+		83CD7E9E1F730DB500350FE3 /* FlurryWatchEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CD7E991F730DB500350FE3 /* FlurryWatchEmpty.m */; };
+		83CD7E9F1F730DB500350FE3 /* libFlurry_8.2.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 83CD7E9A1F730DB500350FE3 /* libFlurry_8.2.1.a */; };
 		83E21A101CAA9E3000BA5EA0 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 83E21A0E1CAA9E3000BA5EA0 /* Model.xcdatamodeld */; };
 		83E21A121CAAED0700BA5EA0 /* CoreDataStackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E21A111CAAED0700BA5EA0 /* CoreDataStackManager.swift */; };
 		83E21A151CAAEF0900BA5EA0 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E21A141CAAEF0900BA5EA0 /* NetworkClient.swift */; };
@@ -66,6 +72,7 @@
 		8312598F1CB29150003870EE /* Region.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Region.swift; sourceTree = "<group>"; };
 		831259911CB29150003870EE /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		831259931CB29150003870EE /* Destination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
+		831C68F81F76748500BD0F91 /* api.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = api.swift; sourceTree = "<group>"; };
 		832D5AC71D45E24900938B2E /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		832D5AC91D46311200938B2E /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		8336EC4F1F6E79380032863A /* DestinationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DestinationTableViewCell.xib; sourceTree = "<group>"; };
@@ -130,6 +137,17 @@
 		83B5B7301CA9015B00C4D63B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		83B5B7331CA9015B00C4D63B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		83B5B7351CA9015B00C4D63B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		83CD7E8F1F73073F00350FE3 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		83CD7E911F73074B00350FE3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		83CD7E951F730DB500350FE3 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
+		83CD7E961F730DB500350FE3 /* FlurryEmpty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlurryEmpty.m; sourceTree = "<group>"; };
+		83CD7E971F730DB500350FE3 /* FlurrySessionBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurrySessionBuilder.h; sourceTree = "<group>"; };
+		83CD7E981F730DB500350FE3 /* FlurryWatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryWatch.h; sourceTree = "<group>"; };
+		83CD7E991F730DB500350FE3 /* FlurryWatchEmpty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlurryWatchEmpty.m; sourceTree = "<group>"; };
+		83CD7E9A1F730DB500350FE3 /* libFlurry_8.2.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_8.2.1.a; sourceTree = "<group>"; };
+		83CD7E9B1F730DB500350FE3 /* libFlurryTVOS_8.2.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurryTVOS_8.2.1.a; sourceTree = "<group>"; };
+		83CD7E9C1F730DB500350FE3 /* libFlurryWatch_8.2.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurryWatch_8.2.1.a; sourceTree = "<group>"; };
+		83CD7EA21F730EAB00350FE3 /* Apartments Croatia-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Apartments Croatia-Bridging-Header.h"; sourceTree = "<group>"; };
 		83E21A0F1CAA9E3000BA5EA0 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		83E21A111CAAED0700BA5EA0 /* CoreDataStackManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackManager.swift; sourceTree = "<group>"; };
 		83E21A141CAAEF0900BA5EA0 /* NetworkClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
@@ -147,6 +165,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83CD7E921F73074B00350FE3 /* SystemConfiguration.framework in Frameworks */,
+				83CD7E9F1F730DB500350FE3 /* libFlurry_8.2.1.a in Frameworks */,
+				83CD7E901F73073F00350FE3 /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,6 +233,7 @@
 			children = (
 				83B5B7281CA9015B00C4D63B /* Apartments Croatia */,
 				83B5B7271CA9015B00C4D63B /* Products */,
+				83CD7E8E1F73073F00350FE3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -227,6 +249,8 @@
 			isa = PBXGroup;
 			children = (
 				83B5B7291CA9015B00C4D63B /* AppDelegate.swift */,
+				83CD7EA21F730EAB00350FE3 /* Apartments Croatia-Bridging-Header.h */,
+				831C68F81F76748500BD0F91 /* api.swift */,
 				83B5B73B1CA9022000C4D63B /* Model */,
 				83B5B73C1CA9022800C4D63B /* View */,
 				83B5B73D1CA9022F00C4D63B /* Controller */,
@@ -290,12 +314,37 @@
 		83B5B73E1CA9024900C4D63B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				83CD7E941F730DB500350FE3 /* Flurry */,
 				83B5B7351CA9015B00C4D63B /* Info.plist */,
 				83B5B7301CA9015B00C4D63B /* Assets.xcassets */,
 				839059411D60665700410530 /* Kastav.gpx */,
 				83719B5C1F65CEC7002B58BE /* Localizable.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		83CD7E8E1F73073F00350FE3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				83CD7E911F73074B00350FE3 /* SystemConfiguration.framework */,
+				83CD7E8F1F73073F00350FE3 /* Security.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		83CD7E941F730DB500350FE3 /* Flurry */ = {
+			isa = PBXGroup;
+			children = (
+				83CD7E951F730DB500350FE3 /* Flurry.h */,
+				83CD7E961F730DB500350FE3 /* FlurryEmpty.m */,
+				83CD7E971F730DB500350FE3 /* FlurrySessionBuilder.h */,
+				83CD7E981F730DB500350FE3 /* FlurryWatch.h */,
+				83CD7E991F730DB500350FE3 /* FlurryWatchEmpty.m */,
+				83CD7E9A1F730DB500350FE3 /* libFlurry_8.2.1.a */,
+				83CD7E9B1F730DB500350FE3 /* libFlurryTVOS_8.2.1.a */,
+				83CD7E9C1F730DB500350FE3 /* libFlurryWatch_8.2.1.a */,
+			);
+			path = Flurry;
 			sourceTree = "<group>";
 		};
 		83E21A131CAAEEE100BA5EA0 /* NetworkClient */ = {
@@ -412,6 +461,7 @@
 				83763A7E1F63521800368AD6 /* FBAnnotation.swift in Sources */,
 				83EAD55A1D391C7700A58F39 /* RegionsViewController.swift in Sources */,
 				8357BC3B1D3F5DBA00B011B9 /* MoaDistrib.swift in Sources */,
+				83CD7E9D1F730DB500350FE3 /* FlurryEmpty.m in Sources */,
 				83A0B6EB1D4100D9000AC9AA /* HouseDetailTableViewController.swift in Sources */,
 				831259991CB29150003870EE /* Photo.swift in Sources */,
 				83763A841F63521800368AD6 /* FBBoundingBox+MapKit.swift in Sources */,
@@ -445,10 +495,12 @@
 				8312598B1CB290F8003870EE /* Apartment.swift in Sources */,
 				83A313F91D450A9B00F578E4 /* ApartmentDetailViewController.swift in Sources */,
 				83763A831F63521800368AD6 /* FBBoundingBox.swift in Sources */,
+				83CD7E9E1F730DB500350FE3 /* FlurryWatchEmpty.m in Sources */,
 				83EAD5601D39241B00A58F39 /* HousesViewController.swift in Sources */,
 				831259951CB29150003870EE /* House.swift in Sources */,
 				8312599B1CB29150003870EE /* Destination.swift in Sources */,
 				83F9E1FC1CED7A8D00C85296 /* DestinationTableViewCell.swift in Sources */,
+				831C68F91F76748500BD0F91 /* api.swift in Sources */,
 				83763A861F63521800368AD6 /* FBQuadTree.swift in Sources */,
 				83EAD5621D39245B00A58F39 /* HouseTableViewCell.swift in Sources */,
 				83F04E5B1D3CF2E40075C23F /* UpdatingViewController.swift in Sources */,
@@ -557,6 +609,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "Apartments_Croatia/Apartments Croatia-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -598,6 +651,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "Apartments_Croatia/Apartments Croatia-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -611,9 +665,22 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Apartments Croatia/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Apartments\\ Croatia/Flurry",
+					"$(PROJECT_DIR)/Apartments\\ Croatia/Flurry",
+					"$(PROJECT_DIR)/Apartments\\ Croatia/Flurry",
+					"$(PROJECT_DIR)/Apartments\\ Croatia/Flurry",
+					"$(PROJECT_DIR)/Apartments\\ Croatia/Flurry",
+					"$(PROJECT_DIR)/Apartments\\ Croatia/Flurry",
+					"$(PROJECT_DIR)/Apartments\\ Croatia/Flurry",
+					"$(PROJECT_DIR)/Apartments\\ Croatia/Flurry",
+					"$(PROJECT_DIR)/Apartments\\ Croatia/Flurry",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.2plus2.apartment;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Apartments Croatia/Apartments Croatia-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -626,9 +693,22 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Apartments Croatia/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Apartments\\ Croatia/Flurry",
+					"$(PROJECT_DIR)/Apartments\\ Croatia/Flurry",
+					"$(PROJECT_DIR)/Apartments\\ Croatia/Flurry",
+					"$(PROJECT_DIR)/Apartments\\ Croatia/Flurry",
+					"$(PROJECT_DIR)/Apartments\\ Croatia/Flurry",
+					"$(PROJECT_DIR)/Apartments\\ Croatia/Flurry",
+					"$(PROJECT_DIR)/Apartments\\ Croatia/Flurry",
+					"$(PROJECT_DIR)/Apartments\\ Croatia/Flurry",
+					"$(PROJECT_DIR)/Apartments\\ Croatia/Flurry",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.2plus2.apartment;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Apartments Croatia/Apartments Croatia-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

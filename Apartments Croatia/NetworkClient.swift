@@ -190,9 +190,9 @@ class NetworkClient: NSObject {
                         }
                   
                     case "deleted":
-                        //TODO: delete the house by ID from database
+                        //<house><deleted>  -> deleted houses won't be processed and won't get inserted in CD. Houses that will be deleted previously get a diferent statusID on the server
                         for deletedelem in elem["deleted"].children {
-                           // print("\(deletedelem.element!.name) : \(deletedelem.element!.text!)")
+                           print("\(deletedelem.element!.name) : \(deletedelem.element!.text)")
                         }
                         
                     default:
@@ -234,6 +234,8 @@ class NetworkClient: NSObject {
                     var region = self.getRegionByName(house[NetworkClient.XMLResponseKeys.RegionName] as! String).first
                     var destination = self.getDestinationByName(house[NetworkClient.XMLResponseKeys.DestinationName] as! String).first
                     var aHouse = self.getHouseById(house[NetworkClient.XMLResponseKeys.HouseID] as! Int).first
+
+                    
                     
                     // if region doesn't already exist, add it to the database
                     if region == nil {
@@ -246,7 +248,7 @@ class NetworkClient: NSObject {
                     if  destination == nil {
                         // create dictionary which will be used for Core Data entry
                         let destinationDict = [NetworkClient.XMLResponseKeys.DestinationName : house[NetworkClient.XMLResponseKeys.DestinationName]!, NetworkClient.XMLResponseKeys.DestinationPhotoPath : house[NetworkClient.XMLResponseKeys.DestinationImage]]
-                        destination = Destination(dictionary: destinationDict, context: self.sharedContext)
+                        destination = Destination(dictionary: destinationDict as Any as! [String : Any], context: self.sharedContext)
                         // destination belongs to a certain region
                         destination?.region = region
                     }
@@ -275,9 +277,36 @@ class NetworkClient: NSObject {
                             }
                         }
                       // check if house needs to be deleted, i.e. house is already in CD and has status id !3 in the paresed xml file
-                    } else if (aHouse != nil && house[NetworkClient.XMLResponseKeys.HouseStatusID] as! Int != 3) {
+                    } else if (aHouse != nil && house[NetworkClient.XMLResponseKeys.HouseStatusID]! as! Int != 3) {
+
                             self.sharedContext.delete(aHouse!)
+
+                      // this will update data for houses already in CD
+                    } else if (aHouse != nil && house[NetworkClient.XMLResponseKeys.HouseStatusID] as! Int == 3) {
+    
+                        // delete the house
+                        self.sharedContext.delete(aHouse!)
+                        // insert a house with new data
+                        aHouse = House(dictionary: house, context: self.sharedContext)
+                        // house belongs to certain destination
+                        aHouse?.destination = destination
                         
+                        // add photos of the house
+                        if let photos = house[NetworkClient.XMLResponseKeys.Photos] as? [Any]{
+                            for photo in photos{
+                                let photoDict = [NetworkClient.Constants.Path : photo]
+                                let newPhoto = Photo(dictionary: photoDict, context: self.sharedContext)
+                                // photo belongs to a certain house
+                                newPhoto.house = aHouse
+                            }
+                        }
+                        
+                        if let apartments = house[NetworkClient.XMLResponseKeys.Apartments] as? [Any]{
+                            for apartment in apartments{
+                                let newApartment = Apartment(dictionary: apartment as! [String:Any], context: self.sharedContext)
+                                newApartment.house = aHouse
+                            }
+                        }
                     }
 
                    // save data
@@ -287,16 +316,6 @@ class NetworkClient: NSObject {
             let lastUpdate = ["lastUpdate" : Date()]
             completionHandlerForGetRentals(lastUpdate as [String : AnyObject], nil)
             
-            /*
-            if let apartmentDictionary = parsedResult.valueForKey(ZilyoClient.JSONResponseKeys.Result) as? [[String:AnyObject]] {
-                
-                let apartments = ApartmentInformation.apartmentsFromResults(apartmentDictionary)
-                completionHandler(result: apartments, error: nil)
-                
-            } else {
-                completionHandler(result: nil, error: NSError(domain: "Results from Server", code: 0, userInfo: [NSLocalizedDescriptionKey: "Download (server) error occured. Please retry."]))
-            }
-            */
         }
         /* 7. Start the request */
         task.resume()

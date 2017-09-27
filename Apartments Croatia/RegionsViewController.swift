@@ -26,7 +26,7 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        Flurry.logEvent("Regions_Loaded")
         // Do any additional setup after loading the view.
         
         // fetch results
@@ -114,13 +114,14 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
 
     // TODO:delete
-    var loop = 1
+    //var loop = 1
     
     override func viewDidAppear(_ animated: Bool) {
 
-        // TODO:delete and handle error in UpdatingVC
+        // TODO:delete loop var
+        /*
         if (loop == 1){
-        let dateString = "2015-06-22"
+        let dateString = "2011-06-22"
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let dateFromString = dateFormatter.date(from: dateString)
@@ -129,7 +130,7 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
             
         loop += 1
         }
-        
+        */
         // present UpdatingViewController if syncing of databse occured 7 or more days ago
         let lastSyncDate = NetworkClient.sharedInstance().defaults.object(forKey: "lastSyncDate") as? Date ?? Date()
         print("RegionsViewController lastSyncDate from NSUserDefaults: \(lastSyncDate)")
@@ -180,7 +181,7 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // TODO: delete
+
         if searchController.isActive && searchController.searchBar.text != "" {
             
             let scope = searchController.searchBar.scopeButtonTitles![searchController.searchBar.selectedScopeButtonIndex]

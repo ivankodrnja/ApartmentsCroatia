@@ -33,17 +33,17 @@ class MapTabViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        Flurry.logEvent("Map_Loaded")
         // show the map
         let latitude = 44.281863
         let longitude = 16.382595
         mapView.mapType = MKMapType.hybrid
-        showMapRect(latitude: latitude, longitude: longitude)
+        //showMapRect(latitude: latitude, longitude: longitude)
         
         // show all houses
         clusteringManager.delegate = self
         showAllHouses()
-        
+        showMapRect(latitude: latitude, longitude: longitude)
         // will serve for requesting the user current location
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
@@ -64,6 +64,8 @@ class MapTabViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         // Start get the location on viewWillAppear
         locationManager.startUpdatingLocation()
+        
+
     }
     
     // MARK: - Core Data Convenience
@@ -106,6 +108,7 @@ class MapTabViewController: UIViewController {
         }
         allHousesAnnotationsArray = fbArray
         clusteringManager.add(annotations: allHousesAnnotationsArray!)
+        
 
     }
     
@@ -359,7 +362,7 @@ extension MapTabViewController : MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, annotationView: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         
-        if control == annotationView.rightCalloutAccessoryView {
+            if control == annotationView.rightCalloutAccessoryView {
             let controller = storyboard!.instantiateViewController(withIdentifier: "HouseDetailTableViewController") as! HouseDetailTableViewController
             let object = annotationView.annotation as! FBAnnotation
             let house = object.house
