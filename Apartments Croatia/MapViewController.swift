@@ -42,7 +42,7 @@ class MapViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func getDirections(){
+    @objc func getDirections(){
         
         
         

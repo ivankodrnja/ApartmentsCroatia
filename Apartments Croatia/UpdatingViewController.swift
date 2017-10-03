@@ -29,10 +29,10 @@ class UpdatingViewController: UIViewController {
         NetworkClient.sharedInstance().getRentals(lastSyncDate){(result, error) in
             
             if error == nil {
-                
-                self.activityIndicator.hidesWhenStopped = true
-                self.activityIndicator.stopAnimating()
-
+                DispatchQueue.main.async {
+                    self.activityIndicator.hidesWhenStopped = true
+                    self.activityIndicator.stopAnimating()
+                }
                 //store date of today's sync
                let lastSyncDate = result!["lastUpdate"]!
                 NetworkClient.sharedInstance().defaults.set(lastSyncDate, forKey: "lastSyncDate")

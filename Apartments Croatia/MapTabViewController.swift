@@ -303,7 +303,7 @@ extension MapTabViewController : MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool){
         
-        DispatchQueue.global(qos: .userInitiated).async{
+        DispatchQueue.main.async {
             
             let mapBoundsWidth = Double(self.mapView.bounds.size.width)
             
@@ -312,9 +312,9 @@ extension MapTabViewController : MKMapViewDelegate {
             let scale:Double = mapBoundsWidth / mapRectWidth
             
             let annotationArray = self.clusteringManager.clusteredAnnotations(withinMapRect: self.mapView.visibleMapRect, zoomScale:scale)
-            DispatchQueue.main.async {
+            
                 self.clusteringManager.display(annotations:annotationArray, onMapView:self.mapView)
-            }
+            
             
         }
         
