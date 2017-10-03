@@ -114,12 +114,13 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
 
     // TODO:delete
-    var loop = 1
+    //var loop = 1
     
     override func viewDidAppear(_ animated: Bool) {
 
         // TODO:delete loop var
         
+        /*
         if (loop == 1){
         let dateString = "2011-06-22"
         let dateFormatter = DateFormatter()
@@ -130,7 +131,7 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
             
         loop += 1
         }
- 
+ */
         // present UpdatingViewController if syncing of databse occured 7 or more days ago
         let lastSyncDate = NetworkClient.sharedInstance().defaults.object(forKey: "lastSyncDate") as? Date ?? Date()
         print("RegionsViewController lastSyncDate from NSUserDefaults: \(lastSyncDate)")

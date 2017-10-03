@@ -870,7 +870,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xZX-3z-gcG">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xZX-3z-gcG">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
@@ -1074,27 +1074,24 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="OUe-OZ-xcB">
-                                                    <rect key="frame" x="0.0" y="0.0" width="384" height="229"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="229"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="229" id="wGI-cx-nHG"/>
                                                     </constraints>
                                                 </mapView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="OUe-OZ-xcB" firstAttribute="leading" secondItem="8ag-0N-9bw" secondAttribute="leadingMargin" constant="-8" id="4JL-Nv-DFW"/>
                                                 <constraint firstItem="OUe-OZ-xcB" firstAttribute="leading" secondItem="8ag-0N-9bw" secondAttribute="leading" id="4OH-Vq-RlZ"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="OUe-OZ-xcB" secondAttribute="bottom" constant="-8" id="Nk4-3P-kmc"/>
                                                 <constraint firstAttribute="bottom" secondItem="OUe-OZ-xcB" secondAttribute="bottom" id="Z7z-0a-I1q"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="OUe-OZ-xcB" secondAttribute="trailing" constant="-17" id="dAl-vF-lka"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="OUe-OZ-xcB" secondAttribute="trailing" constant="-8" id="dAl-vF-lka"/>
                                                 <constraint firstItem="OUe-OZ-xcB" firstAttribute="top" secondItem="8ag-0N-9bw" secondAttribute="top" id="f6J-98-OLT"/>
-                                                <constraint firstItem="OUe-OZ-xcB" firstAttribute="top" secondItem="8ag-0N-9bw" secondAttribute="topMargin" constant="-8" id="rPU-bo-E4z"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="mapView" destination="OUe-OZ-xcB" id="kEf-bq-Uiy"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ContactInfoCell" id="Gz2-iF-I8U">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ContactInfoCell" id="Gz2-iF-I8U">
                                         <rect key="frame" x="0.0" y="706" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gz2-iF-I8U" id="Y9y-Dw-Pk7">
@@ -1154,7 +1151,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2103" y="-55"/>
+            <point key="canvasLocation" x="2101.5999999999999" y="-55.322338830584712"/>
         </scene>
         <!--Image View Controller-->
         <scene sceneID="yzL-ny-7Ve">
