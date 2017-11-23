@@ -133,11 +133,16 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
  */
         // present UpdatingViewController if syncing of databse occured 7 or more days ago
-        let lastSyncDate = NetworkClient.sharedInstance().defaults.object(forKey: "lastSyncDate") as? Date ?? Date()
-        print("RegionsViewController lastSyncDate from NSUserDefaults: \(lastSyncDate)")
-        let today = Date()
+
+        let lastSyncDate = NetworkClient.sharedInstance().defaults.object(forKey: "lastSyncDate") as! Date
         
-        let diffDateComponents = (Calendar.current as NSCalendar).components([NSCalendar.Unit.day], from: lastSyncDate, to: today, options: NSCalendar.Options.init(rawValue: 0))
+        
+        print("RegionsViewController finalLastSyncDate from NSUserDefaults: \(lastSyncDate)")
+        let today = Date()
+
+        let diffDateComponents = Calendar.current.dateComponents([.day], from: lastSyncDate, to: today)
+        
+        //let diffDateComponents =   (Calendar.current as NSCalendar).components([NSCalendar.Unit.day], from: lastSyncDate, to: today, options: NSCalendar.Options.init(rawValue: 0))
 
             
            if (diffDateComponents.day! > 7){

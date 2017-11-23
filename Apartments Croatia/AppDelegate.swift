@@ -16,9 +16,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // when app first launches set default sync date
+        print(NetworkClient.sharedInstance().defaults.object(forKey: "firstLaunch") as Any)
+        if NetworkClient.sharedInstance().defaults.object(forKey: "firstLaunch") == nil {
+            
+            
+            let stringLastSyncDate = "2017-10-03"
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            let lastSyncDate = dateFormatter.date(from:stringLastSyncDate)
+            let calendar = Calendar.current
+            let components = calendar.dateComponents([.year, .month, .day], from: lastSyncDate!)
+            let finalLastSyncDate = calendar.date(from:components)
+            
+            NetworkClient.sharedInstance().defaults.set(finalLastSyncDate, forKey: "lastSyncDate")
+            NetworkClient.sharedInstance().defaults.set(false, forKey: "firstLaunch")
+        } else {
+            NetworkClient.sharedInstance().defaults.set(false, forKey: "firstLaunch")
+        }
         DispatchQueue.main.async {
-        Flurry.startSession(flurryApiKey);
-        Flurry.logAllPageViews(forTarget: UITabBarController.self)
+            Flurry.startSession(flurryApiKey);
+            Flurry.logAllPageViews(forTarget: UITabBarController.self)
         }
         return true
     }

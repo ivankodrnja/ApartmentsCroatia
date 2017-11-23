@@ -131,98 +131,113 @@ class NetworkClient: NSObject {
             var houseDict = [String:Any]()
             
             do {
-                // get the <root><house> elements from the xml file
-                let houseElement = try xml.byKey("root").byKey("house")
-
                 
-                for elem in houseElement.children {
-                    
-                    // here will be stored photos and apartments data in each iteration of the loop
-                    var tempDict = [String : Any]()
-                    // here will be stored photos and apartments data in each iteration of the loop
-                    var tempArray = [Any]()
-                    // store apartment objects
-                    var tempApartmentArray = [Any]()
-                    
-                    switch (elem.element!.name){
-                    case "photos":
-                        let countOfPhotoElements = elem["photo"].children.count
-                        var numberOfPhotoElements = 1
-                        
-                        for photoelem in elem["photo"].children {
-                            // each xml entry goes to temporary array which eventually goes to house object
-                            tempArray.append(photoelem.element!.text)
-                            
-                            // tempArray of photo objects will be added to house object after all photo elements have been added to tempDict
-                            if(numberOfPhotoElements == countOfPhotoElements){
-                                houseDict["photos"] = tempArray 
-                            }
-                            
-                            numberOfPhotoElements += 1
+                    // get the <root><house> elements from the xml file
+                    let houseElement = try xml.byKey("root").byKey("house")
 
-                        }
+                    
+                    for elem in houseElement.children {
                         
-                    case "apartments":
-                        let countOfApartmentElements = elem["apartment"].children.count
-                        var numberOfApartmentElements = 1
-                        var numberOfApartmentObjects = 1
+                        // here will be stored photos and apartments data in each iteration of the loop
+                        var tempDict = [String : Any]()
+                        // here will be stored photos and apartments data in each iteration of the loop
+                        var tempArray = [Any]()
+                        // store apartment objects
+                        var tempApartmentArray = [Any]()
                         
-                        for apartelem in elem["apartment"].children {
-                            tempDict["\(apartelem.element!.name)"] = apartelem.element!.text
+                        switch (elem.element!.name){
+                        case "photos":
+                            let countOfPhotoElements = elem["photo"].children.count
+                            var numberOfPhotoElements = 1
                             
-                            // each new apartment object finishes with <internet> xml element, when it occurs, add tempDict to tempApartmentArray and clear tempDict content
-                            if(apartelem.element!.name == NetworkClient.XMLResponseKeys.ApartmentInternet){
-                                // before clearing the houseDict, add it to the tempApartmentDict which eventually goes to house object
-                                tempApartmentArray.append(tempDict)
-                                tempDict.removeAll()
+                            for photoelem in elem["photo"].children {
+                                // each xml entry goes to temporary array which eventually goes to house object
+                                tempArray.append(photoelem.element!.text)
                                 
-                                numberOfApartmentObjects += 1
-                            }
-                            
-                            // tempApartmentArray of apartment objects will be added to house object after all apartment objects have been added to tempApartmentDict
-                            if(numberOfApartmentElements == countOfApartmentElements){
-                                houseDict["apartments"] = tempApartmentArray
-                            }
-                            
-                            numberOfApartmentElements += 1
-                            
+                                // tempArray of photo objects will be added to house object after all photo elements have been added to tempDict
+                                if(numberOfPhotoElements == countOfPhotoElements){
+                                    houseDict["photos"] = tempArray
+                                }
+                                
+                                numberOfPhotoElements += 1
 
-                        }
-                  
-                    case "deleted":
-                        //<house><deleted>  -> deleted houses won't be processed and won't get inserted in CD. Houses that will be deleted previously get a diferent statusID on the server
-                        for deletedelem in elem["deleted"].children {
-                           print("\(deletedelem.element!.name) : \(deletedelem.element!.text)")
+                            }
+                            
+                        case "apartments":
+                            let countOfApartmentElements = elem["apartment"].children.count
+                            var numberOfApartmentElements = 1
+                            var numberOfApartmentObjects = 1
+                            
+                            for apartelem in elem["apartment"].children {
+                                tempDict["\(apartelem.element!.name)"] = apartelem.element!.text
+                                
+                                // each new apartment object finishes with <internet> xml element, when it occurs, add tempDict to tempApartmentArray and clear tempDict content
+                                if(apartelem.element!.name == NetworkClient.XMLResponseKeys.ApartmentInternet){
+                                    // before clearing the houseDict, add it to the tempApartmentDict which eventually goes to house object
+                                    tempApartmentArray.append(tempDict)
+                                    tempDict.removeAll()
+                                    
+                                    numberOfApartmentObjects += 1
+                                }
+                                
+                                // tempApartmentArray of apartment objects will be added to house object after all apartment objects have been added to tempApartmentDict
+                                if(numberOfApartmentElements == countOfApartmentElements){
+                                    houseDict["apartments"] = tempApartmentArray
+                                }
+                                
+                                numberOfApartmentElements += 1
+                                
+
+                            }
+                      
+                        case "deleted":
+                            //<house><deleted>  -> deleted houses won't be processed and won't get inserted in CD. Houses that will be deleted previously get a diferent statusID on the server
+                            for deletedelem in elem["deleted"].children {
+                               print("\(deletedelem.element!.name) : \(deletedelem.element!.text)")
+                            }
+                            
+                        default:
+                            // check if xml element should be an int or a Duble and typecast it from string
+                            if (NetworkClient.Constants.toInt.contains(elem.element!.name)){
+                               houseDict["\(elem.element!.name)"] = Int(elem.element!.text)
+                            } else if (elem.element!.name == NetworkClient.XMLResponseKeys.HouseLatitude || elem.element!.name == NetworkClient.XMLResponseKeys.HouseLongitude){
+                                houseDict["\(elem.element!.name)"] = Double(elem.element!.text)
+                                // leave as deafult type which is String
+                            } else {
+                                houseDict["\(elem.element!.name)"] = elem.element!.text
+                            }
                         }
                         
-                    default:
-                        // check if xml element should be an int or a Duble and typecast it from string
-                        if (NetworkClient.Constants.toInt.contains(elem.element!.name)){
-                           houseDict["\(elem.element!.name)"] = Int(elem.element!.text)
-                        } else if (elem.element!.name == NetworkClient.XMLResponseKeys.HouseLatitude || elem.element!.name == NetworkClient.XMLResponseKeys.HouseLongitude){
-                            houseDict["\(elem.element!.name)"] = Double(elem.element!.text)
-                            // leave as deafult type which is String
-                        } else {
-                            houseDict["\(elem.element!.name)"] = elem.element!.text
+                        // each new house object finishes with <active> xml element, when it occurs, add houseDict to houseArray and clear houseDict content
+                        if(elem.element!.name == NetworkClient.XMLResponseKeys.HouseActive){
+                            
+                            // we add default entry for favorite attribute to "N", it will be used later when data is inserted into Core Data a
+                            houseDict[NetworkClient.XMLResponseKeys.HouseFavorite] = "N"
+                            // before clearing the houseDict, append it to the houseArray
+                            housesArray.append(houseDict)
+                            
+                            houseDict.removeAll()
                         }
-                    }
-                    
-                    // each new house object finishes with <active> xml element, when it occurs, add houseDict to houseArray and clear houseDict content
-                    if(elem.element!.name == NetworkClient.XMLResponseKeys.HouseActive){
                         
-                        // we add default entry for favorite attribute to "N", it will be used later when data is inserted into Core Data a
-                        houseDict[NetworkClient.XMLResponseKeys.HouseFavorite] = "N"
-                        // before clearing the houseDict, append it to the houseArray
-                        housesArray.append(houseDict)
-                        
-                        houseDict.removeAll()
-                    }
                     
                 }
-
             } catch {
+                
+                do {
+                    // get the <root> element from the xml file
+                    try xml.byKey("root")
+                    
+                    let lastUpdate = ["lastUpdate" : Date()]
+                    completionHandlerForGetRentals(lastUpdate as [String : AnyObject], nil)
+                    
+                } catch {
+                    print("Could not parse the data as XML: '\(XMLIndexer.xmlError.self)'")
+                    return
+                }
+                
+                
                 print("Could not parse the data as XML: '\(XMLIndexer.xmlError.self)'")
-                return
+                //return
             }
             
             /* 6. Use the data! */

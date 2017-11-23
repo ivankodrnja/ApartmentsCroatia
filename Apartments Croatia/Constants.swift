@@ -9,7 +9,7 @@
 extension NetworkClient {
     
     struct Constants {
-        static let baseUrl: String = "http://www.2plus2.hr/Apartment/"
+        static let baseUrl: String = "https://www.2plus2.hr/Apartment/"
         static let reloadMethod: String = "xmlV3ios.php?lastmodified="
         static let imageFolder: String = "house/"
         static let Path = "path"

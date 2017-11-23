@@ -79,6 +79,27 @@ class CoreDataStackManager {
         
         print("sqlite path: \(url.path)")
         
+        if !FileManager.default.fileExists(atPath: url.path) {
+            
+            let sourceSqliteURLs = [Bundle.main.url(forResource: "ApartmentsCroatia", withExtension: "sqlite")!, Bundle.main.url(forResource: "ApartmentsCroatia", withExtension: "sqlite-wal")!, Bundle.main.url(forResource: "ApartmentsCroatia", withExtension: "sqlite-shm")!]
+            
+            let destSqliteURLs = [self.applicationDocumentsDirectory.appendingPathComponent("ApartmentsCroatia.sqlite"), self.applicationDocumentsDirectory.appendingPathComponent("ApartmentsCroatia.sqlite-wal"), self.applicationDocumentsDirectory.appendingPathComponent("ApartmentsCroatia.sqlite-shm")]
+            
+           
+            var index = 0
+            repeat{
+                
+                do {
+                    try FileManager.default.copyItem(at: sourceSqliteURLs[index], to: destSqliteURLs[index])
+                } catch {
+                    // The copy operation failed again, abort.
+                    print("Copy operation failed again. Abort with error: \(error)")
+                }
+
+                index+=1
+            } while index < sourceSqliteURLs.count
+        }
+        
         var failureReason = "There was an error creating or loading the application's saved data."
         do {
             try coordinator!.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: nil)

@@ -13,6 +13,9 @@
 		831259971CB29150003870EE /* Region.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8312598F1CB29150003870EE /* Region.swift */; };
 		831259991CB29150003870EE /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831259911CB29150003870EE /* Photo.swift */; };
 		8312599B1CB29150003870EE /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831259931CB29150003870EE /* Destination.swift */; };
+		8316B6BA1FC6D8DD001FDEE2 /* ApartmentsCroatia.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 8316B6B71FC6D8DC001FDEE2 /* ApartmentsCroatia.sqlite */; };
+		8316B6BB1FC6D8DD001FDEE2 /* ApartmentsCroatia.sqlite-shm in Resources */ = {isa = PBXBuildFile; fileRef = 8316B6B81FC6D8DC001FDEE2 /* ApartmentsCroatia.sqlite-shm */; };
+		8316B6BC1FC6D8DD001FDEE2 /* ApartmentsCroatia.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = 8316B6B91FC6D8DC001FDEE2 /* ApartmentsCroatia.sqlite-wal */; };
 		831C68F91F76748500BD0F91 /* api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831C68F81F76748500BD0F91 /* api.swift */; };
 		832D5AC81D45E24900938B2E /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832D5AC71D45E24900938B2E /* MapViewController.swift */; };
 		832D5ACA1D46311200938B2E /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832D5AC91D46311200938B2E /* ImageViewController.swift */; };
@@ -71,6 +74,9 @@
 		8312598F1CB29150003870EE /* Region.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Region.swift; sourceTree = "<group>"; };
 		831259911CB29150003870EE /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		831259931CB29150003870EE /* Destination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
+		8316B6B71FC6D8DC001FDEE2 /* ApartmentsCroatia.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = ApartmentsCroatia.sqlite; sourceTree = "<group>"; };
+		8316B6B81FC6D8DC001FDEE2 /* ApartmentsCroatia.sqlite-shm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ApartmentsCroatia.sqlite-shm"; sourceTree = "<group>"; };
+		8316B6B91FC6D8DC001FDEE2 /* ApartmentsCroatia.sqlite-wal */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ApartmentsCroatia.sqlite-wal"; sourceTree = "<group>"; };
 		831C68F81F76748500BD0F91 /* api.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = api.swift; sourceTree = "<group>"; };
 		832D5AC71D45E24900938B2E /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		832D5AC91D46311200938B2E /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
@@ -178,6 +184,16 @@
 				83B5B72B1CA9015B00C4D63B /* DestinationsViewController.swift */,
 			);
 			name = Destinations;
+			sourceTree = "<group>";
+		};
+		8316B6B61FC6D8DC001FDEE2 /* sqlite */ = {
+			isa = PBXGroup;
+			children = (
+				8316B6B71FC6D8DC001FDEE2 /* ApartmentsCroatia.sqlite */,
+				8316B6B81FC6D8DC001FDEE2 /* ApartmentsCroatia.sqlite-shm */,
+				8316B6B91FC6D8DC001FDEE2 /* ApartmentsCroatia.sqlite-wal */,
+			);
+			path = sqlite;
 			sourceTree = "<group>";
 		};
 		836E55EC1D467C9000A2501F /* Map */ = {
@@ -312,6 +328,7 @@
 		83B5B73E1CA9024900C4D63B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8316B6B61FC6D8DC001FDEE2 /* sqlite */,
 				83CD7E941F730DB500350FE3 /* Flurry */,
 				83B5B7351CA9015B00C4D63B /* Info.plist */,
 				83B5B7301CA9015B00C4D63B /* Assets.xcassets */,
@@ -442,9 +459,12 @@
 				8336EC521F6E82020032863A /* HouseTableViewCell.xib in Resources */,
 				83B5B7341CA9015B00C4D63B /* LaunchScreen.storyboard in Resources */,
 				83719B5E1F65CEC7002B58BE /* Localizable.strings in Resources */,
+				8316B6BB1FC6D8DD001FDEE2 /* ApartmentsCroatia.sqlite-shm in Resources */,
 				83B5B7311CA9015B00C4D63B /* Assets.xcassets in Resources */,
 				83B5B72F1CA9015B00C4D63B /* Main.storyboard in Resources */,
 				8336EC501F6E79380032863A /* DestinationTableViewCell.xib in Resources */,
+				8316B6BC1FC6D8DD001FDEE2 /* ApartmentsCroatia.sqlite-wal in Resources */,
+				8316B6BA1FC6D8DD001FDEE2 /* ApartmentsCroatia.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
