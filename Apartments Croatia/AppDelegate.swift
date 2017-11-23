@@ -21,8 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print(NetworkClient.sharedInstance().defaults.object(forKey: "firstLaunch") as Any)
         if NetworkClient.sharedInstance().defaults.object(forKey: "firstLaunch") == nil {
             
-            
-            let stringLastSyncDate = "2017-10-03"
+            // default sync date, up to this date all date is synced and preloaded in the bundle
+            let stringLastSyncDate = "2017-11-23"
             
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd"
