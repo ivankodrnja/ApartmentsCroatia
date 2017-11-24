@@ -63,9 +63,11 @@
 		83EAD5621D39245B00A58F39 /* HouseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EAD5611D39245B00A58F39 /* HouseTableViewCell.swift */; };
 		83F04E5B1D3CF2E40075C23F /* UpdatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F04E5A1D3CF2E40075C23F /* UpdatingViewController.swift */; };
 		83F9E1FC1CED7A8D00C85296 /* DestinationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F9E1FB1CED7A8D00C85296 /* DestinationTableViewCell.swift */; };
+		85A70F71CC43DED0621FA0DF /* Pods_Apartments_Croatia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF3A15FB11A6929F24BBFD5B /* Pods_Apartments_Croatia.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		69D7E537EACDFAB3691FB6AF /* Pods-Apartments Croatia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Apartments Croatia.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Apartments Croatia/Pods-Apartments Croatia.debug.xcconfig"; sourceTree = "<group>"; };
 		83046BFD1CABD87F00693F83 /* SWXMLHash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWXMLHash.swift; sourceTree = "<group>"; };
 		8312598A1CB290F8003870EE /* Apartment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Apartment.swift; sourceTree = "<group>"; };
 		8312598D1CB29150003870EE /* House.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = House.swift; sourceTree = "<group>"; };
@@ -152,6 +154,8 @@
 		83EAD5611D39245B00A58F39 /* HouseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseTableViewCell.swift; sourceTree = "<group>"; };
 		83F04E5A1D3CF2E40075C23F /* UpdatingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdatingViewController.swift; sourceTree = "<group>"; };
 		83F9E1FB1CED7A8D00C85296 /* DestinationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DestinationTableViewCell.swift; sourceTree = "<group>"; };
+		8C50E0E73735DA7456DB5400 /* Pods-Apartments Croatia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Apartments Croatia.release.xcconfig"; path = "Pods/Target Support Files/Pods-Apartments Croatia/Pods-Apartments Croatia.release.xcconfig"; sourceTree = "<group>"; };
+		DF3A15FB11A6929F24BBFD5B /* Pods_Apartments_Croatia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Apartments_Croatia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,12 +165,22 @@
 			files = (
 				83CD7E921F73074B00350FE3 /* SystemConfiguration.framework in Frameworks */,
 				83CD7E901F73073F00350FE3 /* Security.framework in Frameworks */,
+				85A70F71CC43DED0621FA0DF /* Pods_Apartments_Croatia.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		42B61A04A756452E66F81CAE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				69D7E537EACDFAB3691FB6AF /* Pods-Apartments Croatia.debug.xcconfig */,
+				8C50E0E73735DA7456DB5400 /* Pods-Apartments Croatia.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		83046BFF1CABDA4900693F83 /* Destinations */ = {
 			isa = PBXGroup;
 			children = (
@@ -237,6 +251,7 @@
 				83B5B7281CA9015B00C4D63B /* Apartments Croatia */,
 				83B5B7271CA9015B00C4D63B /* Products */,
 				83CD7E8E1F73073F00350FE3 /* Frameworks */,
+				42B61A04A756452E66F81CAE /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -331,6 +346,7 @@
 			children = (
 				83CD7E911F73074B00350FE3 /* SystemConfiguration.framework */,
 				83CD7E8F1F73073F00350FE3 /* Security.framework */,
+				DF3A15FB11A6929F24BBFD5B /* Pods_Apartments_Croatia.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -367,9 +383,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 83B5B7381CA9015B00C4D63B /* Build configuration list for PBXNativeTarget "Apartments Croatia" */;
 			buildPhases = (
+				86FEE0A50C4A9951CC013671 /* [CP] Check Pods Manifest.lock */,
 				83B5B7221CA9015B00C4D63B /* Sources */,
 				83B5B7231CA9015B00C4D63B /* Frameworks */,
 				83B5B7241CA9015B00C4D63B /* Resources */,
+				EC7233E12A042D7A4029BCBD /* [CP] Embed Pods Frameworks */,
+				5F53CF13AE3F796314FD162A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -443,6 +462,62 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5F53CF13AE3F796314FD162A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Apartments Croatia/Pods-Apartments Croatia-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		86FEE0A50C4A9951CC013671 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Apartments Croatia-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EC7233E12A042D7A4029BCBD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Apartments Croatia/Pods-Apartments Croatia-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Apartments Croatia/Pods-Apartments Croatia-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		83B5B7221CA9015B00C4D63B /* Sources */ = {
@@ -659,6 +734,7 @@
 		};
 		83B5B7391CA9015B00C4D63B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 69D7E537EACDFAB3691FB6AF /* Pods-Apartments Croatia.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -676,6 +752,7 @@
 		};
 		83B5B73A1CA9015B00C4D63B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8C50E0E73735DA7456DB5400 /* Pods-Apartments Croatia.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
