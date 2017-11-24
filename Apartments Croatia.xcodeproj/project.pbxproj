@@ -52,9 +52,7 @@
 		83B5B7341CA9015B00C4D63B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83B5B7321CA9015B00C4D63B /* LaunchScreen.storyboard */; };
 		83CD7E901F73073F00350FE3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83CD7E8F1F73073F00350FE3 /* Security.framework */; };
 		83CD7E921F73074B00350FE3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83CD7E911F73074B00350FE3 /* SystemConfiguration.framework */; };
-		83CD7E9D1F730DB500350FE3 /* FlurryEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CD7E961F730DB500350FE3 /* FlurryEmpty.m */; };
-		83CD7E9E1F730DB500350FE3 /* FlurryWatchEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CD7E991F730DB500350FE3 /* FlurryWatchEmpty.m */; };
-		83CD7E9F1F730DB500350FE3 /* libFlurry_8.2.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 83CD7E9A1F730DB500350FE3 /* libFlurry_8.2.1.a */; };
+		83D881211FC7219800AA4DE9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 83D881201FC7219800AA4DE9 /* GoogleService-Info.plist */; };
 		83E21A101CAA9E3000BA5EA0 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 83E21A0E1CAA9E3000BA5EA0 /* Model.xcdatamodeld */; };
 		83E21A121CAAED0700BA5EA0 /* CoreDataStackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E21A111CAAED0700BA5EA0 /* CoreDataStackManager.swift */; };
 		83E21A151CAAEF0900BA5EA0 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E21A141CAAEF0900BA5EA0 /* NetworkClient.swift */; };
@@ -143,15 +141,7 @@
 		83B5B7351CA9015B00C4D63B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		83CD7E8F1F73073F00350FE3 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		83CD7E911F73074B00350FE3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		83CD7E951F730DB500350FE3 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
-		83CD7E961F730DB500350FE3 /* FlurryEmpty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlurryEmpty.m; sourceTree = "<group>"; };
-		83CD7E971F730DB500350FE3 /* FlurrySessionBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurrySessionBuilder.h; sourceTree = "<group>"; };
-		83CD7E981F730DB500350FE3 /* FlurryWatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryWatch.h; sourceTree = "<group>"; };
-		83CD7E991F730DB500350FE3 /* FlurryWatchEmpty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlurryWatchEmpty.m; sourceTree = "<group>"; };
-		83CD7E9A1F730DB500350FE3 /* libFlurry_8.2.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_8.2.1.a; sourceTree = "<group>"; };
-		83CD7E9B1F730DB500350FE3 /* libFlurryTVOS_8.2.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurryTVOS_8.2.1.a; sourceTree = "<group>"; };
-		83CD7E9C1F730DB500350FE3 /* libFlurryWatch_8.2.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurryWatch_8.2.1.a; sourceTree = "<group>"; };
-		83CD7EA21F730EAB00350FE3 /* Apartments Croatia-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Apartments Croatia-Bridging-Header.h"; sourceTree = "<group>"; };
+		83D881201FC7219800AA4DE9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		83E21A0F1CAA9E3000BA5EA0 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		83E21A111CAAED0700BA5EA0 /* CoreDataStackManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackManager.swift; sourceTree = "<group>"; };
 		83E21A141CAAEF0900BA5EA0 /* NetworkClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
@@ -170,7 +160,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				83CD7E921F73074B00350FE3 /* SystemConfiguration.framework in Frameworks */,
-				83CD7E9F1F730DB500350FE3 /* libFlurry_8.2.1.a in Frameworks */,
 				83CD7E901F73073F00350FE3 /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -263,7 +252,6 @@
 			isa = PBXGroup;
 			children = (
 				83B5B7291CA9015B00C4D63B /* AppDelegate.swift */,
-				83CD7EA21F730EAB00350FE3 /* Apartments Croatia-Bridging-Header.h */,
 				831C68F81F76748500BD0F91 /* api.swift */,
 				83B5B73B1CA9022000C4D63B /* Model */,
 				83B5B73C1CA9022800C4D63B /* View */,
@@ -329,8 +317,8 @@
 			isa = PBXGroup;
 			children = (
 				8316B6B61FC6D8DC001FDEE2 /* sqlite */,
-				83CD7E941F730DB500350FE3 /* Flurry */,
 				83B5B7351CA9015B00C4D63B /* Info.plist */,
+				83D881201FC7219800AA4DE9 /* GoogleService-Info.plist */,
 				83B5B7301CA9015B00C4D63B /* Assets.xcassets */,
 				839059411D60665700410530 /* Kastav.gpx */,
 				83719B5C1F65CEC7002B58BE /* Localizable.strings */,
@@ -345,21 +333,6 @@
 				83CD7E8F1F73073F00350FE3 /* Security.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		83CD7E941F730DB500350FE3 /* Flurry */ = {
-			isa = PBXGroup;
-			children = (
-				83CD7E951F730DB500350FE3 /* Flurry.h */,
-				83CD7E961F730DB500350FE3 /* FlurryEmpty.m */,
-				83CD7E971F730DB500350FE3 /* FlurrySessionBuilder.h */,
-				83CD7E981F730DB500350FE3 /* FlurryWatch.h */,
-				83CD7E991F730DB500350FE3 /* FlurryWatchEmpty.m */,
-				83CD7E9A1F730DB500350FE3 /* libFlurry_8.2.1.a */,
-				83CD7E9B1F730DB500350FE3 /* libFlurryTVOS_8.2.1.a */,
-				83CD7E9C1F730DB500350FE3 /* libFlurryWatch_8.2.1.a */,
-			);
-			path = Flurry;
 			sourceTree = "<group>";
 		};
 		83E21A131CAAEEE100BA5EA0 /* NetworkClient */ = {
@@ -463,6 +436,7 @@
 				83B5B7311CA9015B00C4D63B /* Assets.xcassets in Resources */,
 				83B5B72F1CA9015B00C4D63B /* Main.storyboard in Resources */,
 				8336EC501F6E79380032863A /* DestinationTableViewCell.xib in Resources */,
+				83D881211FC7219800AA4DE9 /* GoogleService-Info.plist in Resources */,
 				8316B6BC1FC6D8DD001FDEE2 /* ApartmentsCroatia.sqlite-wal in Resources */,
 				8316B6BA1FC6D8DD001FDEE2 /* ApartmentsCroatia.sqlite in Resources */,
 			);
@@ -478,7 +452,6 @@
 				83763A7E1F63521800368AD6 /* FBAnnotation.swift in Sources */,
 				83EAD55A1D391C7700A58F39 /* RegionsViewController.swift in Sources */,
 				8357BC3B1D3F5DBA00B011B9 /* MoaDistrib.swift in Sources */,
-				83CD7E9D1F730DB500350FE3 /* FlurryEmpty.m in Sources */,
 				83A0B6EB1D4100D9000AC9AA /* HouseDetailTableViewController.swift in Sources */,
 				831259991CB29150003870EE /* Photo.swift in Sources */,
 				83763A841F63521800368AD6 /* FBBoundingBox+MapKit.swift in Sources */,
@@ -511,7 +484,6 @@
 				8312598B1CB290F8003870EE /* Apartment.swift in Sources */,
 				83A313F91D450A9B00F578E4 /* ApartmentDetailViewController.swift in Sources */,
 				83763A831F63521800368AD6 /* FBBoundingBox.swift in Sources */,
-				83CD7E9E1F730DB500350FE3 /* FlurryWatchEmpty.m in Sources */,
 				83EAD5601D39241B00A58F39 /* HousesViewController.swift in Sources */,
 				831259951CB29150003870EE /* House.swift in Sources */,
 				8312599B1CB29150003870EE /* Destination.swift in Sources */,
@@ -693,22 +665,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Apartments Croatia/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Apartments\\ Croatia/Flurry",
-					"$(PROJECT_DIR)/Apartments\\ Croatia/Flurry",
-					"$(PROJECT_DIR)/Apartments\\ Croatia/Flurry",
-					"$(PROJECT_DIR)/Apartments\\ Croatia/Flurry",
-					"$(PROJECT_DIR)/Apartments\\ Croatia/Flurry",
-					"$(PROJECT_DIR)/Apartments\\ Croatia/Flurry",
-					"$(PROJECT_DIR)/Apartments\\ Croatia/Flurry",
-					"$(PROJECT_DIR)/Apartments\\ Croatia/Flurry",
-					"$(PROJECT_DIR)/Apartments\\ Croatia/Flurry",
-				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.2plus2.apartment;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "Apartments Croatia/Apartments Croatia-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
@@ -722,22 +682,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Apartments Croatia/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Apartments\\ Croatia/Flurry",
-					"$(PROJECT_DIR)/Apartments\\ Croatia/Flurry",
-					"$(PROJECT_DIR)/Apartments\\ Croatia/Flurry",
-					"$(PROJECT_DIR)/Apartments\\ Croatia/Flurry",
-					"$(PROJECT_DIR)/Apartments\\ Croatia/Flurry",
-					"$(PROJECT_DIR)/Apartments\\ Croatia/Flurry",
-					"$(PROJECT_DIR)/Apartments\\ Croatia/Flurry",
-					"$(PROJECT_DIR)/Apartments\\ Croatia/Flurry",
-					"$(PROJECT_DIR)/Apartments\\ Croatia/Flurry",
-				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.2plus2.apartment;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "Apartments Croatia/Apartments Croatia-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};

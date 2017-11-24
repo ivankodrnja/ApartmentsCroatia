@@ -330,13 +330,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/RegionsViewController.swift"
-            timestampString = "533125449.831094"
+            timestampString = "533200013.246241"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
-            landmarkName = "viewDidAppear(_:)"
-            landmarkType = "7">
+            startingLineNumber = "157"
+            endingLineNumber = "157"
+            landmarkName = "fetchedResultsController"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -346,13 +346,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/RegionsViewController.swift"
-            timestampString = "533125449.831156"
+            timestampString = "533200013.24665"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "150"
-            endingLineNumber = "150"
-            landmarkName = "viewDidAppear(_:)"
-            landmarkType = "7">
+            startingLineNumber = "154"
+            endingLineNumber = "154"
+            landmarkName = "fetchedResultsController"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -362,29 +362,29 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/RegionsViewController.swift"
-            timestampString = "533125449.831211"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141"
-            landmarkName = "viewDidAppear(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Apartments Croatia/RegionsViewController.swift"
-            timestampString = "533125449.831266"
+            timestampString = "533200013.246965"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "145"
             endingLineNumber = "145"
-            landmarkName = "viewDidAppear(_:)"
-            landmarkType = "7">
+            landmarkName = "sharedContext"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Apartments Croatia/RegionsViewController.swift"
+            timestampString = "533200013.247249"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
+            landmarkName = "fetchedResultsController"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -417,6 +417,38 @@
             endingLineNumber = "31"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.AnyObject&gt;&gt;, Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; () in Apartments_Croatia.UpdatingViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "Apartments Croatia"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ivanalex/xcodeprojects/Apartments%20Croatia/Apartments%20Croatia/Apartments%20Croatia/UpdatingViewController.swift"
+                  timestampString = "533137679.468453"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "140">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #1 (Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.AnyObject&gt;&gt;, Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; () in Apartments_Croatia.UpdatingViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "Apartments Croatia"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ivanalex/xcodeprojects/Apartments%20Croatia/Apartments%20Croatia/Apartments%20Croatia/UpdatingViewController.swift"
+                  timestampString = "533137679.470385"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "28">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -442,13 +474,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/RegionsViewController.swift"
-            timestampString = "533125449.831523"
+            timestampString = "533200013.247586"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
-            landmarkName = "viewDidAppear(_:)"
-            landmarkType = "7">
+            startingLineNumber = "150"
+            endingLineNumber = "150"
+            landmarkName = "fetchedResultsController"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -458,11 +490,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/RegionsViewController.swift"
-            timestampString = "533125449.831578"
+            timestampString = "533200013.247859"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
             landmarkName = "getDestinationName(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -481,38 +513,6 @@
             endingLineNumber = "29"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Apartments_Croatia.UpdatingViewController.viewDidLoad() -&gt; ()"
-                  moduleName = "Apartments Croatia"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivanalex/xcodeprojects/Apartments%20Croatia/Apartments%20Croatia/Apartments%20Croatia/UpdatingViewController.swift"
-                  timestampString = "533125450.328964"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "29"
-                  endingLineNumber = "29"
-                  offsetFromSymbolStart = "2604">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.AnyObject&gt;&gt;, Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; () in Apartments_Croatia.UpdatingViewController.viewDidLoad() -&gt; ()"
-                  moduleName = "Apartments Croatia"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivanalex/xcodeprojects/Apartments%20Croatia/Apartments%20Croatia/Apartments%20Croatia/UpdatingViewController.swift"
-                  timestampString = "533125450.331018"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "31"
-                  endingLineNumber = "31"
-                  offsetFromSymbolStart = "39">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -618,11 +618,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/HouseDetailTableViewController.swift"
-            timestampString = "527951395.900938"
+            timestampString = "533200013.248242"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -634,11 +634,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/HouseDetailTableViewController.swift"
-            timestampString = "527951395.900938"
+            timestampString = "533200013.248296"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -650,11 +650,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/HouseDetailTableViewController.swift"
-            timestampString = "528041682.893767"
+            timestampString = "533200013.24835"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "459"
-            endingLineNumber = "459"
+            startingLineNumber = "457"
+            endingLineNumber = "457"
             landmarkName = "mailComposeController(_:didFinishWith:error:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -666,11 +666,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/HouseDetailTableViewController.swift"
-            timestampString = "528041682.893767"
+            timestampString = "533200013.248397"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "454"
-            endingLineNumber = "454"
+            startingLineNumber = "452"
+            endingLineNumber = "452"
             landmarkName = "mailComposeController(_:didFinishWith:error:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -682,11 +682,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/HouseDetailTableViewController.swift"
-            timestampString = "527951395.900938"
+            timestampString = "533200013.248444"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "316"
-            endingLineNumber = "316"
+            startingLineNumber = "314"
+            endingLineNumber = "314"
             landmarkName = "tableView(_:didSelectRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -698,11 +698,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/HouseDetailTableViewController.swift"
-            timestampString = "528041682.893767"
+            timestampString = "533200013.248491"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "323"
-            endingLineNumber = "323"
+            startingLineNumber = "321"
+            endingLineNumber = "321"
             landmarkName = "tableView(_:didSelectRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -714,11 +714,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/HouseDetailTableViewController.swift"
-            timestampString = "528041682.893767"
+            timestampString = "533200013.248538"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "339"
-            endingLineNumber = "339"
+            startingLineNumber = "337"
+            endingLineNumber = "337"
             landmarkName = "tableView(_:didSelectRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -730,11 +730,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/HouseDetailTableViewController.swift"
-            timestampString = "528041682.893767"
+            timestampString = "533200013.248593"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "416"
-            endingLineNumber = "416"
+            startingLineNumber = "414"
+            endingLineNumber = "414"
             landmarkName = "openImageViewController(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -746,11 +746,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/HouseDetailTableViewController.swift"
-            timestampString = "527951395.900938"
+            timestampString = "533200013.248651"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -762,11 +762,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/HouseDetailTableViewController.swift"
-            timestampString = "527951395.900938"
+            timestampString = "533200013.248705"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -778,11 +778,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/HouseDetailTableViewController.swift"
-            timestampString = "527951395.900938"
+            timestampString = "533200013.248759"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -794,11 +794,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/HouseDetailTableViewController.swift"
-            timestampString = "528041682.893767"
+            timestampString = "533200013.24882"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "415"
-            endingLineNumber = "415"
+            startingLineNumber = "413"
+            endingLineNumber = "413"
             landmarkName = "openImageViewController(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -842,7 +842,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/MapTabViewController.swift"
-            timestampString = "528535712.676425"
+            timestampString = "533200013.2489"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "38"
@@ -858,7 +858,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/MapTabViewController.swift"
-            timestampString = "528535712.676728"
+            timestampString = "533200013.248966"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "86"
@@ -874,7 +874,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/MapTabViewController.swift"
-            timestampString = "528535712.676793"
+            timestampString = "533200013.249017"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "116"
@@ -890,7 +890,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/MapTabViewController.swift"
-            timestampString = "528535712.676868"
+            timestampString = "533200013.249068"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "294"
@@ -906,7 +906,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/MapTabViewController.swift"
-            timestampString = "528535712.676936"
+            timestampString = "533200013.249118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "114"
@@ -922,7 +922,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/MapTabViewController.swift"
-            timestampString = "528535712.677003"
+            timestampString = "533200013.249169"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "304"
@@ -938,7 +938,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/MapTabViewController.swift"
-            timestampString = "528535712.677072"
+            timestampString = "533200013.24922"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "322"
@@ -954,7 +954,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/MapTabViewController.swift"
-            timestampString = "528535712.677139"
+            timestampString = "533200013.249271"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "308"
@@ -970,7 +970,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/MapTabViewController.swift"
-            timestampString = "528535712.677208"
+            timestampString = "533200013.249322"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "94"
@@ -986,7 +986,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/HouseDetailTableViewController.swift"
-            timestampString = "491290346.671171"
+            timestampString = "533200013.249373"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "20"
@@ -1064,7 +1064,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/MapTabViewController.swift"
-            timestampString = "528535712.677299"
+            timestampString = "533200013.249422"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "123"
@@ -1080,7 +1080,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/MapTabViewController.swift"
-            timestampString = "528535712.677369"
+            timestampString = "533200013.249473"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "46"
@@ -1096,7 +1096,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/MapTabViewController.swift"
-            timestampString = "528535712.677437"
+            timestampString = "533200013.249529"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "97"
@@ -1112,7 +1112,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/MapTabViewController.swift"
-            timestampString = "528535712.677504"
+            timestampString = "533200013.24958"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "104"
@@ -1128,7 +1128,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/MapTabViewController.swift"
-            timestampString = "528535712.677572"
+            timestampString = "533200013.249631"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "152"
@@ -1144,7 +1144,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/MapTabViewController.swift"
-            timestampString = "528535712.67764"
+            timestampString = "533200013.249681"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "193"
@@ -1240,7 +1240,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/MapTabViewController.swift"
-            timestampString = "528535712.677768"
+            timestampString = "533200013.249778"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "321"
@@ -1256,7 +1256,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/MapTabViewController.swift"
-            timestampString = "528535712.677837"
+            timestampString = "533200013.249829"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "300"
@@ -1304,7 +1304,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/MapTabViewController.swift"
-            timestampString = "528535712.677906"
+            timestampString = "533200013.24988"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "177"
@@ -1320,7 +1320,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/MapTabViewController.swift"
-            timestampString = "528535712.677972"
+            timestampString = "533200013.249931"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "155"
@@ -1336,7 +1336,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/MapTabViewController.swift"
-            timestampString = "528535712.67804"
+            timestampString = "533200013.249982"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "195"
@@ -1352,7 +1352,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/MapTabViewController.swift"
-            timestampString = "528535712.678108"
+            timestampString = "533200013.250032"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "235"
@@ -1368,7 +1368,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/MapTabViewController.swift"
-            timestampString = "528535712.678175"
+            timestampString = "533200013.250083"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "198"
@@ -1384,7 +1384,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/MapTabViewController.swift"
-            timestampString = "528535712.678243"
+            timestampString = "533200013.250133"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "154"
@@ -1400,7 +1400,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/MapTabViewController.swift"
-            timestampString = "528535712.678311"
+            timestampString = "533200013.250186"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "214"
@@ -1416,7 +1416,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/MapTabViewController.swift"
-            timestampString = "528535712.678379"
+            timestampString = "533200013.250236"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "176"
@@ -1432,7 +1432,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/MapTabViewController.swift"
-            timestampString = "528535712.678445"
+            timestampString = "533200013.250287"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "390"
@@ -1448,7 +1448,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/MapTabViewController.swift"
-            timestampString = "528535712.678513"
+            timestampString = "533200013.250338"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "380"
@@ -1464,7 +1464,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/MapTabViewController.swift"
-            timestampString = "528535712.67858"
+            timestampString = "533200013.250398"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "189"
@@ -1480,11 +1480,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/RegionsViewController.swift"
-            timestampString = "533125449.83265"
+            timestampString = "533200013.25046"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
             landmarkName = "searchButtonClicked(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1496,11 +1496,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/RegionsViewController.swift"
-            timestampString = "533125449.832709"
+            timestampString = "533200013.250731"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "484"
-            endingLineNumber = "484">
+            startingLineNumber = "471"
+            endingLineNumber = "471">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1510,13 +1510,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/RegionsViewController.swift"
-            timestampString = "533125449.832765"
+            timestampString = "533200013.250969"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "483"
-            endingLineNumber = "483"
-            landmarkName = "RegionsViewController"
-            landmarkType = "21">
+            startingLineNumber = "471"
+            endingLineNumber = "471">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1526,12 +1524,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/RegionsViewController.swift"
-            timestampString = "533125449.832821"
+            timestampString = "533200013.251223"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "464"
-            endingLineNumber = "464"
-            landmarkName = "updateSearchResults(for:)"
+            startingLineNumber = "468"
+            endingLineNumber = "468"
+            landmarkName = "searchBar(_:selectedScopeButtonIndexDidChange:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1542,11 +1540,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/RegionsViewController.swift"
-            timestampString = "533125449.832877"
+            timestampString = "533200013.2515"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "466"
-            endingLineNumber = "466"
+            startingLineNumber = "470"
+            endingLineNumber = "470"
             landmarkName = "RegionsViewController"
             landmarkType = "21">
          </BreakpointContent>
@@ -1558,11 +1556,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/RegionsViewController.swift"
-            timestampString = "533125449.832933"
+            timestampString = "533200013.251758"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "243"
-            endingLineNumber = "243"
+            startingLineNumber = "247"
+            endingLineNumber = "247"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1574,12 +1572,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/RegionsViewController.swift"
-            timestampString = "533125449.83299"
+            timestampString = "533200013.252019"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "203"
-            endingLineNumber = "203"
-            landmarkName = "tableView(_:numberOfRowsInSection:)"
+            startingLineNumber = "207"
+            endingLineNumber = "207"
+            landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1590,11 +1588,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/RegionsViewController.swift"
-            timestampString = "533125449.833045"
+            timestampString = "533200013.252285"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1606,7 +1604,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/RegionsViewController.swift"
-            timestampString = "533125449.833101"
+            timestampString = "533200013.252552"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "27"
@@ -1638,11 +1636,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/HouseDetailTableViewController.swift"
-            timestampString = "527951395.900938"
+            timestampString = "533200013.252839"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "214"
-            endingLineNumber = "214"
+            startingLineNumber = "212"
+            endingLineNumber = "212"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1654,11 +1652,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/RegionsViewController.swift"
-            timestampString = "533125449.833193"
+            timestampString = "533200013.25289"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "303"
-            endingLineNumber = "303"
+            startingLineNumber = "307"
+            endingLineNumber = "307"
             landmarkName = "configureCell(_:withRegion:atIndexPath:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1670,11 +1668,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/HouseDetailTableViewController.swift"
-            timestampString = "527951395.900938"
+            timestampString = "533200013.253147"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "285"
-            endingLineNumber = "285"
+            startingLineNumber = "283"
+            endingLineNumber = "283"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1686,11 +1684,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/RegionsViewController.swift"
-            timestampString = "533125449.833268"
+            timestampString = "533200013.253197"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
             landmarkName = "getDestinationName(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1702,11 +1700,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/RegionsViewController.swift"
-            timestampString = "533125449.833325"
+            timestampString = "533200013.253452"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
             landmarkName = "getHouseName(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1718,11 +1716,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/RegionsViewController.swift"
-            timestampString = "533125449.833381"
+            timestampString = "533200013.253707"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
             landmarkName = "searchButtonClicked(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1734,12 +1732,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/RegionsViewController.swift"
-            timestampString = "533125449.833437"
+            timestampString = "533200013.253963"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "454"
-            endingLineNumber = "454"
-            landmarkName = "updateSearchResults(for:)"
+            startingLineNumber = "458"
+            endingLineNumber = "458"
+            landmarkName = "searchBar(_:selectedScopeButtonIndexDidChange:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1750,7 +1748,55 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/RegionsViewController.swift"
-            timestampString = "533125449.833493"
+            timestampString = "533200013.254218"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "339"
+            endingLineNumber = "339"
+            landmarkName = "tableView(_:didSelectRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Apartments Croatia/RegionsViewController.swift"
+            timestampString = "533200013.254473"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "365"
+            endingLineNumber = "365"
+            landmarkName = "controller(_:didChange:atSectionIndex:for:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Apartments Croatia/RegionsViewController.swift"
+            timestampString = "533200013.254731"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "351"
+            endingLineNumber = "351"
+            landmarkName = "tableView(_:didSelectRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Apartments Croatia/RegionsViewController.swift"
+            timestampString = "533200013.255005"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "335"
@@ -1766,59 +1812,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/RegionsViewController.swift"
-            timestampString = "533125449.833549"
+            timestampString = "533200013.2553"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "361"
-            endingLineNumber = "361"
-            landmarkName = "tableView(_:didSelectRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Apartments Croatia/RegionsViewController.swift"
-            timestampString = "533125449.833604"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "347"
-            endingLineNumber = "347"
-            landmarkName = "tableView(_:didSelectRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Apartments Croatia/RegionsViewController.swift"
-            timestampString = "533125449.833661"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "331"
-            endingLineNumber = "331"
-            landmarkName = "tableView(_:didSelectRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Apartments Croatia/RegionsViewController.swift"
-            timestampString = "533125449.833716"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "215"
-            endingLineNumber = "215"
+            startingLineNumber = "219"
+            endingLineNumber = "219"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1830,11 +1828,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/RegionsViewController.swift"
-            timestampString = "533125449.833772"
+            timestampString = "533200013.255568"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "215"
-            endingLineNumber = "215"
+            startingLineNumber = "219"
+            endingLineNumber = "219"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1846,11 +1844,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/RegionsViewController.swift"
-            timestampString = "533125449.833828"
+            timestampString = "533200013.255837"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "229"
-            endingLineNumber = "229"
+            startingLineNumber = "233"
+            endingLineNumber = "233"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1862,11 +1860,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/RegionsViewController.swift"
-            timestampString = "533125449.833883"
+            timestampString = "533200013.25609"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "231"
-            endingLineNumber = "231"
+            startingLineNumber = "235"
+            endingLineNumber = "235"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1878,11 +1876,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/RegionsViewController.swift"
-            timestampString = "533125449.833939"
+            timestampString = "533200013.256343"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "237"
-            endingLineNumber = "237"
+            startingLineNumber = "241"
+            endingLineNumber = "241"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1894,13 +1892,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/RegionsViewController.swift"
-            timestampString = "533125449.833996"
+            timestampString = "533200013.256597"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "418"
-            endingLineNumber = "418"
-            landmarkName = "controller(_:didChange:at:for:newIndexPath:)"
-            landmarkType = "7">
+            startingLineNumber = "422"
+            endingLineNumber = "422"
+            landmarkName = "RegionsViewController"
+            landmarkType = "21">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -1942,13 +1940,29 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/RegionsViewController.swift"
-            timestampString = "533125449.834052"
+            timestampString = "533200013.256844"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "420"
+            endingLineNumber = "420"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Apartments Croatia/RegionsViewController.swift"
+            timestampString = "533200013.257105"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "416"
             endingLineNumber = "416"
-            landmarkName = "controller(_:didChange:at:for:newIndexPath:)"
-            landmarkType = "7">
+            landmarkName = "RegionsViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1958,28 +1972,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/RegionsViewController.swift"
-            timestampString = "533125449.834107"
+            timestampString = "533200013.257369"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "412"
-            endingLineNumber = "412"
-            landmarkName = "controller(_:didChange:at:for:newIndexPath:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Apartments Croatia/RegionsViewController.swift"
-            timestampString = "533125449.834163"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "410"
-            endingLineNumber = "410"
-            landmarkName = "controller(_:didChange:at:for:newIndexPath:)"
+            startingLineNumber = "414"
+            endingLineNumber = "414"
+            landmarkName = "controllerDidChangeContent(_:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -2098,15 +2096,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/RegionsViewController.swift"
-            timestampString = "533125449.834484"
+            timestampString = "533200013.25771"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
             landmarkName = "viewDidAppear(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2118,29 +2116,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/RegionsViewController.swift"
-            timestampString = "533125449.83454"
+            timestampString = "533200013.257979"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
-            landmarkName = "viewDidAppear(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Apartments Croatia/RegionsViewController.swift"
-            timestampString = "533125449.834596"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "148"
-            endingLineNumber = "148"
-            landmarkName = "viewDidAppear(_:)"
-            landmarkType = "7">
+            startingLineNumber = "152"
+            endingLineNumber = "152"
+            landmarkName = "fetchedResultsController"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2150,7 +2132,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/MapTabViewController.swift"
-            timestampString = "528535712.711542"
+            timestampString = "533200013.258245"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "44"
@@ -2166,7 +2148,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/MapTabViewController.swift"
-            timestampString = "528535712.711608"
+            timestampString = "533200013.258299"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "45"
@@ -2182,7 +2164,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/MapTabViewController.swift"
-            timestampString = "528535712.711672"
+            timestampString = "533200013.25835"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "67"
@@ -2198,7 +2180,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/MapTabViewController.swift"
-            timestampString = "528535712.711731"
+            timestampString = "533200013.2584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "66"
@@ -2214,7 +2196,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/MapTabViewController.swift"
-            timestampString = "528535712.71179"
+            timestampString = "533200013.258452"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "102"
@@ -2230,7 +2212,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/MapTabViewController.swift"
-            timestampString = "528535712.711847"
+            timestampString = "533200013.258503"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "161"
@@ -2246,7 +2228,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/MapTabViewController.swift"
-            timestampString = "528535712.711906"
+            timestampString = "533200013.258553"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "168"
@@ -2262,7 +2244,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/MapTabViewController.swift"
-            timestampString = "528535712.711965"
+            timestampString = "533200013.258604"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "183"
@@ -2294,11 +2276,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/HouseDetailTableViewController.swift"
-            timestampString = "528041714.353546"
+            timestampString = "533200013.258672"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "322"
-            endingLineNumber = "322"
+            startingLineNumber = "320"
+            endingLineNumber = "320"
             landmarkName = "tableView(_:didSelectRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2310,7 +2292,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/AppDelegate.swift"
-            timestampString = "533125449.83482"
+            timestampString = "533200013.258723"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "22"
@@ -2358,13 +2340,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/RegionsViewController.swift"
-            timestampString = "533125449.835201"
+            timestampString = "533200013.258802"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
-            landmarkName = "viewDidAppear(_:)"
-            landmarkType = "7">
+            startingLineNumber = "144"
+            endingLineNumber = "144"
+            landmarkName = "RegionsViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2374,13 +2356,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/RegionsViewController.swift"
-            timestampString = "533125449.835258"
+            timestampString = "533200013.25907"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145"
-            landmarkName = "viewDidAppear(_:)"
-            landmarkType = "7">
+            startingLineNumber = "149"
+            endingLineNumber = "149"
+            landmarkName = "fetchedResultsController"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2390,13 +2372,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Apartments Croatia/RegionsViewController.swift"
-            timestampString = "533125449.835314"
+            timestampString = "533200013.259338"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "148"
-            endingLineNumber = "148"
-            landmarkName = "viewDidAppear(_:)"
-            landmarkType = "7">
+            startingLineNumber = "152"
+            endingLineNumber = "152"
+            landmarkName = "fetchedResultsController"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2422,12 +2404,12 @@
                   moduleName = "Apartments Croatia"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ivanalex/xcodeprojects/Apartments%20Croatia/Apartments%20Croatia/Apartments%20Croatia/NetworkClient.swift"
-                  timestampString = "533125450.371553"
+                  timestampString = "533137679.514776"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "98"
                   endingLineNumber = "98"
-                  offsetFromSymbolStart = "813">
+                  offsetFromSymbolStart = "628">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -2437,12 +2419,12 @@
                   moduleName = "Apartments Croatia"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ivanalex/xcodeprojects/Apartments%20Croatia/Apartments%20Croatia/Apartments%20Croatia/NetworkClient.swift"
-                  timestampString = "533125450.373763"
+                  timestampString = "533137679.516763"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "107"
                   endingLineNumber = "107"
-                  offsetFromSymbolStart = "65">
+                  offsetFromSymbolStart = "68">
                </Location>
             </Locations>
          </BreakpointContent>

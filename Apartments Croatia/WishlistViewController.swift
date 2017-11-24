@@ -16,7 +16,6 @@ class WishlistViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        Flurry.logEvent("Wishlist_Loaded")
         
         // fetch results
         do {

@@ -33,7 +33,7 @@ class MapTabViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Flurry.logEvent("Map_Loaded")
+
         // show the map
         let latitude = 44.281863
         let longitude = 16.382595

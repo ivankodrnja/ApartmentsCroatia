@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         // when app first launches set default sync date
-        print(NetworkClient.sharedInstance().defaults.object(forKey: "firstLaunch") as Any)
+
         if NetworkClient.sharedInstance().defaults.object(forKey: "firstLaunch") == nil {
             
             // default sync date, up to this date all date is synced and preloaded in the bundle
@@ -36,10 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             NetworkClient.sharedInstance().defaults.set(false, forKey: "firstLaunch")
         }
-        DispatchQueue.main.async {
-            Flurry.startSession(flurryApiKey);
-            Flurry.logAllPageViews(forTarget: UITabBarController.self)
-        }
+
         return true
     }
 

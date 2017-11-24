@@ -26,7 +26,6 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Flurry.logEvent("Regions_Loaded")
         // Do any additional setup after loading the view.
         
         // fetch results
@@ -63,7 +62,12 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
         searchController.dimsBackgroundDuringPresentation = false
         
         searchController.searchBar.sizeToFit()
-        tableView.tableHeaderView = searchController.searchBar
+        if #available(iOS 11.0, *) {
+            navigationItem.searchController = searchController
+            navigationItem.hidesSearchBarWhenScrolling = true
+        } else {
+            tableView.tableHeaderView = searchController.searchBar
+        }
         searchController.searchBar.scopeButtonTitles = [NSLocalizedString("destination", comment: "Destination"), NSLocalizedString("house", comment: "House")]
         searchController.searchBar.delegate = self
         
@@ -112,26 +116,9 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
         return allHouses
         
     }
-
-    // TODO:delete
-    //var loop = 1
     
     override func viewDidAppear(_ animated: Bool) {
-
-        // TODO:delete loop var
         
-        /*
-        if (loop == 1){
-        let dateString = "2011-06-22"
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let dateFromString = dateFormatter.date(from: dateString)
-        
-        NetworkClient.sharedInstance().defaults.set(dateFromString, forKey: "lastSyncDate")
-            
-        loop += 1
-        }
- */
         // present UpdatingViewController if syncing of databse occured 7 or more days ago
 
         let lastSyncDate = NetworkClient.sharedInstance().defaults.object(forKey: "lastSyncDate") as! Date
