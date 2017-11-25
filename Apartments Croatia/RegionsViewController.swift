@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import CoreLocation
+import Firebase
 
 class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
     
@@ -458,10 +459,12 @@ extension RegionsViewController: UISearchBarDelegate {
         let scope = searchBar.scopeButtonTitles![selectedScope]
         switch scope {
         case NSLocalizedString("destination", comment: "Destination"):
+            Analytics.logEvent(AnalyticsEventSearch, parameters: [AnalyticsParameterSearchTerm : searchController.searchBar.text!])
            destinationSearchResults = getDestinationName(searchController.searchBar.text!)
-            
         case NSLocalizedString("house", comment: "House"):
+            Analytics.logEvent(AnalyticsEventSearch, parameters: [AnalyticsParameterDestination : searchController.searchBar.text!])
            houeseSearchResults = getHouseName(searchController.searchBar.text!)
+            
         default:
             return
         }
