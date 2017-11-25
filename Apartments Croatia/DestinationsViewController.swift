@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-
+import Firebase
 
 class DestinationsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
 
@@ -31,6 +31,8 @@ class DestinationsViewController: UIViewController, UITableViewDelegate, UITable
         fetchedResultsController.delegate = self
         
         var regionName: String!
+        
+        Analytics.logEvent(AnalyticsEventViewItemList, parameters: [AnalyticsParameterItemCategory : region!.name])
         
         switch region!.name {
         case "Istria":
