@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Firebase
 
 class HousesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
     
@@ -29,7 +30,8 @@ class HousesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         fetchedResultsController.delegate = self
         self.navigationItem.title = destination?.name
-
+        Analytics.logEvent(AnalyticsEventViewItemList, parameters: [AnalyticsParameterItemCategory : destination!.name])
+        
         tableView.tableFooterView = UIView()
 
     }
