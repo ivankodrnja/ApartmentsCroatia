@@ -417,38 +417,6 @@
             endingLineNumber = "31"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.AnyObject&gt;&gt;, Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; () in Apartments_Croatia.UpdatingViewController.viewDidLoad() -&gt; ()"
-                  moduleName = "Apartments Croatia"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivanalex/xcodeprojects/Apartments%20Croatia/Apartments%20Croatia/Apartments%20Croatia/UpdatingViewController.swift"
-                  timestampString = "536002711.847886"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "31"
-                  endingLineNumber = "31"
-                  offsetFromSymbolStart = "140">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in closure #1 (Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.AnyObject&gt;&gt;, Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; () in Apartments_Croatia.UpdatingViewController.viewDidLoad() -&gt; ()"
-                  moduleName = "Apartments Croatia"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivanalex/xcodeprojects/Apartments%20Croatia/Apartments%20Croatia/Apartments%20Croatia/UpdatingViewController.swift"
-                  timestampString = "536002711.850515"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "32"
-                  endingLineNumber = "32"
-                  offsetFromSymbolStart = "28">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2472,38 +2440,6 @@
             endingLineNumber = "98"
             landmarkName = "getRentals(_:completionHandlerForGetRentals:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Apartments_Croatia.NetworkClient.getRentals(Foundation.Date, completionHandlerForGetRentals: (Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.AnyObject&gt;&gt;, Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Apartments Croatia"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivanalex/xcodeprojects/Apartments%20Croatia/Apartments%20Croatia/Apartments%20Croatia/NetworkClient.swift"
-                  timestampString = "536002711.867453"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "98"
-                  endingLineNumber = "98"
-                  offsetFromSymbolStart = "628">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__ObjC.URLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Apartments_Croatia.NetworkClient.getRentals(Foundation.Date, completionHandlerForGetRentals: (Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.AnyObject&gt;&gt;, Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Apartments Croatia"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivanalex/xcodeprojects/Apartments%20Croatia/Apartments%20Croatia/Apartments%20Croatia/NetworkClient.swift"
-                  timestampString = "536002711.870176"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "107"
-                  endingLineNumber = "107"
-                  offsetFromSymbolStart = "68">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

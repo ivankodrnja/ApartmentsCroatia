@@ -258,7 +258,7 @@
 		83B5B71D1CA9015B00C4D63B = {
 			isa = PBXGroup;
 			children = (
-				83B5B7281CA9015B00C4D63B /* Apartments Croatia */,
+				83B5B7281CA9015B00C4D63B /* ApartmentsCroatia */,
 				83B5B7271CA9015B00C4D63B /* Products */,
 				83CD7E8E1F73073F00350FE3 /* Frameworks */,
 				42B61A04A756452E66F81CAE /* Pods */,
@@ -273,7 +273,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		83B5B7281CA9015B00C4D63B /* Apartments Croatia */ = {
+		83B5B7281CA9015B00C4D63B /* ApartmentsCroatia */ = {
 			isa = PBXGroup;
 			children = (
 				83B5B7291CA9015B00C4D63B /* AppDelegate.swift */,
@@ -285,7 +285,7 @@
 				83B5B72D1CA9015B00C4D63B /* Main.storyboard */,
 				83B5B7321CA9015B00C4D63B /* LaunchScreen.storyboard */,
 			);
-			path = "Apartments Croatia";
+			path = ApartmentsCroatia;
 			sourceTree = "<group>";
 		};
 		83B5B73B1CA9022000C4D63B /* Model */ = {
@@ -692,7 +692,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_OBJC_BRIDGING_HEADER = "Apartments_Croatia/Apartments Croatia-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "ApartmentsCroatia/ApartmentsCroatia-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -740,7 +740,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OBJC_BRIDGING_HEADER = "Apartments_Croatia/Apartments Croatia-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "ApartmentsCroatia/ApartmentsCroatia-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -753,12 +753,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = "Apartments Croatia/Info.plist";
+				INFOPLIST_FILE = ApartmentsCroatia/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.2plus2.apartment;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "Apartments Croatia/ApartmentsCroatia-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "ApartmentsCroatia/ApartmentsCroatia-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
@@ -771,12 +771,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = "Apartments Croatia/Info.plist";
+				INFOPLIST_FILE = ApartmentsCroatia/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.2plus2.apartment;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "Apartments Croatia/ApartmentsCroatia-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "ApartmentsCroatia/ApartmentsCroatia-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
