@@ -16,7 +16,6 @@
 		8316B6BA1FC6D8DD001FDEE2 /* ApartmentsCroatia.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 8316B6B71FC6D8DC001FDEE2 /* ApartmentsCroatia.sqlite */; };
 		8316B6BB1FC6D8DD001FDEE2 /* ApartmentsCroatia.sqlite-shm in Resources */ = {isa = PBXBuildFile; fileRef = 8316B6B81FC6D8DC001FDEE2 /* ApartmentsCroatia.sqlite-shm */; };
 		8316B6BC1FC6D8DD001FDEE2 /* ApartmentsCroatia.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = 8316B6B91FC6D8DC001FDEE2 /* ApartmentsCroatia.sqlite-wal */; };
-		831C68F91F76748500BD0F91 /* api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831C68F81F76748500BD0F91 /* api.swift */; };
 		832D5AC81D45E24900938B2E /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832D5AC71D45E24900938B2E /* MapViewController.swift */; };
 		832D5ACA1D46311200938B2E /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832D5AC91D46311200938B2E /* ImageViewController.swift */; };
 		8336EC501F6E79380032863A /* DestinationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8336EC4F1F6E79380032863A /* DestinationTableViewCell.xib */; };
@@ -80,7 +79,6 @@
 		8316B6B71FC6D8DC001FDEE2 /* ApartmentsCroatia.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = ApartmentsCroatia.sqlite; sourceTree = "<group>"; };
 		8316B6B81FC6D8DC001FDEE2 /* ApartmentsCroatia.sqlite-shm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ApartmentsCroatia.sqlite-shm"; sourceTree = "<group>"; };
 		8316B6B91FC6D8DC001FDEE2 /* ApartmentsCroatia.sqlite-wal */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ApartmentsCroatia.sqlite-wal"; sourceTree = "<group>"; };
-		831C68F81F76748500BD0F91 /* api.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = api.swift; sourceTree = "<group>"; };
 		832D5AC71D45E24900938B2E /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		832D5AC91D46311200938B2E /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		8336EC4F1F6E79380032863A /* DestinationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DestinationTableViewCell.xib; sourceTree = "<group>"; };
@@ -277,7 +275,6 @@
 			isa = PBXGroup;
 			children = (
 				83B5B7291CA9015B00C4D63B /* AppDelegate.swift */,
-				831C68F81F76748500BD0F91 /* api.swift */,
 				83B5B73B1CA9022000C4D63B /* Model */,
 				83B5B73C1CA9022800C4D63B /* View */,
 				83B5B73D1CA9022F00C4D63B /* Controller */,
@@ -577,7 +574,6 @@
 				831259951CB29150003870EE /* House.swift in Sources */,
 				8312599B1CB29150003870EE /* Destination.swift in Sources */,
 				83F9E1FC1CED7A8D00C85296 /* DestinationTableViewCell.swift in Sources */,
-				831C68F91F76748500BD0F91 /* api.swift in Sources */,
 				83763A861F63521800368AD6 /* FBQuadTree.swift in Sources */,
 				83EAD5621D39245B00A58F39 /* HouseTableViewCell.swift in Sources */,
 				83F04E5B1D3CF2E40075C23F /* UpdatingViewController.swift in Sources */,
