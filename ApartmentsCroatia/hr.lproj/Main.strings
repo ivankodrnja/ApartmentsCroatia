@@ -1,0 +1,153 @@
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "18N-Wn-Fpf"; */
+"18N-Wn-Fpf.text" = "Label";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "1Sd-lg-Ubk"; */
+"1Sd-lg-Ubk.text" = "Naziv";
+
+/* Class = "UILabel"; text = "Apartment Type Whether is apartment or else"; ObjectID = "1fc-rP-X7d"; */
+"1fc-rP-X7d.text" = "Apartment Type Whether is apartment or else";
+
+/* Class = "UILabel"; text = "45000 m"; ObjectID = "34x-KC-zi4"; */
+"34x-KC-zi4.text" = "45000 m";
+
+/* Class = "UILabel"; text = "Satellite TV"; ObjectID = "42M-ph-BnI"; */
+"42M-ph-BnI.text" = "Satelitska TV";
+
+/* Class = "UILabel"; text = "45000 m"; ObjectID = "65h-a7-v1O"; */
+"65h-a7-v1O.text" = "45000 m";
+
+/* Class = "UILabel"; text = "45-70 EUR"; ObjectID = "8o6-ed-8bi"; */
+"8o6-ed-8bi.text" = "45-70 EUR";
+
+/* Class = "UISegmentedControl"; AHj-Ui-h2k.segmentTitles[0] = "Home"; ObjectID = "AHj-Ui-h2k"; */
+"AHj-Ui-h2k.segmentTitles[0]" = "Home";
+
+/* Class = "UISegmentedControl"; AHj-Ui-h2k.segmentTitles[1] = "Wishlist"; ObjectID = "AHj-Ui-h2k"; */
+"AHj-Ui-h2k.segmentTitles[1]" = "Favoriti";
+
+/* Class = "UISegmentedControl"; AHj-Ui-h2k.segmentTitles[2] = "Nearby"; ObjectID = "AHj-Ui-h2k"; */
+"AHj-Ui-h2k.segmentTitles[2]" = "U blizini";
+
+/* Class = "UISegmentedControl"; AHj-Ui-h2k.segmentTitles[3] = "Map Style"; ObjectID = "AHj-Ui-h2k"; */
+"AHj-Ui-h2k.segmentTitles[3]" = "Vrsta mape";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "JL5-DN-O9f"; */
+"JL5-DN-O9f.text" = "Label";
+
+/* Class = "UILabel"; text = "Sea:"; ObjectID = "Mec-mD-ejP"; */
+"Mec-mD-ejP.text" = "Udaljenost od mora:";
+
+/* Class = "UILabel"; text = "Air Condition"; ObjectID = "NNL-nb-GRD"; */
+"NNL-nb-GRD.text" = "Klima uređaj";
+
+/* Class = "UILabel"; text = "Center:"; ObjectID = "Ng0-wg-W4d"; */
+"Ng0-wg-W4d.text" = "Udaljenost od centra:";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "OFF-m6-bbk"; */
+"OFF-m6-bbk.text" = "Naziv";
+
+/* Class = "UITabBarItem"; title = "Wishlist"; ObjectID = "PMi-Z4-W9Q"; */
+"PMi-Z4-W9Q.title" = "Favoriti";
+
+/* Class = "UILabel"; text = "450 EUR or Request"; ObjectID = "Qpi-w1-MSr"; */
+"Qpi-w1-MSr.text" = "450 EUR or Request";
+
+/* Class = "UILabel"; text = "450 EUR or Request"; ObjectID = "SwN-fm-msN"; */
+"SwN-fm-msN.text" = "450 EUR or Request";
+
+/* Class = "UITabBarItem"; title = "Destinations"; ObjectID = "VYd-7Z-Yxs"; */
+"VYd-7Z-Yxs.title" = "Mjesta";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "Vhg-7L-KWz"; */
+"Vhg-7L-KWz.text" = "Naziv";
+
+/* Class = "UILabel"; text = "55 m2"; ObjectID = "WLy-Gh-iPI"; */
+"WLy-Gh-iPI.text" = "55 m2";
+
+/* Class = "UILabel"; text = "45000 m"; ObjectID = "Xji-bF-SmR"; */
+"Xji-bF-SmR.text" = "45000 m";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "YG0-iV-1wg"; */
+"YG0-iV-1wg.text" = "Naziv";
+
+/* Class = "UITabBarItem"; title = "Map"; ObjectID = "Yhl-0A-1la"; */
+"Yhl-0A-1la.title" = "Mapa";
+
+/* Class = "UILabel"; text = "45000 m"; ObjectID = "afF-s4-PPP"; */
+"afF-s4-PPP.text" = "45000 m";
+
+/* Class = "UILabel"; text = "Daily from:"; ObjectID = "bMD-kp-jtm"; */
+"bMD-kp-jtm.text" = "Cijena od:";
+
+/* Class = "UILabel"; text = "Size:"; ObjectID = "cb8-Gj-12h"; */
+"cb8-Gj-12h.text" = "Površina:";
+
+/* Class = "UILabel"; text = "Destination name first, region name in Croatia second"; ObjectID = "doi-eH-rza"; */
+"doi-eH-rza.text" = "Destination name first, region name in Croatia second";
+
+/* Class = "UILabel"; text = "Daily from:"; ObjectID = "e57-Dk-pKb"; */
+"e57-Dk-pKb.text" = "Cijena od:";
+
+/* Class = "UILabel"; text = "45000 m"; ObjectID = "fjb-qv-tQh"; */
+"fjb-qv-tQh.text" = "45000 m";
+
+/* Class = "UILabel"; text = "Destination name first, region name in Croatia second"; ObjectID = "gwc-dj-UgR"; */
+"gwc-dj-UgR.text" = "Destination name first, region name in Croatia second";
+
+/* Class = "UILabel"; text = "seaDistanceCount"; ObjectID = "k9K-nI-3PI"; */
+"k9K-nI-3PI.text" = "seaDistanceCount";
+
+/* Class = "UILabel"; text = "Internet"; ObjectID = "l37-mU-64w"; */
+"l37-mU-64w.text" = "Internet";
+
+/* Class = "UILabel"; text = "Destination name first, region name in Croatia second"; ObjectID = "lrg-in-zJS"; */
+"lrg-in-zJS.text" = "Destination name first, region name in Croatia second";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "mHe-ru-JL9"; */
+"mHe-ru-JL9.text" = "Label";
+
+/* Class = "UILabel"; text = "Price per day from:"; ObjectID = "nop-4k-0fi"; */
+"nop-4k-0fi.text" = "Cijena od:";
+
+/* Class = "UILabel"; text = "Number of beds:"; ObjectID = "nre-rH-rN7"; */
+"nre-rH-rN7.text" = "Broj kreveta:";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "p4r-b1-Yms"; */
+"p4r-b1-Yms.text" = "Naziv";
+
+/* Class = "UILabel"; text = "45000 m"; ObjectID = "qGN-xM-FxE"; */
+"qGN-xM-FxE.text" = "45000 m";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "rOf-dT-3ZU"; */
+"rOf-dT-3ZU.text" = "Label";
+
+/* Class = "UILabel"; text = "Sea:"; ObjectID = "t9h-kA-ahZ"; */
+"t9h-kA-ahZ.text" = "Udaljenost od mora:";
+
+/* Class = "UILabel"; text = "Daily from:"; ObjectID = "uXu-e3-LvG"; */
+"uXu-e3-LvG.text" = "Cijena od:";
+
+/* Class = "UILabel"; text = "2 + 2"; ObjectID = "vRW-ky-hSY"; */
+"vRW-ky-hSY.text" = "2 + 2";
+
+/* Class = "UILabel"; text = "Center:"; ObjectID = "vYo-xD-rUd"; */
+"vYo-xD-rUd.text" = "Udaljenost od centra:";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "wgt-xx-oMZ"; */
+"wgt-xx-oMZ.text" = "Name";
+
+/* Class = "UILabel"; text = "Center:"; ObjectID = "woE-VB-HUC"; */
+"woE-VB-HUC.text" = "Udaljenost od centra:";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "wob-qm-EkR"; */
+"wob-qm-EkR.text" = "Label";
+
+/* Class = "UILabel"; text = "450 EUR or Request"; ObjectID = "yOA-7k-TCa"; */
+"yOA-7k-TCa.text" = "450 EUR or Request";
+
+/* Class = "UILabel"; text = "Sea:"; ObjectID = "zOI-wJ-Q2A"; */
+"zOI-wJ-Q2A.text" = "Udaljenost od mora:";
+
+/* Class = "UILabel"; text = "centerDistance"; ObjectID = "zPC-HI-P7d"; */
+"zPC-HI-P7d.text" = "centerDistance";

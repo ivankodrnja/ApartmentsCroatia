@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15E65" minimumToolsVersion="Xcode 7.0">
+    <entity name="Apartment" representedClassName=".Apartment" syncable="YES">
+        <attribute name="aircondition" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="internet" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="numberOfBeds" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="priceRange" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="surface" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tv" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="house" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="House" inverseName="apartments" inverseEntity="House" syncable="YES"/>
+    </entity>
+    <entity name="Destination" representedClassName=".Destination" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="photoPath" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="houses" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="House" inverseName="destination" inverseEntity="House" syncable="YES"/>
+        <relationship name="region" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Region" inverseName="destinations" inverseEntity="Region" syncable="YES"/>
+    </entity>
+    <entity name="House" representedClassName=".House" syncable="YES">
+        <attribute name="active" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="centerDistance" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="favorite" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="houseid" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="mainImagePath" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="parking" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pets" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="priceFrom" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="seaDistance" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="statusID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="website" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="apartments" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Apartment" inverseName="house" inverseEntity="Apartment" syncable="YES"/>
+        <relationship name="destination" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Destination" inverseName="houses" inverseEntity="Destination" syncable="YES"/>
+        <relationship name="photos" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Photo" inverseName="house" inverseEntity="Photo" syncable="YES"/>
+    </entity>
+    <entity name="Photo" representedClassName=".Photo" syncable="YES">
+        <attribute name="path" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="house" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="House" inverseName="photos" inverseEntity="House" syncable="YES"/>
+    </entity>
+    <entity name="Region" representedClassName=".Region" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sortOrder" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <relationship name="destinations" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Destination" inverseName="region" inverseEntity="Destination" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Apartment" positionX="664" positionY="-243" width="128" height="165"/>
+        <element name="Destination" positionX="142" positionY="-342" width="128" height="103"/>
+        <element name="House" positionX="367" positionY="-252" width="128" height="343"/>
+        <element name="Photo" positionX="664" positionY="45" width="128" height="75"/>
+        <element name="Region" positionX="-99" positionY="-378" width="128" height="88"/>
+    </elements>
+</model>
