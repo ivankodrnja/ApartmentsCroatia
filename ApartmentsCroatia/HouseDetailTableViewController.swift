@@ -10,7 +10,6 @@ import UIKit
 import MapKit
 import CoreData
 import MessageUI
-import Firebase
 
 class HouseDetailTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,MFMailComposeViewControllerDelegate {
 
@@ -31,9 +30,7 @@ class HouseDetailTableViewController: UIViewController, UITableViewDelegate, UIT
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Analytics.setScreenName("\(house!.houseid) \(house!.name)", screenClass: "HouseDetailTableViewController")
-        
-        Analytics.logEvent(AnalyticsEventViewItem, parameters: [AnalyticsParameterItemID: house!.houseid, AnalyticsParameterItemName: house!.name, AnalyticsParameterDestination: house!.destination?.name as Any])
+
         
         // set rows of different dimensions
         tableView.tableFooterView = UIView(frame: CGRect.zero)
@@ -318,8 +315,6 @@ class HouseDetailTableViewController: UIViewController, UITableViewDelegate, UIT
                 let controller = storyboard!.instantiateViewController(withIdentifier: "ImageViewController") as! ImageViewController
                 controller.imageArray = self.imageArray
                 
-                Analytics.logEvent("gallery_clicked", parameters: [AnalyticsParameterItemID: house!.houseid, AnalyticsParameterItemName: house!.name])
-                
                 self.navigationController!.pushViewController(controller, animated: true)
             // add to/remove from wishlist
             case 1:
@@ -327,7 +322,6 @@ class HouseDetailTableViewController: UIViewController, UITableViewDelegate, UIT
                 print(house!)
                 if !isFavorite {
                     house!.favorite = "Y"
-                    Analytics.logEvent(AnalyticsEventAddToWishlist, parameters: [AnalyticsParameterItemID: house!.houseid, AnalyticsParameterItemName: house!.name])
                     isFavorite = true
                     tableView.reloadData()
                 } else {
@@ -345,7 +339,6 @@ class HouseDetailTableViewController: UIViewController, UITableViewDelegate, UIT
             default:
                 let mailComposeViewController = configuredMailComposeViewController()
                 if MFMailComposeViewController.canSendMail() {
-                    Analytics.logEvent("email_clicked", parameters: [AnalyticsParameterItemID: house!.houseid, AnalyticsParameterItemName: house!.name])
                     self.present(mailComposeViewController, animated: true, completion: nil)
                 } else {
                     self.showAlertView(NSLocalizedString("emailSendingError", comment: "Your device could not send e-mail. Please check e-mail configuration and try again."))
@@ -384,7 +377,6 @@ class HouseDetailTableViewController: UIViewController, UITableViewDelegate, UIT
             case 1:
                 let mapItem = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: house!.latitude, longitude: house!.longitude), addressDictionary: nil))
                 let launchOptions = [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving]
-                Analytics.logEvent("directions_clicked", parameters: [AnalyticsParameterItemID: house!.houseid, AnalyticsParameterItemName: house!.name])
                 mapItem.openInMaps(launchOptions: launchOptions)
                 
             // website
@@ -395,8 +387,9 @@ class HouseDetailTableViewController: UIViewController, UITableViewDelegate, UIT
                     return
                 } else {
                     if Reachability.shared.isConnectedToNetwork() == true {
-                        Analytics.logEvent("website_clicked", parameters: [AnalyticsParameterItemID: house!.houseid, AnalyticsParameterItemName: house!.name])
-                        UIApplication.shared.openURL(URL(string:website)!)
+                        if let url = URL(string: "\(website)"), !url.absoluteString.isEmpty {
+                                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                            }
                     } else {
                         print("Internet connection not present")
                         self.showAlertView(NSLocalizedString("noInternet", comment: "Internet connection not present"))
@@ -407,8 +400,10 @@ class HouseDetailTableViewController: UIViewController, UITableViewDelegate, UIT
             // call us
             default:
                 let phoneUrlString = "tel://" + house!.phone
-                Analytics.logEvent("phone_called", parameters: [AnalyticsParameterItemID: house!.houseid, AnalyticsParameterItemName: house!.name])
-                UIApplication.shared.openURL(URL(string:phoneUrlString)!)
+                if let url = URL(string: "\(phoneUrlString)"), !url.absoluteString.isEmpty {
+                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                    }
+            
             
         }
      }
@@ -462,7 +457,6 @@ class HouseDetailTableViewController: UIViewController, UITableViewDelegate, UIT
             print("cancelled")
         } else if result == MFMailComposeResult.sent {
             print("sent")
-            Analytics.logEvent("email_sent", parameters: [AnalyticsParameterItemID: house!.houseid, AnalyticsParameterItemName: house!.name])
         }
         controller.dismiss(animated: true, completion: nil)
     }

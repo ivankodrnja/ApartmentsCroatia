@@ -9,15 +9,10 @@
 import UIKit
 import CoreData
 import CoreLocation
-import Firebase
 
-class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, FBAdViewDelegate, FBNativeAdsManagerDelegate, FBNativeAdDelegate {
+class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
     
-    // FB Audience Network
-    let adRowStep = 4
-    var adsManager: FBNativeAdsManager!
-    var adsCellProvider: FBNativeAdTableViewCellProvider!
-    
+
     
     
     
@@ -32,17 +27,7 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
     var destinationSearchResults: [Destination]?
     var houeseSearchResults: [House]?
 
-    lazy var adBannerView: FBAdView = {
-        let adBannerView = FBAdView(placementID: "IMG_16_9_APP_INSTALL#287352068455477_291295518061132", adSize: kFBAdSizeHeight50Banner, rootViewController: self)
-        adBannerView.delegate = self
-        
-        return adBannerView
-    }()
 
-    override func viewWillAppear(_ animated: Bool) {
-        
-        configureAdManagerAndLoadAds()
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,7 +64,7 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
         // If we are using this same view controller to present the results
         // dimming it out wouldn't make sense. Should probably only set
         // this to yes if using another controller to display the search results.
-        searchController.dimsBackgroundDuringPresentation = false
+        searchController.obscuresBackgroundDuringPresentation = false
         
         searchController.searchBar.sizeToFit()
         if #available(iOS 11.0, *) {
@@ -102,7 +87,7 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         self.searchController.hidesNavigationBarDuringPresentation = true
         self.searchController.searchResultsUpdater = self
-        self.searchController.dimsBackgroundDuringPresentation = false
+        self.searchController.obscuresBackgroundDuringPresentation = false
         self.definesPresentationContext = true
         self.searchController.searchBar.scopeButtonTitles = [NSLocalizedString("destination", comment: "Destination"), NSLocalizedString("house", comment: "House")]
         self.searchController.searchBar.delegate = self
@@ -364,8 +349,7 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             // set region object in the detail VC
             controller.region = region
-            // FB Audience network for native ads in tableview
-            controller.adsCellProvider = adsCellProvider
+
             
             self.navigationController!.pushViewController(controller, animated: true)
         }
@@ -424,67 +408,12 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
             tableView.deleteRows(at: [indexPath!], with: .fade)
             tableView.insertRows(at: [newIndexPath!], with: .fade)
             
+        @unknown default:
+            print("Default case")
         }
     }
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         self.tableView.endUpdates()
-    }
-    
-    // MARK: FBAdViewDelegate Methods for banner ad
-    
-    func adViewDidLoad(_ adView: FBAdView) {
-        
-        print("Banner loaded successfully")
-        
-        // Reposition the banner ad to create a slide down effect
-        let translateTransform = CGAffineTransform(translationX: 0, y: -adView.bounds.size.height)
-        adView.transform = translateTransform
-        
-        UIView.animate(withDuration: 0.5) {
-            self.tableView.tableHeaderView?.frame = adView.frame
-            adView.transform = CGAffineTransform.identity
-            self.tableView.tableHeaderView = adView
-        }
-        
-    }
-    
-    func adView(_ adView: FBAdView, didFailWithError error: Error) {
-        print(error)
-    }
-    
-    func adViewDidClick(_ adView: FBAdView) {
-        print("Did tap on ad view")
-    }
-    
-    // MARK: FBAdViewDelegate Methods for native ads in tableview
-    func configureAdManagerAndLoadAds() {
-        FBAdSettings.setLogLevel(FBAdLogLevel.log)
-        FBAdSettings.addTestDevice(FBAdSettings.testDeviceHash())
-        if adsManager == nil {
-            adsManager = FBNativeAdsManager(placementID: "IMG_16_9_APP_INSTALL#287352068455477_287361241787893", forNumAdsRequested: 5)
-            adsManager.delegate = self
-            FBAdSettings.addTestDevice("HASHED_ID")
-            adsManager.loadAds()
-        }
-    }
-    
-    func nativeAdsLoaded() {
-        adsCellProvider = FBNativeAdTableViewCellProvider(manager: adsManager, for: FBNativeAdViewType.genericHeight120)
-        adsCellProvider.delegate = self
-        
-        /*
-         if tableView != nil {
-         tableView.reloadData()
-         }
-         */
-    }
-    
-    func nativeAdsFailedToLoadWithError(_ error: Error) {
-        print(error)
-    }
-    
-    func nativeAdDidClick(_ nativeAd: FBNativeAd) {
-        print("Ad tapped: \(String(describing: nativeAd.title))")
     }
 
 }
@@ -532,10 +461,8 @@ extension RegionsViewController: UISearchBarDelegate {
         let scope = searchBar.scopeButtonTitles![selectedScope]
         switch scope {
         case NSLocalizedString("destination", comment: "Destination"):
-            Analytics.logEvent(AnalyticsEventSearch, parameters: [AnalyticsParameterSearchTerm : searchController.searchBar.text!])
            destinationSearchResults = getDestinationName(searchController.searchBar.text!)
         case NSLocalizedString("house", comment: "House"):
-            Analytics.logEvent(AnalyticsEventSearch, parameters: [AnalyticsParameterDestination : searchController.searchBar.text!])
            houeseSearchResults = getHouseName(searchController.searchBar.text!)
             
         default:

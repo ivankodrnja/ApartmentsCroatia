@@ -8,27 +8,15 @@
 
 import UIKit
 import CoreData
-import Firebase
 
-class HousesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, FBAdViewDelegate, FBNativeAdsManagerDelegate, FBNativeAdDelegate {
+
+class HousesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     // variable will be initialized from previous VC
     var destination : Destination?
     
-    // FB Audience Network
-    let adRowStep = 4
-    var adsManager: FBNativeAdsManager!
-    var adsCellProvider: FBNativeAdTableViewCellProvider!
-    
-    var nativeAd: FBNativeAd!
-    
-    lazy var adBannerView: FBAdView = {
-        let adBannerView = FBAdView(placementID: "IMG_16_9_APP_INSTALL#287352068455477_291275918063092", adSize: kFBAdSizeHeight90Banner, rootViewController: self)
-        adBannerView.delegate = self
-        
-        return adBannerView
-    }()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,18 +32,12 @@ class HousesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         fetchedResultsController.delegate = self
         self.navigationItem.title = destination?.name
-        Analytics.logEvent(AnalyticsEventViewItemList, parameters: [AnalyticsParameterItemCategory : destination!.name])
         
         tableView.tableFooterView = UIView()
 
     }
     
-    
-    override func viewWillAppear(_ animated: Bool) {
-        configureAdManagerAndLoadAds()
 
-        //adBannerView.loadAd()
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -87,11 +69,9 @@ class HousesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        if adsCellProvider != nil && adsCellProvider.isAdCell(at: indexPath, forStride: UInt(adRowStep)) {
-            return adsCellProvider.tableView(tableView, heightForRowAt: indexPath)
-        } else {
+   
             return 350
-        }
+        
 
     }
     
@@ -101,52 +81,25 @@ class HousesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sectionInfo = self.fetchedResultsController.sections![section]
-       // return sectionInfo.numberOfObjects
-        
-        if adsCellProvider != nil {
-            return Int(adsCellProvider.adjustCount(UInt(sectionInfo.numberOfObjects), forStride: UInt(adRowStep)))
-        }
-        else {
-            return sectionInfo.numberOfObjects
-        }
+       return sectionInfo.numberOfObjects
+
 
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         /* Get cell type */
-        /*
+
         let house = fetchedResultsController.object(at: indexPath)
         let cellReuseIdentifier = "HousesCell"
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier)! as! HouseTableViewCell
         
         configureCell(cell, withHouse: house, atIndexPath: indexPath)
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         
         return cell
-        */
 
-     if adsCellProvider != nil && adsCellProvider.isAdCell(at: indexPath, forStride: UInt(adRowStep)) {
-
-            return adsCellProvider.tableView(tableView, cellForRowAt: indexPath)
-        }
-        else {
- 
-            // we avoid crashes that can happen when scrolling to a row with an index greater than or equal to the length of the fetchedResultsController. Instead of e.g. 20 rows (as many as the items in the fetchedResultsController), we’re going to have six more rows because of the ads that will be added to the tableview, therefore it’s important to adjust the index of the array.
-            let tempIndexPath = indexPath.row - Int(indexPath.row / adRowStep)
-        
-            
-            let house = fetchedResultsController.object(at: IndexPath(row: tempIndexPath, section: indexPath.section))
-            let cellReuseIdentifier = "HousesCell"
-            
-            let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier)! as! HouseTableViewCell
-            
-            configureCell(cell, withHouse: house, atIndexPath: IndexPath(row: tempIndexPath, section: indexPath.section))
-            cell.selectionStyle = UITableViewCell.SelectionStyle.none
-            
-            return cell
-        }
  
     
     }
@@ -190,13 +143,11 @@ class HousesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        // we avoid crashes that can happen when scrolling to a row with an index greater than or equal to the length of the fetchedResultsController. Instead of e.g. 20 rows (as many as the items in the fetchedResultsController), we’re going to have six more rows because of the ads that will be added to the tableview, therefore it’s important to adjust the index of the array.
-        let tempIndexPath = indexPath.row - Int(indexPath.row / adRowStep)
-        
+
         
         let controller = storyboard!.instantiateViewController(withIdentifier: "HouseDetailTableViewController") as! HouseDetailTableViewController
-        let house = fetchedResultsController.object(at: IndexPath(row: tempIndexPath, section: indexPath.section))
-        //let house = fetchedResultsController.object(at: indexPath)
+
+        let house = fetchedResultsController.object(at: indexPath)
         // set destination object in the detail VC
         controller.house = house
         
@@ -251,6 +202,8 @@ class HousesViewController: UIViewController, UITableViewDelegate, UITableViewDa
             tableView.deleteRows(at: [indexPath!], with: .fade)
             tableView.insertRows(at: [newIndexPath!], with: .fade)
             
+        @unknown default:
+            print("default case")
         }
     }
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
@@ -258,60 +211,5 @@ class HousesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
 
-    // MARK: FBAdViewDelegate Methods for banner ad
-    
-    func adViewDidLoad(_ adView: FBAdView) {
-        
-        print("Banner loaded successfully")
-        
-        // Reposition the banner ad to create a slide down effect
-        let translateTransform = CGAffineTransform(translationX: 0, y: -adView.bounds.size.height)
-        adView.transform = translateTransform
-        
-        UIView.animate(withDuration: 0.5) {
-            self.tableView.tableHeaderView?.frame = adView.frame
-            adView.transform = CGAffineTransform.identity
-            self.tableView.tableHeaderView = adView
-        }
-        
-    }
-    
-    func adView(_ adView: FBAdView, didFailWithError error: Error) {
-        print(error)
-    }
-    
-    func adViewDidClick(_ adView: FBAdView) {
-        print("Did tap on ad view")
-    }
-    
-    // MARK: FBAdViewDelegate Methods for native ads in tableview
-    func configureAdManagerAndLoadAds() {
-        if adsManager == nil {
-            adsManager = FBNativeAdsManager(placementID: "IMG_16_9_APP_INSTALL#287352068455477_287361241787893", forNumAdsRequested: 5)
-            adsManager.delegate = self
-            adsManager.loadAds()
-        }
-    }
-    
-    func nativeAdsLoaded() {
-        adsCellProvider = FBNativeAdTableViewCellProvider(manager: adsManager, for: FBNativeAdViewType.genericHeight120)
-        adsCellProvider.delegate = self
-        
-        print("adsCellProvider:\(adsCellProvider)")
-        
-        /*
-        if tableView != nil {
-            tableView.reloadData()
-        }
-        */
-    }
-    
-    func nativeAdsFailedToLoadWithError(_ error: Error) {
-        print(error)
-    }
-    
-    func nativeAdDidClick(_ nativeAd: FBNativeAd) {
-        print("Ad tapped: \(String(describing: nativeAd.title))")
-    }
     
 }

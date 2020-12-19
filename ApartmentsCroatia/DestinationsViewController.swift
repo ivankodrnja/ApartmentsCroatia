@@ -8,27 +8,14 @@
 
 import UIKit
 import CoreData
-import Firebase
 
-class DestinationsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, FBAdViewDelegate, FBNativeAdsManagerDelegate, FBNativeAdDelegate {
+class DestinationsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     // variable will be initialized from previous VC
     var region : Region?
-    
-    // FB Audience Network
-    let adRowStep = 4
-    var adsManager: FBNativeAdsManager!
-    var adsCellProvider: FBNativeAdTableViewCellProvider!
-    
-    var nativeAd: FBNativeAd!
-    
-    lazy var adBannerView: FBAdView = {
-        let adBannerView = FBAdView(placementID: "IMG_16_9_APP_INSTALL#287352068455477_291298641394153", adSize: kFBAdSizeHeight50Banner, rootViewController: self)
-        adBannerView.delegate = self
-        
-        return adBannerView
-    }()
+     
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,8 +31,7 @@ class DestinationsViewController: UIViewController, UITableViewDelegate, UITable
         fetchedResultsController.delegate = self
         
         var regionName: String!
-        
-        Analytics.logEvent(AnalyticsEventViewItemList, parameters: [AnalyticsParameterItemCategory : region!.name])
+
         
         switch region!.name {
         case "Istria":
@@ -146,8 +132,7 @@ class DestinationsViewController: UIViewController, UITableViewDelegate, UITable
         
         // set destination object in the detail VC
         controller.destination = destination
-        // FB Audience network for native ads in tableview
-        controller.adsCellProvider = adsCellProvider
+
         
         self.navigationController!.pushViewController(controller, animated: true)
         
@@ -217,65 +202,14 @@ class DestinationsViewController: UIViewController, UITableViewDelegate, UITable
             tableView.deleteRows(at: [indexPath!], with: .fade)
             tableView.insertRows(at: [newIndexPath!], with: .fade)
             
+        @unknown default:
+            print("default case")
         }
     }
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         self.tableView.endUpdates()
     }
     
-    // MARK: FBAdViewDelegate Methods for banner ad
-    
-    func adViewDidLoad(_ adView: FBAdView) {
-        
-        print("Banner loaded successfully")
-        
-        // Reposition the banner ad to create a slide down effect
-        let translateTransform = CGAffineTransform(translationX: 0, y: -adView.bounds.size.height)
-        adView.transform = translateTransform
-        
-        UIView.animate(withDuration: 0.5) {
-            self.tableView.tableHeaderView?.frame = adView.frame
-            adView.transform = CGAffineTransform.identity
-            self.tableView.tableHeaderView = adView
-        }
-        
-    }
-    
-    func adView(_ adView: FBAdView, didFailWithError error: Error) {
-        print(error)
-    }
-    
-    func adViewDidClick(_ adView: FBAdView) {
-        print("Did tap on ad view")
-    }
-    
-    // MARK: FBAdViewDelegate Methods for native ads in tableview
-    func configureAdManagerAndLoadAds() {
-        if adsManager == nil {
-            adsManager = FBNativeAdsManager(placementID: "IMG_16_9_APP_INSTALL#287352068455477_287361241787893", forNumAdsRequested: 5)
-            adsManager.delegate = self
-            adsManager.loadAds()
-        }
-    }
-    
-    func nativeAdsLoaded() {
-        adsCellProvider = FBNativeAdTableViewCellProvider(manager: adsManager, for: FBNativeAdViewType.genericHeight120)
-        adsCellProvider.delegate = self
-
-        /*
-         if tableView != nil {
-         tableView.reloadData()
-         }
-         */
-    }
-    
-    func nativeAdsFailedToLoadWithError(_ error: Error) {
-        print(error)
-    }
-    
-    func nativeAdDidClick(_ nativeAd: FBNativeAd) {
-        print("Ad tapped: \(String(describing: nativeAd.title))")
-    }
 
 }
 

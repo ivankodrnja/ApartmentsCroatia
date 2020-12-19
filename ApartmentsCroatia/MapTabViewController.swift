@@ -232,6 +232,8 @@ class MapTabViewController: UIViewController {
                     
                 case .restricted:
                     self.openSettingsToEnableLocationService()
+                @unknown default:
+                    print("Default case")
                 }
             }
             
@@ -277,7 +279,10 @@ class MapTabViewController: UIViewController {
         let settingsAction = UIAlertAction(title: NSLocalizedString("settings", comment: "Settings"), style: .default) { (_) -> Void in
             let settingsUrl = URL(string: UIApplication.openSettingsURLString)
             if let url = settingsUrl {
-                UIApplication.shared.openURL(url)
+                
+                if let urlToOpen = URL(string: "\(url)"), !url.absoluteString.isEmpty {
+                        UIApplication.shared.open(urlToOpen, options: [:], completionHandler: nil)
+                    }
             }
     }
     

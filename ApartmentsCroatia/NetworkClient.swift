@@ -231,12 +231,12 @@ class NetworkClient: NSObject {
                     completionHandlerForGetRentals(lastUpdate as [String : AnyObject], nil)
                     
                 } catch {
-                    print("Could not parse the data as XML: '\(XMLIndexer.xmlError.self)'")
+                    print("Could not parse the data as XML: \(String(describing: XMLIndexer.xmlError.self))")
                     return
                 }
                 
                 
-                print("Could not parse the data as XML: '\(XMLIndexer.xmlError.self)'")
+                print("Could not parse the data as XML: \(String(describing: XMLIndexer.xmlError.self))")
                 //return
             }
             
@@ -262,7 +262,7 @@ class NetworkClient: NSObject {
                     // if destination doesn't already exist, add it to the database
                     if  destination == nil {
                         // create dictionary which will be used for Core Data entry
-                        let destinationDict = [NetworkClient.XMLResponseKeys.DestinationName : house[NetworkClient.XMLResponseKeys.DestinationName]!, NetworkClient.XMLResponseKeys.DestinationPhotoPath : house[NetworkClient.XMLResponseKeys.DestinationImage]]
+                        let destinationDict = [NetworkClient.XMLResponseKeys.DestinationName : house[NetworkClient.XMLResponseKeys.DestinationName]!, NetworkClient.XMLResponseKeys.DestinationPhotoPath : house[NetworkClient.XMLResponseKeys.DestinationImage] as Any]
                         destination = Destination(dictionary: destinationDict as Any as! [String : Any], context: self.sharedContext)
                         // destination belongs to a certain region
                         destination?.region = region

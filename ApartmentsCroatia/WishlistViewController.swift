@@ -208,6 +208,8 @@ class WishlistViewController: UIViewController, UITableViewDelegate, UITableView
             tableView.deleteRows(at: [indexPath!], with: .fade)
             tableView.insertRows(at: [newIndexPath!], with: .fade)
             
+        @unknown default:
+           print("default case")
         }
     }
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
