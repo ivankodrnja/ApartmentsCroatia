@@ -20,7 +20,6 @@
 		832D5ACA1D46311200938B2E /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832D5AC91D46311200938B2E /* ImageViewController.swift */; };
 		8336EC501F6E79380032863A /* DestinationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8336EC4F1F6E79380032863A /* DestinationTableViewCell.xib */; };
 		8336EC521F6E82020032863A /* HouseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8336EC511F6E82020032863A /* HouseTableViewCell.xib */; };
-		8340608B1FF7B3DA00D51C10 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8340608A1FF7B3DA00D51C10 /* StoreKit.framework */; };
 		8340608D1FF7B3E800D51C10 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8340608C1FF7B3E800D51C10 /* CoreMotion.framework */; };
 		8340608F1FF7B40F00D51C10 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8340608E1FF7B40F00D51C10 /* AdSupport.framework */; };
 		8357BC371D3F5C3E00B011B9 /* AukDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8357BC361D3F5C3E00B011B9 /* AukDistrib.swift */; };
@@ -82,7 +81,6 @@
 		832D5AC91D46311200938B2E /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		8336EC4F1F6E79380032863A /* DestinationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DestinationTableViewCell.xib; sourceTree = "<group>"; };
 		8336EC511F6E82020032863A /* HouseTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HouseTableViewCell.xib; sourceTree = "<group>"; };
-		8340608A1FF7B3DA00D51C10 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		8340608C1FF7B3E800D51C10 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		8340608E1FF7B40F00D51C10 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		834060901FF7B7BE00D51C10 /* ApartmentsCroatia-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ApartmentsCroatia-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -168,7 +166,6 @@
 			files = (
 				8340608F1FF7B40F00D51C10 /* AdSupport.framework in Frameworks */,
 				8340608D1FF7B3E800D51C10 /* CoreMotion.framework in Frameworks */,
-				8340608B1FF7B3DA00D51C10 /* StoreKit.framework in Frameworks */,
 				83CD7E921F73074B00350FE3 /* SystemConfiguration.framework in Frameworks */,
 				83CD7E901F73073F00350FE3 /* Security.framework in Frameworks */,
 			);
@@ -342,7 +339,6 @@
 			children = (
 				8340608E1FF7B40F00D51C10 /* AdSupport.framework */,
 				8340608C1FF7B3E800D51C10 /* CoreMotion.framework */,
-				8340608A1FF7B3DA00D51C10 /* StoreKit.framework */,
 				83CD7E911F73074B00350FE3 /* SystemConfiguration.framework */,
 				83CD7E8F1F73073F00350FE3 /* Security.framework */,
 			);
@@ -406,7 +402,7 @@
 				TargetAttributes = {
 					83B5B7251CA9015B00C4D63B = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = WX8RBF8LDC;
+						DevelopmentTeam = RZJ38BZUN6;
 						LastSwiftMigration = 1220;
 					};
 				};
@@ -683,9 +679,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = RZJ38BZUN6;
 				INFOPLIST_FILE = ApartmentsCroatia/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.2plus2.apartment;
+				PRODUCT_BUNDLE_IDENTIFIER = hr.2plus2.apartment;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ApartmentsCroatia/ApartmentsCroatia-Bridging-Header.h";
@@ -700,9 +697,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = RZJ38BZUN6;
 				INFOPLIST_FILE = ApartmentsCroatia/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.2plus2.apartment;
+				PRODUCT_BUNDLE_IDENTIFIER = hr.2plus2.apartment;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ApartmentsCroatia/ApartmentsCroatia-Bridging-Header.h";
