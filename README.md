@@ -7,7 +7,7 @@ As the app was discontinued, there are no images available when you build the ap
 
 ## Overview
 
-Travelbirdie enables you to search for vacation rentals in private homes in Croatia. No registration is required, just enter few basic details and you are ready to perform a search. If you can't decide immediately you can save interesting vacation rentals to a Favorites list for later, the list is persisted and will wait for you in the app. You will contact the accommodation owner directly without paying any commision. Enjoy Croatia!
+Travelbirdie enables you to search for vacation rentals in private homes in Croatia. No registration is required, just enter few basic details and you are ready to perform a search. If you can't decide immediately you can save interesting vacation rentals to a Favorites list for later, the list is persisted and will wait for you in the app. You will contact the accommodation owner directly without paying any booking commision. Enjoy Croatia!
 
 
 ## Details
