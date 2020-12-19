@@ -12,7 +12,7 @@ Travelbirdie enables you to search for vacation rentals in private homes in Croa
 
 ## Details
 
-Just browse the destination lists, search for the destination or search on the map. To add a rental to the Favorites list, first make a search, look at the rental details from search results list where you'll find an option "Add to Favorites". The list of Favorite rentals is available from the initial view in the second tab called "Favorites". From the list of Favorite rentals you can choose a rental to review its details where you can find an option "Remove from favorites" if you want to remove this rental from the Favorites list. 
+Just browse the destination lists, search for the destination or search on the map and you will find a perfect place to stay. To add a rental to the Favorites list, first make a search, look at the rental details from search results list where you'll find an option "Add to Favorites". The list of Favorite rentals is available from the initial view in the second tab called "Favorites". From the list of Favorite rentals you can choose a rental to review its details where you can find an option "Remove from favorites" if you want to remove this rental from the Favorites list. 
 
 ## License
 
