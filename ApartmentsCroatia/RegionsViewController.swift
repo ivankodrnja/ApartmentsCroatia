@@ -139,7 +139,7 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidAppear(_ animated: Bool) {
         
         // present UpdatingViewController if syncing of databse occured 7 or more days ago
-
+/*
         let lastSyncDate = NetworkClient.sharedInstance().defaults.object(forKey: "lastSyncDate") as! Date
         
         
@@ -156,7 +156,7 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
             present(updatingVC, animated: true, completion: nil)
         }
         
-
+*/
     }
     
     // MARK: - Core Data Convenience
@@ -218,7 +218,7 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
                 tableView.register(UINib(nibName: "DestinationTableViewCell", bundle: nil), forCellReuseIdentifier: "DestinationTableViewCell")
             
                 tableView.rowHeight = 80
-                tableView.separatorStyle = UITableViewCellSeparatorStyle.singleLine
+                tableView.separatorStyle = UITableViewCell.SeparatorStyle.singleLine
                 tableView.separatorColor = UIColor.lightGray
                 let cell = tableView.dequeueReusableCell(withIdentifier: "DestinationTableViewCell", for: indexPath) as! DestinationTableViewCell
                 
@@ -232,14 +232,14 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
                 cell.nameLabel.text = destination.name
                 // show separately first letter of the name
                 cell.firstLetterLabel.text = String(destination.name[destination.name.startIndex])
-                cell.selectionStyle = UITableViewCellSelectionStyle.none
+                cell.selectionStyle = UITableViewCell.SelectionStyle.none
                 return cell
             } else {
                 let house = houeseSearchResults![indexPath.row]
                 
                 tableView.register(UINib(nibName: "HouseTableViewCell", bundle: nil), forCellReuseIdentifier: "HousesCell")
                 tableView.rowHeight = 350
-                tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+                tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
                 let cell = tableView.dequeueReusableCell(withIdentifier: "HousesCell", for: indexPath) as! HouseTableViewCell
                 // make table cell separators stretch throught the screen width, in Storyboard separator insets of the table view and the cell have also set to 0
                 cell.preservesSuperviewLayoutMargins = false
@@ -273,7 +273,7 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
                 }
                 cell.locationLabel.text = "\(house.destination!.name), \(house.destination!.region!.name)"
                 
-                cell.selectionStyle = UITableViewCellSelectionStyle.none
+                cell.selectionStyle = UITableViewCell.SelectionStyle.none
                 return cell
             }
             
@@ -286,7 +286,7 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier)! as! RegionTableViewCell
         
         configureCell(cell, withRegion: region, atIndexPath: indexPath)
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         
         return cell
         }
@@ -366,7 +366,6 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
             controller.region = region
             // FB Audience network for native ads in tableview
             controller.adsCellProvider = adsCellProvider
-            //controller =
             
             self.navigationController!.pushViewController(controller, animated: true)
         }
@@ -459,7 +458,8 @@ class RegionsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     // MARK: FBAdViewDelegate Methods for native ads in tableview
     func configureAdManagerAndLoadAds() {
-        FBAdSettings.addTestDevice("HASHED_ID")
+        FBAdSettings.setLogLevel(FBAdLogLevel.log)
+        FBAdSettings.addTestDevice(FBAdSettings.testDeviceHash())
         if adsManager == nil {
             adsManager = FBNativeAdsManager(placementID: "IMG_16_9_APP_INSTALL#287352068455477_287361241787893", forNumAdsRequested: 5)
             adsManager.delegate = self

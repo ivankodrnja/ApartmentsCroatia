@@ -84,7 +84,7 @@ class WishlistViewController: UIViewController, UITableViewDelegate, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier)! as! HouseTableViewCell
         
         configureCell(cell, withHouse: house, atIndexPath: indexPath)
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         
         return cell
     }
@@ -140,7 +140,7 @@ class WishlistViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView,
-                   commit editingStyle: UITableViewCellEditingStyle,
+                   commit editingStyle: UITableViewCell.EditingStyle,
                                       forRowAt indexPath: IndexPath) {
         
         switch (editingStyle) {

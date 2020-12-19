@@ -29,7 +29,7 @@ class MapViewController: UIViewController {
         
         // draw the location of the house
         let location = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
-        let span = MKCoordinateSpanMake(0.03, 0.03)
+        let span = MKCoordinateSpan.init(latitudeDelta: 0.03, longitudeDelta: 0.03)
         let region = MKCoordinateRegion(center: location, span: span)
         mapView.setRegion(region, animated: true)
         let annotation = MKPointAnnotation()

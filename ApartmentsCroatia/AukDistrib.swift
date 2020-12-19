@@ -684,7 +684,7 @@ final class AukPage: UIView {
     
     func makeAccessible(_ accessibilityLabel: String?) {
         isAccessibilityElement = true
-        accessibilityTraits = UIAccessibilityTraitImage
+        accessibilityTraits = UIAccessibilityTraits.image
         self.accessibilityLabel = accessibilityLabel
     }
 }
@@ -703,7 +703,7 @@ final class AukPageIndicatorContainer: UIView {
     
     deinit {
         pageControl?.removeTarget(self, action: #selector(AukPageIndicatorContainer.didTapPageControl(_:)),
-                                  for: UIControlEvents.valueChanged)
+                                  for: UIControl.Event.valueChanged)
     }
     
     var didTapPageControlCallback: ((Int)->())?
@@ -750,12 +750,12 @@ final class AukPageIndicatorContainer: UIView {
             
             // Align bottom of the page view indicator with the bottom of the scroll view
             iiAutolayoutConstraints.alignSameAttributes(pageIndicatorContainer, toItem: scrollView,
-                                                        constraintContainer: superview, attribute: NSLayoutAttribute.bottom,
+                                                        constraintContainer: superview, attribute: NSLayoutConstraint.Attribute.bottom,
                                                         margin: CGFloat(-settings.pageControl.marginToScrollViewBottom))
             
             // Center the page view indicator horizontally in relation to the scroll view
             iiAutolayoutConstraints.alignSameAttributes(pageIndicatorContainer, toItem: scrollView,
-                                                        constraintContainer: superview, attribute: NSLayoutAttribute.centerX, margin: 0)
+                                                        constraintContainer: superview, attribute: NSLayoutConstraint.Attribute.centerX, margin: 0)
         }
     }
     
@@ -773,7 +773,7 @@ final class AukPageIndicatorContainer: UIView {
         }
         
         pageControl.addTarget(self, action: #selector(AukPageIndicatorContainer.didTapPageControl(_:)),
-                              for: UIControlEvents.valueChanged)
+                              for: UIControl.Event.valueChanged)
         
         pageControl.pageIndicatorTintColor = settings.pageControl.pageIndicatorTintColor
         pageControl.currentPageIndicatorTintColor = settings.pageControl.currentPageIndicatorTintColor
@@ -1142,13 +1142,13 @@ struct AukScrollViewContent {
             if index == 0 {
                 // Align the leading edge of the first page to the leading edge of the scroll view.
                 iiAutolayoutConstraints.alignSameAttributes(page, toItem: scrollView,
-                                                            constraintContainer: scrollView, attribute: NSLayoutAttribute.leading, margin: 0)
+                                                            constraintContainer: scrollView, attribute: NSLayoutConstraint.Attribute.leading, margin: 0)
             }
             
             if index == pages.count - 1 {
                 // Align the trailing edge of the last page to the trailing edge of the scroll view.
                 iiAutolayoutConstraints.alignSameAttributes(page, toItem: scrollView,
-                                                            constraintContainer: scrollView, attribute: NSLayoutAttribute.trailing, margin: 0)
+                                                            constraintContainer: scrollView, attribute: NSLayoutConstraint.Attribute.trailing, margin: 0)
             }
         }
         
@@ -1270,7 +1270,7 @@ import UIKit
 public struct AukSettings {
     
     /// Determines the stretching and scaling of the image when its proportion are not the same as its  container.
-    public var contentMode = UIViewContentMode.scaleAspectFit
+    public var contentMode = UIView.ContentMode.scaleAspectFit
     
     /// Image to be displayed when remote image download fails.
     public var errorImage: UIImage?
@@ -1574,12 +1574,12 @@ class iiAutolayoutConstraints {
     
     @discardableResult
     class func alignSameAttributes(_ item: AnyObject, toItem: AnyObject,
-                                   constraintContainer: UIView, attribute: NSLayoutAttribute, margin: CGFloat = 0) -> [NSLayoutConstraint] {
+                                   constraintContainer: UIView, attribute: NSLayoutConstraint.Attribute, margin: CGFloat = 0) -> [NSLayoutConstraint] {
         
         let constraint = NSLayoutConstraint(
             item: item,
             attribute: attribute,
-            relatedBy: NSLayoutRelation.equal,
+            relatedBy: NSLayoutConstraint.Relation.equal,
             toItem: toItem,
             attribute: attribute,
             multiplier: 1,
@@ -1688,14 +1688,14 @@ class iiAutolayoutConstraints {
     
     class func widthOrHeight(_ view: UIView, value: CGFloat, isHeight: Bool) -> [NSLayoutConstraint] {
         
-        let layoutAttribute = isHeight ? NSLayoutAttribute.height : NSLayoutAttribute.width
+        let layoutAttribute = isHeight ? NSLayoutConstraint.Attribute.height : NSLayoutConstraint.Attribute.width
         
         let constraint = NSLayoutConstraint(
             item: view,
             attribute: layoutAttribute,
-            relatedBy: NSLayoutRelation.equal,
+            relatedBy: NSLayoutConstraint.Relation.equal,
             toItem: nil,
-            attribute: NSLayoutAttribute.notAnAttribute,
+            attribute: NSLayoutConstraint.Attribute.notAnAttribute,
             multiplier: 1,
             constant: value)
         

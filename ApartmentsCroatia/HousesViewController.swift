@@ -143,7 +143,7 @@ class HousesViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier)! as! HouseTableViewCell
             
             configureCell(cell, withHouse: house, atIndexPath: IndexPath(row: tempIndexPath, section: indexPath.section))
-            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
             
             return cell
         }

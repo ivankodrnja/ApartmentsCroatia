@@ -146,7 +146,7 @@ class HouseDetailTableViewController: UIViewController, UITableViewDelegate, UIT
                 cell.layoutMargins = UIEdgeInsets.zero
                 cell.separatorInset = UIEdgeInsets.zero
                 
-                cell.accessoryType = UITableViewCellAccessoryType.none
+                cell.accessoryType = UITableViewCell.AccessoryType.none
                 cell.backgroundColor = UIColor.gray
                 cell.textLabel?.textAlignment = .center
                 cell.textLabel!.font = UIFont.boldSystemFont(ofSize: 20)
@@ -156,7 +156,7 @@ class HouseDetailTableViewController: UIViewController, UITableViewDelegate, UIT
                 } else {
                     cell.textLabel?.text = NSLocalizedString("addToWishlist", comment: "Add to Wishlist")
                 }
-                cell.selectionStyle = UITableViewCellSelectionStyle.none
+                cell.selectionStyle = UITableViewCell.SelectionStyle.none
                 
                 return cell
             // labels cell
@@ -199,13 +199,13 @@ class HouseDetailTableViewController: UIViewController, UITableViewDelegate, UIT
                 cell.layoutMargins = UIEdgeInsets.zero
                 cell.separatorInset = UIEdgeInsets.zero
                 
-                cell.accessoryType = UITableViewCellAccessoryType.none
+                cell.accessoryType = UITableViewCell.AccessoryType.none
                 cell.backgroundColor = UIColor.orange
                 cell.textLabel?.textAlignment = .center
                 cell.textLabel!.font = UIFont.boldSystemFont(ofSize: 20)
                 cell.textLabel?.textColor = UIColor.white
                 cell.textLabel?.text = NSLocalizedString("bookNow", comment: "BOOK NOW")
-                cell.selectionStyle = UITableViewCellSelectionStyle.none
+                cell.selectionStyle = UITableViewCell.SelectionStyle.none
                 
                 return cell
                 
@@ -238,7 +238,7 @@ class HouseDetailTableViewController: UIViewController, UITableViewDelegate, UIT
             
             let location = CLLocationCoordinate2D(latitude: house!.latitude, longitude: house!.longitude)
             
-            let span = MKCoordinateSpanMake(0.03, 0.03)
+            let span = MKCoordinateSpan.init(latitudeDelta: 0.03, longitudeDelta: 0.03)
             let region = MKCoordinateRegion(center: location, span: span)
             
             cell.mapView.setRegion(region, animated: true)
@@ -270,7 +270,7 @@ class HouseDetailTableViewController: UIViewController, UITableViewDelegate, UIT
             // get directions
             case 1:
                 
-                cell.accessoryType = UITableViewCellAccessoryType.none
+                cell.accessoryType = UITableViewCell.AccessoryType.none
                 cell.backgroundColor = UIColor.gray
                 cell.textLabel!.font = UIFont.boldSystemFont(ofSize: 20)
                 cell.textLabel?.textColor = UIColor.white
@@ -291,7 +291,7 @@ class HouseDetailTableViewController: UIViewController, UITableViewDelegate, UIT
                 }
 
             default:
-                cell.accessoryType = UITableViewCellAccessoryType.none
+                cell.accessoryType = UITableViewCell.AccessoryType.none
                 cell.backgroundColor = UIColor.orange
                 cell.textLabel?.textAlignment = .center
                 cell.textLabel!.font = UIFont.boldSystemFont(ofSize: 20)

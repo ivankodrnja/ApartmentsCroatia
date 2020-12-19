@@ -59,7 +59,7 @@ class ApartmentDetailViewController: UIViewController, UITableViewDelegate, UITa
         cell.layoutMargins = UIEdgeInsets.zero
         cell.separatorInset = UIEdgeInsets.zero
 
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         
         switch apartment.type {
         case "Apartment":

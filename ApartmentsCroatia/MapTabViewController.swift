@@ -133,7 +133,7 @@ class MapTabViewController: UIViewController {
     
         mapView.showsPointsOfInterest = false
         let location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-        let span = MKCoordinateSpanMake(8.1, 8.1)
+        let span = MKCoordinateSpan.init(latitudeDelta: 8.1, longitudeDelta: 8.1)
         let region = MKCoordinateRegion(center: location, span: span)
         mapView.setRegion(region, animated: true)
         
@@ -143,7 +143,7 @@ class MapTabViewController: UIViewController {
         
         mapView.showsPointsOfInterest = false
         let location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-        let span = MKCoordinateSpanMake(1.1, 1.1)
+        let span = MKCoordinateSpan.init(latitudeDelta: 1.1, longitudeDelta: 1.1)
         let region = MKCoordinateRegion(center: location, span: span)
         mapView.setRegion(region, animated: true)
         
@@ -275,7 +275,7 @@ class MapTabViewController: UIViewController {
         let alertController = UIAlertController (title: NSLocalizedString("enableLocationServices", comment: "Please enable location services in Settings"), message: NSLocalizedString("goToSettings", comment: "Go to Settings?"), preferredStyle: .alert)
         
         let settingsAction = UIAlertAction(title: NSLocalizedString("settings", comment: "Settings"), style: .default) { (_) -> Void in
-            let settingsUrl = URL(string: UIApplicationOpenSettingsURLString)
+            let settingsUrl = URL(string: UIApplication.openSettingsURLString)
             if let url = settingsUrl {
                 UIApplication.shared.openURL(url)
             }
